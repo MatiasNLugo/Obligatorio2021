@@ -44,21 +44,6 @@ public class AdaptadorClientes extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       /*LayoutInflater inflador = LayoutInflater.from(contexto);
-        View item = inflador.inflate(R.layout.list_item_cliente,null);
-
-        TextView tvId = item.findViewById(R.id.tvIdCliente);
-        TextView tvNombre = item.findViewById(R.id.tvNombre);
-
-        tvId.setText(String.valueOf(clientes.get(position).getIdCliente()));
-        if(clientes.get(position) instanceof Particular){
-            tvNombre.setText(((Particular) clientes.get(position)).getNombre().toString());
-        }
-        if(clientes.get(position) instanceof Comercial){
-            tvNombre.setText(((Comercial) clientes.get(position)).getRut().toString());
-        }
-
-        return item; */
 
         View item = convertView;
         ClienteViewHolder clienteViewHolder;

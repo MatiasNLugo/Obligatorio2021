@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -17,6 +20,7 @@ public class ClienteMantenimiento extends AppCompatActivity {
 
     protected FloatingActionButton btnAgregar;
     protected Fragment fragmentoA;
+    private ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,18 +28,36 @@ public class ClienteMantenimiento extends AppCompatActivity {
 
          fragmentoA = new AFragment().newInstance("Fragmento A");
 
-
          cambiarFragmento(fragmentoA,false);
 
          btnAgregar = (FloatingActionButton)findViewById(R.id.floatingActionButton);
+         lv = findViewById(R.id.lvEmpleados);
+
+         //Al realizar un click
+         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 onItemClickListener();
+             }
+         });
+
+
+
 
 
 
 
     }
 
-    public void btnOnClickAgregarCliente(View view) {
+    protected void onItemClickListener(){
+        //TODO  crear fragmento2
+        //cambiarFragmento(fragmentoB,false);
+    }
 
+    public void btnOnClickAgregarCliente(View view) {
+       //TODO  layout agregar cliente y pasar parametro
+        // Intent enviar = new Intent(this,AgregarCliente.class);
+        //startActivity(enviar);
 
     }
 
