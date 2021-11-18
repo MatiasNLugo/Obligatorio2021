@@ -22,6 +22,7 @@ public class AdaptadorEventos extends BaseAdapter {
    private Map<Integer,Integer> idsImagenes;
 
 
+
    public AdaptadorEventos(Context contexto, List<Evento> eventos){
        this.eventos = eventos;
        this.contexto = contexto;
@@ -58,7 +59,7 @@ public class AdaptadorEventos extends BaseAdapter {
         if(item == null){
 
             LayoutInflater inflador = LayoutInflater.from(contexto);
-            item = inflador.inflate(R.layout.activity_listar_eventos,null);
+            item = inflador.inflate(R.layout.list_item_evento,null);
             eventoViewHolder = new EventoViewHolder(item);
             item.setTag(eventoViewHolder);
 
@@ -68,11 +69,6 @@ public class AdaptadorEventos extends BaseAdapter {
         }
 
         eventoViewHolder.enlazarEvento(eventos.get(position));
-
-
-
-
-
 
        return item;
     }
@@ -86,14 +82,18 @@ public class AdaptadorEventos extends BaseAdapter {
 
         public EventoViewHolder(View view){
            imgAvatar = (ImageView) view.findViewById(R.id.imvAvatar);
-           tvTitulo = (TextView) view.findViewById(R.id.tvTitulo);
+            tvTitulo = (TextView) view.findViewById(R.id.tvTitulo);
            tvFecha = (TextView) view.findViewById(R.id.tvFecha);
             tvHora = (TextView) view.findViewById(R.id.tvHora);
         }
 
         public void enlazarEvento(Evento evento){
-
-            imgAvatar.setImageResource(idsImagenes.get(evento.getTipo()));
+           // int id = 70010;
+            int id = (int) idsImagenes.get(evento.getTipo());
+            if ( idsImagenes.get(evento.getTipo()) == null){
+                id= 70010;
+            }
+            imgAvatar.setImageResource(id);
 
             tvTitulo.setText(evento.getTitulo());
             tvFecha.setText(evento.getFecha());

@@ -10,16 +10,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
+import com.matiaslugo.obligatorio2021.DataTypes.Evento;
 import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.db.DbEventos;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteMantenimiento;
+import com.matiaslugo.obligatorio2021.viewseventos.ListarEventos;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAgregar;
+    private Button btnAgregar, btnAgregarEvento, btnListarEvento;
     private TextView tv;
     private String paraMandar;
     @Override
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnAgregar = findViewById(R.id.btnAgregarCliente);
+        btnAgregarEvento = findViewById(R.id.btnAgregarEvento);
+        btnListarEvento = findViewById(R.id.btnIrListarEventos);
         tv = findViewById(R.id.tv);
 
     btnAgregar.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +73,19 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
+    btnAgregarEvento.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            btnOnClickAgregarEvento(v);
+        }
+    });
+
+    btnListarEvento.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            btnOnClickListarEventos(v);
+        }
+    });
 
     }
 
@@ -77,4 +95,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void btnOnClickAgregarEvento(View view) {
+
+        Evento evento = new Evento();
+        DbEventos dbEventos = new DbEventos(this);
+        dbEventos.insertarEvento(evento);
+    }
+
+
+    public void btnOnClickListarEventos(View view) {
+        Intent enviar = new Intent(this, ListarEventos.class);
+        startActivity(enviar);
+    }
 }

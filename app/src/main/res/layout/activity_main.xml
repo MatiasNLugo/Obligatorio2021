@@ -28,4 +28,23 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="119dp" />
 
+    <Button
+        android:id="@+id/btnAgregarEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AgregarEvento"
+        app:layout_constraintEnd_toEndOf="@+id/btnAgregarCliente"
+        app:layout_constraintStart_toStartOf="@+id/btnAgregarCliente"
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregarCliente"
+        android:onClick="btnOnClickListarEventos"/>
+    <Button
+        android:id="@+id/btnIrListarEventos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir Lista de Eventos"
+        app:layout_constraintEnd_toEndOf="@+id/btnAgregarEvento"
+        app:layout_constraintStart_toStartOf="@+id/btnAgregarEvento"
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregarEvento"
+        android:onClick="btnOnClickAgregarEvento"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

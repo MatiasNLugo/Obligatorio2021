@@ -53,6 +53,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "duracion INTEGER," +
                 "titulo TEXT," +
                 "tipo INTEGER," +
+                "cantAsistentes INTEGER," +
                 "idCliente INTEGER," +
                 "FOREIGN KEY (idCliente) REFERENCES "+TABLA_CLIENTES+"(idCliente))");
         db.execSQL("CREATE TABLE " + TABLA_REUNIONES + "(" +

@@ -9,6 +9,18 @@ public class Evento {
     private int tipo;
     private int cantAsistentes;
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    private int idCliente;
+
+
+
     public int getIdEvento() {
         return idEvento;
     }
@@ -79,9 +91,11 @@ public class Evento {
         this.idEvento = 0;
         this.fecha = "N/D";
         this.hora = "N/D";
-        this.duracion = 0;
+        this.duracion = 1;
         this.titulo = "N/D";
-        this.tipo = 0;
+        this.tipo = 1;
         this.cantAsistentes = 0;
+        idCliente = 1;
     }
+
 }

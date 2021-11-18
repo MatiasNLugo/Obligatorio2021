@@ -5,33 +5,21 @@
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
-
     <ImageView
-        android:id="@+id/imvAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/evento_1"
-        />
+       android:id="@+id/imvAvatar"
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="ACA VA EL TITULO"
-        />
+        android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/tvFecha"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Fecha: 01/01/2025"
-        />
+        android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/tvHora"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Hora: 16:00"
-        />
-
-
-
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
