@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".viewclientes.DetalleClienteParticularFragment">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle de Cliente Comercial"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:id="@+id/tvIdCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID: 21"
+        android:layout_below="@id/tvTitulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/tvRazonSocial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvIdCliente"
+        android:text="Nombre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/tvRut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvRazonSocial"
+        android:layout_centerHorizontal="true"
+        android:text="12344567890"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvRut"
+        android:layout_centerHorizontal="true"
+        android:text="Esta es una direccion"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDireccion"
+        android:layout_centerHorizontal="true"
+        android:text="0999923345"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/tvCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTelefono"
+        android:layout_centerHorizontal="true"
+        android:text="0999923345"
+        android:layout_marginTop="26dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvCorreo"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="150dp">
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCorreo"
+        android:layout_margin="16dp"
+        android:text="Modificar"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCorreo"
+        android:layout_toRightOf="@+id/btnModificar"
+        android:layout_margin="16dp"
+        android:text="Eliminar"
+        android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -4,9 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/drawable/list_item_backgraund.xml" value="0.26614583333333336" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_cliente_mantenimiento.xml" value="0.136" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_cliente_mantenimiento.xml" value="0.144921875" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_cliente_mantenimiento.xml" value="0.1875" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_cliente_crear.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_cliente_mantenimiento.xml" value="0.264" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_detalle_cliente.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_listar_eventos.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_b.xml" value="0.264" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_c.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_lista.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_listado.xml" value="0.12760416666666666" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_cliente.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/lista_fragment_cliente.xml" value="0.25" />
       </map>

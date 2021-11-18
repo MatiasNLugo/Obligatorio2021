@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
 import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.viewclientes.ClienteMantenimiento;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void IrAclientes(){
-        Intent enviar = new Intent(this,ClienteMantenimiento.class);
+        Intent enviar = new Intent(this, ClienteMantenimiento.class);
         startActivity(enviar);
     }
 

@@ -4,15 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClienteMantenimiento">
+    tools:context=".viewclientes.ClienteMantenimiento">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="btnOnClickAgregarCliente"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:backgroundTint="@color/botones"
+        app:srcCompat="@drawable/ic_float_button_add_client"
+        app:tint="@color/black" />
 
 
-    <FrameLayout
-        android:id="@+id/frlZonaIntercambio"
+    <fragment
+        android:id="@+id/frgListadoClientes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:name="com.matiaslugo.obligatorio2021.viewclientes.ListadoClienteFragment"
+        tools:layout="@layout/list_item_cliente">
 
-
-    </FrameLayout>
+    </fragment>
 
 </RelativeLayout>

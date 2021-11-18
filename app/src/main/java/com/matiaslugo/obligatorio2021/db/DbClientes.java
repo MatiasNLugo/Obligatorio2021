@@ -223,4 +223,40 @@ public class DbClientes extends DataBaseHelper{
         }
     }
 
+    public Cliente buscarCliente() {
+        DataBaseHelper dbHelper = new DataBaseHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cliente unCliente = null;
+        Cursor cursor = null;
+
+        cursor = db.rawQuery("SELECT * FROM clientes c inner join comerciales p on p.idCliente = c.idCliente;", null);
+        if(cursor.moveToFirst()){
+
+                unCliente = new Comercial();
+                unCliente.setIdCliente(cursor.getInt(0));
+                unCliente.setDireccion(cursor.getString(1));
+                unCliente.setTelefono(cursor.getString(2));
+                unCliente.setCorreo(cursor.getString(3));
+                ((Comercial)unCliente).setRut(cursor.getString(5));
+                ((Comercial)unCliente).setRazonSocial(cursor.getString(6));
+        }
+        cursor.close();
+        //cursor = db.rawQuery("SELECT c.*, co.*  FROM " + TABLA_CLIENTES + " c INNER JOIN " + TABLA_PARTICULARES + " co ON co.idCliente = c.idCliente;", null);
+        cursor = db.rawQuery("SELECT * FROM clientes c inner join particulares p on p.idCliente = c.idCliente;", null);
+
+        if(cursor.moveToFirst()){
+                unCliente = new Particular();
+                unCliente.setIdCliente(cursor.getInt(0));
+                unCliente.setDireccion(cursor.getString(1));
+                unCliente.setTelefono(cursor.getString(2));
+                unCliente.setCorreo(cursor.getString(3));
+                ((Particular)unCliente).setNombre(cursor.getString(5));
+                ((Particular)unCliente).setCedula(cursor.getString(6));
+
+        }
+        cursor.close();
+
+        return unCliente;
+
+    }
 }

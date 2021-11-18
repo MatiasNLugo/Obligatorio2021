@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obligatorio2021">
         <activity
-            android:name=".ClienteMantenimiento"
+            android:name=".viewseventos.ListarEventos"
+            android:exported="false" />
+        <activity
+            android:name=".viewclientes.ClienteCrearActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewclientes.DetalleClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewclientes.ClienteMantenimiento"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

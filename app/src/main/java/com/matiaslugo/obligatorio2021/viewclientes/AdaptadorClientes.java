@@ -1,4 +1,4 @@
-package com.matiaslugo.obligatorio2021;
+package com.matiaslugo.obligatorio2021.viewclientes;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
 import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
 import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.R;
 
 import java.util.ArrayList;
 import java.util.List;

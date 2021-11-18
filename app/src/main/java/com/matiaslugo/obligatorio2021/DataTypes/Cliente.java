@@ -1,6 +1,8 @@
 package com.matiaslugo.obligatorio2021.DataTypes;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
     private int idCliente;
     private String direccion;
     private String telefono;
