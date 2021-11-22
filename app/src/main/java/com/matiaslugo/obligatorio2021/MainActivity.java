@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void btnOnClickAgregarEvento(View view) {
+    protected void btnOnClickAgregarEvento(View view) {
 
         Evento evento = new Evento();
         DbEventos dbEventos = new DbEventos(this);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void btnOnClickListarEventos(View view) {
+    protected void btnOnClickListarEventos(View view) {
         Intent enviar = new Intent(this, ListarEventos.class);
         startActivity(enviar);
     }

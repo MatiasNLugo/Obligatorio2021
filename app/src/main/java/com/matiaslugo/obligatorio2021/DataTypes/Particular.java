@@ -1,6 +1,8 @@
 package com.matiaslugo.obligatorio2021.DataTypes;
 
-public class Particular extends Cliente{
+import java.io.Serializable;
+
+public class Particular extends Cliente implements Serializable {
     private String cedula;
     private String nombre;
 

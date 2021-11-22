@@ -1,6 +1,8 @@
 package com.matiaslugo.obligatorio2021.DataTypes;
 
-public class Comercial extends Cliente{
+import java.io.Serializable;
+
+public class Comercial extends Cliente implements Serializable {
     private String rut;
     private String razonSocial;
 

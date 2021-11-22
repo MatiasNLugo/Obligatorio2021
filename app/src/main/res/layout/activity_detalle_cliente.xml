@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".viewclientes.DetalleClienteActivity">
-<fragment
+<androidx.fragment.app.FragmentContainerView
     android:id="@+id/frmClienteDetalle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.matiaslugo.obligatorio2021.viewclientes.DetalleClienteComercialFragment"
-    tools:layout="@layout/fragment_particular_cliente_detalle">
+    android:name="com.matiaslugo.obligatorio2021.viewclientes.DetalleClienteFragment"
+    tools:layout="@layout/fragment_cliente_detalle">
 
-</fragment>
+</androidx.fragment.app.FragmentContainerView>
 </RelativeLayout>

@@ -12,11 +12,13 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
+import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
+import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
 
 @SuppressWarnings("ALL")
-public class DetalleClienteParticularFragment extends Fragment {
+public class DetalleClienteFragment extends Fragment {
 
     protected String mensaje;
     private SearchView searchView;
@@ -25,18 +27,19 @@ public class DetalleClienteParticularFragment extends Fragment {
     private Adapter adapter;
     View view;
 
-    private TextView tvIdCliente, tvNombreCliete,tvCedula,tvDireccion,tvTelefono,tvCorreo;
+    private TextView tvIdCliente, tvNombreCliete,tvCedula,tvDireccion,tvTelefono,tvCorreo
+            ,tvRut, tvRazonSocial;
 
 
 
 
-    public static DetalleClienteParticularFragment newInstance(Cliente cliente){
+    public static DetalleClienteFragment newInstance(Cliente cliente){
 
-        return new DetalleClienteParticularFragment();
+        return new DetalleClienteFragment();
 
     }
 
-    public DetalleClienteParticularFragment(){
+    public DetalleClienteFragment(){
         //Requiere constructor por defecto
     }
 
@@ -49,7 +52,7 @@ public class DetalleClienteParticularFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_particular_cliente_detalle,null);
+        return inflater.inflate(R.layout.fragment_cliente_detalle,null);
 
 
     }
@@ -59,11 +62,15 @@ public class DetalleClienteParticularFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
        tvIdCliente = getView().findViewById(R.id.tvIdCliente);
-       tvNombreCliete = getView().findViewById(R.id.tvNombre);
+       tvNombreCliete = getView().findViewById(R.id.tvNombreCliente);
+        tvRazonSocial = getView().findViewById(R.id.tvRazonSocial);
        tvCedula = getView().findViewById(R.id.tvCedula);
+        tvRut = getView().findViewById(R.id.tvCedula);
        tvDireccion = getView().findViewById(R.id.tvDireccion);
        tvTelefono = getView().findViewById(R.id.tvTelefono);
-      /* if(cliente != null) {
+       tvCorreo = getView().findViewById(R.id.tvCorreo);
+
+       /* if(cliente != null) {
            tvIdCliente.setText(String.valueOf(cliente.getIdCliente()));
            tvNombreCliete.setText(((Particular) cliente).getNombre());
            tvCedula.setText(((Particular) cliente).getCedula());
@@ -73,6 +80,24 @@ public class DetalleClienteParticularFragment extends Fragment {
        }*/
 
 
+    }
+
+    public  void mostrarCliente(Cliente cliente){
+
+        tvIdCliente.setText(String.valueOf(cliente.getIdCliente()));
+        tvDireccion.setText(cliente.getDireccion());
+        tvCorreo.setText(cliente.getCorreo());
+        tvTelefono.setText(cliente.getTelefono());
+
+
+        if(cliente instanceof Particular){
+            tvCedula.setText(String.valueOf(((Particular) cliente).getCedula()));
+            tvNombreCliete.setText(((Particular) cliente).getNombre());
+        }
+        if (cliente instanceof Comercial){
+            tvRut.setText(String.valueOf(((Comercial) cliente).getRut()));
+            tvRazonSocial.setText(((Comercial) cliente).getRazonSocial());
+        }
     }
 
 

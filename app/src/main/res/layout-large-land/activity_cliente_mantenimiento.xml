@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frgListadoClientes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,12 +14,12 @@
         android:name="com.matiaslugo.obligatorio2021.viewclientes.ListadoClienteFragment"
         tools:layout="@layout/list_item_cliente" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frmClienteDetalle"
-        android:name="com.matiaslugo.obligatorio2021.viewclientes.DetalleClienteComercialFragment"
+        android:name="com.matiaslugo.obligatorio2021.viewclientes.DetalleClienteFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="40"
-        tools:layout="@layout/fragment_particular_cliente_detalle" />
+        tools:layout="@layout/fragment_cliente_detalle" />
 
 </LinearLayout>

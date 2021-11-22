@@ -24,6 +24,7 @@ public class ClienteMantenimiento extends AppCompatActivity implements ListadoCl
     protected Fragment fragmentoC;
     private ListView lv;
     private Cliente cliente;
+    public static final String EXTRA_CLIENTE = "EXTRA_CLIENTE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +34,31 @@ public class ClienteMantenimiento extends AppCompatActivity implements ListadoCl
     @Override
     public void onClienteSelecionado(Cliente cliente) {
         if(cliente instanceof Particular) {
-            Toast.makeText(this, ((Particular) cliente).getNombre(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, ((Particular) cliente).getNombre(),Toast.LENGTH_LONG).show();
+            DetalleClienteFragment frgDetalleCliente = (DetalleClienteFragment)getSupportFragmentManager().findFragmentById(R.id.frmClienteDetalle);
+
+            if (frgDetalleCliente != null){
+                // Mostrar el cliente en el fragmento
+                frgDetalleCliente.mostrarCliente(cliente);
+            } else {
+                //Iniciar detalle cliente Activity y pasamos el cliente en un intent.
+
+                Intent enviarCliente  = new Intent(this, DetalleClienteActivity.class);
+                enviarCliente.putExtra(EXTRA_CLIENTE,cliente);
+                startActivity(enviarCliente);
+
+
+
+            }
+
         }
     }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
     public void btnOnClickAgregarCliente(View view) {
         Intent enviar = new Intent(this,ClienteCrearActivity.class);
         startActivity(enviar);
 
     }
+
+
 }

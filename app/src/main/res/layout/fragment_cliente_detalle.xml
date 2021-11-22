@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".viewclientes.DetalleClienteParticularFragment"
+    tools:context=".viewclientes.DetalleClienteFragment"
     android:gravity="center_horizontal">
 
 
@@ -23,16 +23,33 @@
         android:layout_below="@id/tvTitulo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"/>
+
     <TextView
         android:id="@+id/tvNombreCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvIdCliente"
-        android:text="Nombre"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"/>
+        android:layout_marginTop="26dp"
+        android:text="Nombre" />
+    <TextView
+        android:id="@+id/tvRazonSocial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvIdCliente"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Razon Social" />
     <TextView
         android:id="@+id/tvCedula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNombreCliente"
+        android:layout_centerHorizontal="true"
+        android:text="12344567890"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/tvRut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvNombreCliente"
@@ -61,35 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTelefono"
         android:layout_centerHorizontal="true"
-        android:text="0999923345"
+        android:text="correo"
         android:layout_marginTop="26dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tvCorreo"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="150dp">
-
-        <Button
-            android:id="@+id/btnModificar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvCorreo"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="16dp"
-            android:text="Modificar" />
-
-        <Button
-            android:id="@+id/btnEliminar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvCorreo"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="16dp"
-            android:layout_toRightOf="@+id/btnModificar"
-            android:text="Eliminar" />
-    </LinearLayout>
 
 
 </RelativeLayout>

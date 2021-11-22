@@ -2,7 +2,10 @@ package com.matiaslugo.obligatorio2021.viewseventos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.matiaslugo.obligatorio2021.DataTypes.Evento;
@@ -26,6 +29,22 @@ public class ListarEventos extends AppCompatActivity {
         AdaptadorEventos adapter = new AdaptadorEventos(this, eventos);
         gvEventos.setAdapter(adapter);
 
+        gvEventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onItemClickListener(parent,view,position,id);
+            }
+        });
+
+
+    }
+
+    private void onItemClickListener(AdapterView<?> parent, View view, int position, long id) {
+
+        Evento evento = (Evento)parent.getItemAtPosition(position);
+        Intent enviar = new Intent(this, DetalleEventoActivity.class);
+        enviar.putExtra("evento",evento);
+        startActivity(enviar);
 
     }
 }

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obligatorio2021">
         <activity
+            android:name=".viewseventos.CrearEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewseventos.DetalleEventoActivity"
+            android:exported="false" />
+        <activity
             android:name=".viewseventos.ListarEventos"
             android:exported="false" />
         <activity

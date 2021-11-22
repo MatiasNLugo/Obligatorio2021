@@ -20,13 +20,13 @@
         app:tint="@color/black" />
 
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frgListadoClientes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.matiaslugo.obligatorio2021.viewclientes.ListadoClienteFragment"
         tools:layout="@layout/list_item_cliente">
 
-    </fragment>
+    </androidx.fragment.app.FragmentContainerView>
 
 </RelativeLayout>

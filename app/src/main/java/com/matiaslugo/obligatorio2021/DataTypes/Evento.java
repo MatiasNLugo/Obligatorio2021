@@ -1,6 +1,8 @@
 package com.matiaslugo.obligatorio2021.DataTypes;
 
-public class Evento {
+import java.io.Serializable;
+
+public class Evento implements Serializable {
     private int idEvento;
     private String fecha;
     private String hora;
