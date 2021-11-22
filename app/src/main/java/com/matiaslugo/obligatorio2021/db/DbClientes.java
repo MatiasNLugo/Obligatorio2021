@@ -49,7 +49,7 @@ public class DbClientes extends DataBaseHelper{
             // IDENTIFICAR EL TIPO DE CLIENTE PARA ASIGNAR LOS DATOS NECESARIOS.
             if (cliente instanceof Comercial) {
                 valuesTipo.put("rut", ((Comercial) cliente).getRut());
-                valuesTipo.put("razonSocial", (((Comercial) cliente).getRazonSocial()));
+                valuesTipo.put("razonSocial",((Comercial) cliente).getRazonSocial());
 
                 db.beginTransaction();
                 res = db.insert(TABLA_CLIENTES, null, values);
@@ -69,8 +69,6 @@ public class DbClientes extends DataBaseHelper{
                 valuesTipo.put("idCliente",res);
 
                 res = db.insert(TABLA_PARTICULARES, null, valuesTipo);
-
-
 
             }
 

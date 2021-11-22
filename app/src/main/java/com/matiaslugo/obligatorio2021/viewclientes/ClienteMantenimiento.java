@@ -30,6 +30,8 @@ public class ClienteMantenimiento extends AppCompatActivity implements ListadoCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente_mantenimiento);
 
+
+
     }
     @Override
     public void onClienteSelecionado(Cliente cliente) {

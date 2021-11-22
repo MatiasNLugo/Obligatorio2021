@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     btnAgregar.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            DbClientes  dbClientes = new DbClientes(getApplicationContext());
+            try{/*DbClientes  dbClientes = new DbClientes(getApplicationContext());
 
             Cliente unCliente =  new Particular();
             ((Particular)unCliente).setCedula("42891681");
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
             List<Cliente> clientes = new ArrayList<>();
             clientes = dbClientes.listaClientes();
-            try{
+
             for (Cliente item : clientes) {
 
                 if (item instanceof Particular) {
@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 tv.setText(paraMandar.toString());
 
 
-            }
+            }*/
                 IrAclientes();
             } catch (Exception ex) {
                 String mensaje = ex.toString();
                 Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_LONG).show();
             } finally {
-                dbClientes.close();
+                //dbClientes.close();
             }
         }
     });

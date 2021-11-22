@@ -86,7 +86,7 @@ public class AdaptadorClientes extends BaseAdapter {
                 tvNombre.setText(((Particular) cliente).getNombre());
             }
             if(cliente instanceof Comercial){
-                tvNombre.setText(((Comercial) cliente).getRut());
+                tvNombre.setText(((Comercial) cliente).getRazonSocial());
             }
 
 
