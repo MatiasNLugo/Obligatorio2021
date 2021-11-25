@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipo_evento">
+        <item>Familiar</item>
+        <item>Empresarial</item>
+        <item>Deportivo</item>
+        <item>Social</item>
+        <item>Politico</item>
+    </string-array>
+</resources>

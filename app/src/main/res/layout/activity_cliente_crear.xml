@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:nestedScrollingEnabled="true"
-    tools:context=".viewclientes.ClienteCrearActivity">
-
-
-
+    tools:context=".viewclientes.ClienteCrearActivity"
+    android:overScrollMode="ifContentScrolls"
+    android:scrollbarStyle="insideOverlay"
+    android:scrollbars="vertical">
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
     <RadioGroup
         android:id="@+id/rgRadio"
         android:layout_width="match_parent"
@@ -18,8 +23,7 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp">
-
+        android:layout_marginTop="16dp">
         <RadioButton
             android:id="@+id/rbtnParticular"
             android:layout_width="wrap_content"
@@ -36,7 +40,6 @@
             android:text="Comercial"
             android:onClick="rgSeleccionCliente"
              />
-
     </RadioGroup>
     <LinearLayout
         android:id="@+id/llTipo"
@@ -94,7 +97,6 @@
         android:layout_below="@+id/etDireccion"
         android:hint="Teléfono"
         android:inputType="phone" />
-
     <EditText
         android:id="@+id/etCorreo"
         android:layout_width="match_parent"
@@ -103,19 +105,15 @@
         android:layout_below="@id/etTelefono"
         android:hint="Correo"
         android:inputType="textEmailAddress" />
-
-
     <Button
         android:id="@+id/btnAgregarCliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="44dp"
+        android:layout_margin="16dp"
         android:layout_below="@id/etCorreo"
         android:text="Agregar" />
-
-
-
-
+    </RelativeLayout>
+</ScrollView>
 
 
 

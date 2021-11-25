@@ -6,10 +6,11 @@ public class Evento implements Serializable {
     private int idEvento;
     private String fecha;
     private String hora;
-    private int duracion;
+    private String duracion;
     private String titulo;
     private int tipo;
     private int cantAsistentes;
+    private int idCliente;
 
     public int getIdCliente() {
         return idCliente;
@@ -18,10 +19,6 @@ public class Evento implements Serializable {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-
-    private int idCliente;
-
-
 
     public int getIdEvento() {
         return idEvento;
@@ -47,11 +44,11 @@ public class Evento implements Serializable {
         this.hora = hora;
     }
 
-    public int getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 
@@ -79,7 +76,7 @@ public class Evento implements Serializable {
         this.cantAsistentes = cantAsistentes;
     }
 
-    public Evento(int idEvento, String fecha, String hora, int duracion, String titulo, int tipo, int cantAsistentes) {
+    public Evento(int idEvento, String fecha, String hora, String duracion, String titulo, int tipo, int cantAsistentes) {
         setIdEvento(idEvento);
         setFecha(fecha);
         setHora(hora);
@@ -93,7 +90,7 @@ public class Evento implements Serializable {
         this.idEvento = 0;
         this.fecha = "N/D";
         this.hora = "N/D";
-        this.duracion = 1;
+        this.duracion = "N/D";
         this.titulo = "N/D";
         this.tipo = 1;
         this.cantAsistentes = 0;

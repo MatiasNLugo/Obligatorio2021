@@ -65,7 +65,7 @@ public class DetalleClienteFragment extends Fragment {
        tvNombreCliete = getView().findViewById(R.id.tvNombreCliente);
         tvRazonSocial = getView().findViewById(R.id.tvRazonSocial);
        tvCedula = getView().findViewById(R.id.tvCedula);
-        tvRut = getView().findViewById(R.id.tvCedula);
+        tvRut = getView().findViewById(R.id.tvRut);
        tvDireccion = getView().findViewById(R.id.tvDireccion);
        tvTelefono = getView().findViewById(R.id.tvTelefono);
        tvCorreo = getView().findViewById(R.id.tvCorreo);
@@ -93,10 +93,22 @@ public class DetalleClienteFragment extends Fragment {
         if(cliente instanceof Particular){
             tvCedula.setText(String.valueOf(((Particular) cliente).getCedula()));
             tvNombreCliete.setText(((Particular) cliente).getNombre());
+
+
+            tvCedula.setVisibility(View.VISIBLE);
+            tvNombreCliete.setVisibility(View.VISIBLE);
+            tvRut.setVisibility(View.GONE);
+            tvRazonSocial.setVisibility(View.GONE);
         }
         if (cliente instanceof Comercial){
             tvRut.setText(String.valueOf(((Comercial) cliente).getRut()));
             tvRazonSocial.setText(((Comercial) cliente).getRazonSocial());
+
+            tvCedula.setVisibility(View.GONE);
+            tvNombreCliete.setVisibility(View.GONE);
+            tvRut.setVisibility(View.VISIBLE);
+            tvRazonSocial.setVisibility(View.VISIBLE);
+
         }
     }
 

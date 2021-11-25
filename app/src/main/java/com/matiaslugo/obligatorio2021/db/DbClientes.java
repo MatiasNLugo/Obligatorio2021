@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class DbClientes extends DataBaseHelper{
     Context context;
+    protected ArrayList<Cliente> clientesOrdenados;
     public DbClientes(@Nullable Context context) {
         super(context);
         this.context = context;
@@ -27,6 +28,8 @@ public class DbClientes extends DataBaseHelper{
 
 
     }
+
+
 
 
     // TODO VERIFICAR DATOS YA INGRESADOS NO FUNCIONA EL JOIN, USAR TRANSAC
@@ -120,6 +123,7 @@ public class DbClientes extends DataBaseHelper{
             } while (cursor.moveToNext());
         }
         cursor.close();
+
 
         return clientes;
     }
@@ -221,13 +225,13 @@ public class DbClientes extends DataBaseHelper{
         }
     }
 
-    public Cliente buscarCliente() {
+    public Cliente buscarCliente(Integer id) {
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cliente unCliente = null;
         Cursor cursor = null;
 
-        cursor = db.rawQuery("SELECT * FROM clientes c inner join comerciales p on p.idCliente = c.idCliente;", null);
+        cursor = db.rawQuery("SELECT * FROM clientes c inner join comerciales p on p.idCliente = c.idCliente WHERE c.idCliente = '"+ id + "'" ,null);
         if(cursor.moveToFirst()){
 
                 unCliente = new Comercial();
@@ -240,7 +244,7 @@ public class DbClientes extends DataBaseHelper{
         }
         cursor.close();
         //cursor = db.rawQuery("SELECT c.*, co.*  FROM " + TABLA_CLIENTES + " c INNER JOIN " + TABLA_PARTICULARES + " co ON co.idCliente = c.idCliente;", null);
-        cursor = db.rawQuery("SELECT * FROM clientes c inner join particulares p on p.idCliente = c.idCliente;", null);
+        cursor = db.rawQuery("SELECT * FROM clientes c inner join particulares p on p.idCliente = c.idCliente WHERE c.idCliente = '"+ id + "'", null);
 
         if(cursor.moveToFirst()){
                 unCliente = new Particular();

@@ -35,8 +35,8 @@ public class ClienteMantenimiento extends AppCompatActivity implements ListadoCl
     }
     @Override
     public void onClienteSelecionado(Cliente cliente) {
-        if(cliente instanceof Particular) {
-            //Toast.makeText(this, ((Particular) cliente).getNombre(),Toast.LENGTH_LONG).show();
+
+
             DetalleClienteFragment frgDetalleCliente = (DetalleClienteFragment)getSupportFragmentManager().findFragmentById(R.id.frmClienteDetalle);
 
             if (frgDetalleCliente != null){
@@ -51,7 +51,7 @@ public class ClienteMantenimiento extends AppCompatActivity implements ListadoCl
 
 
 
-            }
+
 
         }
     }

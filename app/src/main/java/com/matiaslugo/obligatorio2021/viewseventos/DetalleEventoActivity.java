@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
+import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
 import com.matiaslugo.obligatorio2021.DataTypes.Evento;
+import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.R;
+import com.matiaslugo.obligatorio2021.db.DbClientes;
 
 public class DetalleEventoActivity extends AppCompatActivity {
 
-    protected TextView tvTitulo, tvFecha, tvHora,tvTipo, tvAsistentes,tvDuracion,tvIdCliente, tvIdEvento;
+    protected TextView tvTitulo, tvFecha, tvHora,tvTipo, tvAsistentes,tvDuracion,tvIdCliente,
+            tvIdEvento,tvNombreCliente;
     protected ImageView imvIcono;
 
     @Override
@@ -19,6 +24,7 @@ public class DetalleEventoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_evento);
 
+        tvNombreCliente = findViewById(R.id.tvNombreCliente);
         tvTitulo = findViewById(R.id.tvTitulo);
         tvFecha = findViewById(R.id.tvFecha);
         tvHora = findViewById(R.id.tvHora);
@@ -32,13 +38,14 @@ public class DetalleEventoActivity extends AppCompatActivity {
         Bundle parametros = this.getIntent().getExtras();
         if(parametros !=null){
             Evento evento = (Evento)parametros.getSerializable("evento");
-            tvIdEvento.setText(String.valueOf(evento.getTitulo()));
+            tvIdEvento.setText(String.valueOf(evento.getIdEvento()));
             tvTitulo.setText(evento.getTitulo());
             tvFecha.setText(evento.getFecha());
             tvHora.setText(evento.getHora());
             tvDuracion.setText(String.valueOf(evento.getDuracion()));
             tvAsistentes.setText(String.valueOf(evento.getCantAsistentes()));
             tvIdCliente.setText(String.valueOf(evento.getIdCliente()));
+            buscarCliente(evento.getIdCliente());
             switch (evento.getTipo()){
                 case 1:
                     tvTipo.setText("Familiar");
@@ -69,7 +76,17 @@ public class DetalleEventoActivity extends AppCompatActivity {
             }
 
 
+        }
 
+    }
+
+    protected void buscarCliente(Integer id){
+        DbClientes dbClientes = new DbClientes(this);
+        Cliente cliente =  dbClientes.buscarCliente(id);;
+        if(cliente instanceof Particular){
+            tvNombreCliente.setText(((Particular) cliente).getNombre());
+        } else {
+            tvNombreCliente.setText(((Comercial) cliente).getRazonSocial());
         }
 
 

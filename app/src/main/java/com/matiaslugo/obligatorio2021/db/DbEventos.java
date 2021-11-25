@@ -67,7 +67,7 @@ public class DbEventos extends DataBaseHelper{
                 unEvento.setIdEvento(cursor.getInt(0));
                 unEvento.setFecha(cursor.getString(1));
                 unEvento.setHora(cursor.getString(2));
-                unEvento.setDuracion(cursor.getInt(3));
+                unEvento.setDuracion(cursor.getString(3));
                 unEvento.setTitulo(cursor.getString(4));
                 unEvento.setTipo(cursor.getInt(5));
                 unEvento.setCantAsistentes(cursor.getInt(6));

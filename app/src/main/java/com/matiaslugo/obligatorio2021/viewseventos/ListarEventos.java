@@ -29,6 +29,7 @@ public class ListarEventos extends AppCompatActivity {
         AdaptadorEventos adapter = new AdaptadorEventos(this, eventos);
         gvEventos.setAdapter(adapter);
 
+
         gvEventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -39,6 +40,7 @@ public class ListarEventos extends AppCompatActivity {
 
     }
 
+
     private void onItemClickListener(AdapterView<?> parent, View view, int position, long id) {
 
         Evento evento = (Evento)parent.getItemAtPosition(position);
@@ -46,5 +48,10 @@ public class ListarEventos extends AppCompatActivity {
         enviar.putExtra("evento",evento);
         startActivity(enviar);
 
+    }
+
+    public void btnOnClickAgregarEvento(View view) {
+        Intent intencion = new Intent(this, CrearEventoActivity.class);
+        startActivity(intencion);
     }
 }

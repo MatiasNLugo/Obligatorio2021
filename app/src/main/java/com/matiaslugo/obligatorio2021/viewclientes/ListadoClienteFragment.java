@@ -95,6 +95,13 @@ public class ListadoClienteFragment extends Fragment {
 
     }
 
+    public void lvClientesOnItemLongClickListener(AdapterView<?> parent, View view, int position, long id){
+        if(onClienteSeleccionadoListener != null){
+            onClienteSeleccionadoListener.onClienteSelecionado(
+                    (Cliente)parent.getItemAtPosition(position));
+        }
+    }
+
     public void lvClientesOnItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         //parent es el listview
@@ -107,4 +114,5 @@ public class ListadoClienteFragment extends Fragment {
     public interface OnClienteSeleccionadoListener{
         void onClienteSelecionado(Cliente cliente);
     }
+
 }

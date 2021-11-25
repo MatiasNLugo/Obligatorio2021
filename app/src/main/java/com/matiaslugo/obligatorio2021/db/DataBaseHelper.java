@@ -50,7 +50,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "idEvento INTEGER PRIMARY KEY AUTOINCREMENT ,"+
                 "fecha TEXT," +
                 "hora TEXT," +
-                "duracion INTEGER," +
+                "duracion TEXT," +
                 "titulo TEXT," +
                 "tipo INTEGER," +
                 "cantAsistentes INTEGER," +
