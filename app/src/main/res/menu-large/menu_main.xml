@@ -11,13 +11,20 @@
         app:showAsAction="always"
         android:orderInCategory="2"
         android:icon="@drawable/ic_float_button_client"/>
-
+<group>
     <item android:id="@+id/mniModificar"
         android:title="Modificar"
         app:showAsAction="never" />
     <item android:id="@+id/mniEliminar"
         android:title="Eliminar"
         app:showAsAction="never" />
+</group>
+    <group>
+    <item android:id="@+id/mniReuniones"
+        android:title="Ver Reuniones"
+        app:showAsAction="never"
+        android:visible="true"/>
+    </group>
     <item android:title="Más Opciones...">
         <menu>
 

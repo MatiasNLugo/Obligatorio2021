@@ -25,7 +25,7 @@
     <item android:id="@+id/mniReuniones"
         android:title="Ver Reuniones"
         app:showAsAction="never"
-        android:visible="false"/>
+        android:visible="true"/>
     <item android:id="@+id/mniGastos"
         android:title="Ver Gastos"
         app:showAsAction="never"

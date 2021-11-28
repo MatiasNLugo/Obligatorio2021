@@ -19,6 +19,7 @@ public final class DB {
 
 
 
+
     private DB(){}
     //BaseColums incorpora _ID _COUNT
     public static abstract class Clientes implements BaseColumns {

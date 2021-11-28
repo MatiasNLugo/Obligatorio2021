@@ -32,7 +32,6 @@ public class DbClientes extends DataBaseHelper{
 
 
 
-    // TODO VERIFICAR DATOS YA INGRESADOS NO FUNCIONA EL JOIN, USAR TRANSAC
 
     public long insertarCliente(Cliente cliente){
         long res = 0;

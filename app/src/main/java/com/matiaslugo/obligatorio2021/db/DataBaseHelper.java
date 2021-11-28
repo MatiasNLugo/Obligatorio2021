@@ -10,6 +10,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     private Context contexto;
+    public static int ID_EVENTOS = 1;
+    public static int ID_GASTOS = 1;
 
 
 
@@ -40,6 +42,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'13/01/2022','18:00','120','Titulo de Evento',4,0,1);").toString());
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'24/02/2022','13:00','60','Evento Corto',2,5,3);").toString());
+
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(1,'Descripcion 1','Objetivo 1','12/12/2021','13:00','Lugar 1',0,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(2,'Descripcion 2','Objetivo 2','13/12/2021','16:00','Lugar 2',1,2);").toString());
 
 
 

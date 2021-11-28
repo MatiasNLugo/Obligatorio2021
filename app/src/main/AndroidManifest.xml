@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obligatorio2021">
         <activity
+            android:name=".viewreuniones.DetalleReunionActivity"
+            android:exported="false" />
+        <activity
             android:name=".viewreuniones.ModificarReunionActivity"
             android:exported="false" />
         <activity

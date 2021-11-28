@@ -17,7 +17,8 @@ import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 
-public class ClienteMantenimiento extends MenuActivity implements ListadoClienteFragment.OnClienteSeleccionadoListener {
+public class ClienteMantenimiento extends MenuActivity
+        implements ListadoClienteFragment.OnClienteSeleccionadoListener {
 
 
 

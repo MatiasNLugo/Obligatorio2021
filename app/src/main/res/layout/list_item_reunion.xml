@@ -11,7 +11,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-    <TextView
+            <TextView
+                android:id="@+id/tvTitulo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:textColor="@color/black"
+                android:text="Fecha :"
+                android:textSize="14dp"/>
+        <TextView
         android:id="@+id/tvFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,15 +27,40 @@
         android:textColor="@color/black"
         android:text="Fecha"
         android:textSize="14dp"/>
-        <TextView
+            <TextView
+                android:id="@+id/tvTitulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:textColor="@color/black"
+                android:text="Hora :"
+                android:textSize="14dp"/>
+            <TextView
             android:id="@+id/tvHora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="80"
+            android:layout_weight="40"
             android:textColor="@color/black"
             android:text="Hora:"
             android:textSize="14dp"/>
+            <TextView
+                android:id="@+id/tvTitulo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="80"
+                android:textColor="@color/black"
+                android:text="Hs.:"
+                android:textSize="14dp"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTitulo4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:text="Objetivo :"
+            android:textSize="14dp"/>
 
     <TextView
         android:id="@+id/tvObjetivo"

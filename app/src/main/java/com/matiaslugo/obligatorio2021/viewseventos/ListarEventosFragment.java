@@ -28,7 +28,7 @@ import java.util.ArrayList;
 @SuppressWarnings("ALL")
 public class ListarEventosFragment extends Fragment {
 
-    public static ListarEventosFragment newInstance(String mensaje){
+    public static ListarEventosFragment newInstance(){
 
         return new ListarEventosFragment();
 

@@ -9,6 +9,8 @@ public class Reunion {
     private String lugar;
     private boolean notificar;
 
+    private int idEvento;
+
     public int getIdReunion() {
         return idReunion;
     }
@@ -65,6 +67,14 @@ public class Reunion {
         this.notificar = notificar;
     }
 
+    public int getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
+    }
+
     public Reunion(int idReunion, String descripcion, String objetivo, String fecha, String hora, String lugar, boolean notificar) {
         setIdReunion(idReunion);
         setDescripcion(descripcion);
@@ -83,5 +93,6 @@ public class Reunion {
         this.hora = "N/D";
         this.lugar = "N/D";
         this.notificar = true;
+        this.idEvento = 1;
     }
 }
