@@ -1,6 +1,8 @@
 package com.matiaslugo.obligatorio2021.DataTypes;
 
-public class Reunion {
+import java.io.Serializable;
+
+public class Reunion implements Serializable {
     private int idReunion;
     private String descripcion;
     private String objetivo;

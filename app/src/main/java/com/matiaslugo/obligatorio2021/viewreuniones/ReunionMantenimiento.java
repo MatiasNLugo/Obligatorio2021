@@ -15,6 +15,7 @@ import com.matiaslugo.obligatorio2021.DataTypes.Reunion;
 import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteCrearActivity;
+import com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoActivity;
 import com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment;
 
 public class ReunionMantenimiento extends MenuActivity
@@ -22,7 +23,8 @@ public class ReunionMantenimiento extends MenuActivity
 
     public static final String EXTRA_REUNION = "EXTRA_REUNION";
 
-    int idEvento;
+    private Reunion reunion;
+    private int idEvento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class ReunionMantenimiento extends MenuActivity
     }
 
 
-    public void OnClienteSeleccionado(Reunion reunion){
+    public void OnReunionSeleccionado(Reunion reunion){
 
     }
 
@@ -61,6 +63,17 @@ public class ReunionMantenimiento extends MenuActivity
 
     @Override
     public void onReunionSelecionado(Reunion reunion) {
+
+        this.reunion = reunion;
+        DetalleReunionFragment frgReunionFragment =
+                (DetalleReunionFragment) getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
+        if(frgReunionFragment != null){
+            frgReunionFragment.mostrarReunion(reunion);
+        } else{
+            Intent enviarEvento = new Intent(this, DetalleEventoActivity.class);
+            enviarEvento.putExtra(EXTRA_REUNION,reunion);
+            startActivity(enviarEvento);
+        }
 
     }
 }
