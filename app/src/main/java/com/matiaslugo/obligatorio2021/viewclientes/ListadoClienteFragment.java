@@ -31,7 +31,6 @@ public class ListadoClienteFragment extends Fragment {
     }
 
 
-    protected String mensaje;
     protected FloatingActionButton btnAgregar;
     private ListView lv;
     private SearchView searchView;
@@ -95,12 +94,12 @@ public class ListadoClienteFragment extends Fragment {
 
     }
 
-    public void lvClientesOnItemLongClickListener(AdapterView<?> parent, View view, int position, long id){
+   /* public void lvClientesOnItemLongClickListener(AdapterView<?> parent, View view, int position, long id){
         if(onClienteSeleccionadoListener != null){
             onClienteSeleccionadoListener.onClienteSelecionado(
                     (Cliente)parent.getItemAtPosition(position));
         }
-    }
+    }*/
 
     public void lvClientesOnItemClick(AdapterView<?> parent, View view, int position, long id) {
 

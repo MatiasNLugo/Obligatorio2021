@@ -4,38 +4,24 @@
     <item android:id="@+id/mniEventos"
         android:title="Lista de Eventos"
         app:showAsAction="always"
+        android:orderInCategory="1"
         android:icon="@drawable/ic_float_button_event"/>
-
     <item android:id="@+id/mniClientes"
         android:title="Lista de Clientes"
         app:showAsAction="always"
+        android:orderInCategory="2"
         android:icon="@drawable/ic_float_button_client"/>
+
     <item android:id="@+id/mniModificar"
         android:title="Modificar"
-        app:showAsAction="never"
-        android:visible="false"/>
+        app:showAsAction="never" />
     <item android:id="@+id/mniEliminar"
         android:title="Eliminar"
-        app:showAsAction="never"
-        android:visible="false"/>
-    <item android:id="@+id/mniTareas"
-        android:title="Ver Tareas"
-        app:showAsAction="never"
-        android:visible="false"/>
-    <item android:id="@+id/mniReuniones"
-        android:title="Ver Reuniones"
-        app:showAsAction="never"
-        android:visible="false"/>
-    <item android:id="@+id/mniGastos"
-        android:title="Ver Gastos"
-        app:showAsAction="never"
-        android:visible="false"/>
-<item android:title="Más Opciones..."
-    android:enabled="false">
-    <menu>
+        app:showAsAction="never" />
+    <item android:title="Más Opciones...">
+        <menu>
 
-    </menu>
+        </menu>
 
-</item>
-
+    </item>
 </menu>

@@ -18,20 +18,24 @@ import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
 
-public class ClienteCrearActivity extends MenuActivity {
+public class ClienteModificarActivity extends MenuActivity {
+
     protected EditText etCedula,etNombre,etRut,etRazonSocial,etDireccion,etTelefono,etCorreo;
     protected Button btnAgregar;
     protected Cliente unCliente;
-    protected RadioButton rbParticular;
-
+    protected Integer idCliente;
+    protected RadioButton rbParticular, rbComercial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cliente_crear);
+        setContentView(R.layout.activity_cliente_modificar);
 
-
+        unCliente = (Cliente)getIntent().getSerializableExtra(ClienteMantenimiento.EXTRA_CLIENTE);
+        idCliente = unCliente.getIdCliente();
         cargarViews();
+
+
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +76,7 @@ public class ClienteCrearActivity extends MenuActivity {
         } else {
             if(razonSocial.trim().isEmpty()){
                 etNombre.setError("Debe ingrsar una Razon Social");
-                return false; }
+                retorno = false; }
             if(rut.trim().isEmpty()){
                 etCedula.setError("Debe ingresar número de Rut");
                 retorno = false; }
@@ -81,10 +85,10 @@ public class ClienteCrearActivity extends MenuActivity {
             ((Comercial)unCliente).setRazonSocial(razonSocial);
 
         }
-         if(direccion.isEmpty()){
-             etDireccion.setError("Debe ingresar Dirección");
-             retorno = false;
-         }
+        if(direccion.isEmpty()){
+            etDireccion.setError("Debe ingresar Dirección");
+            retorno = false;
+        }
         if(telefono.isEmpty()){
             etTelefono.setError("Debe ingresar un Teléfono");
             retorno = false;
@@ -94,6 +98,7 @@ public class ClienteCrearActivity extends MenuActivity {
             retorno = false;
         }
 
+        unCliente.setIdCliente(idCliente);
         unCliente.setDireccion(direccion);
         unCliente.setTelefono(telefono);
         unCliente.setCorreo(correo);
@@ -105,8 +110,8 @@ public class ClienteCrearActivity extends MenuActivity {
         if(verificarCampos(v)){
 
             DbClientes dbClientes = new DbClientes(this);
-            dbClientes.insertarCliente(unCliente);
-            Toast.makeText(this,"Cliente agregado con éxito.", Toast.LENGTH_LONG).show();
+            dbClientes.modificarCliente(unCliente);
+            Toast.makeText(this,"Cliente Modificado con éxito.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -131,13 +136,39 @@ public class ClienteCrearActivity extends MenuActivity {
 
         btnAgregar = findViewById(R.id.btnAgregarCliente);
         rbParticular = findViewById(R.id.rbtnParticular);
+        rbComercial = findViewById(R.id.rbtnComercial);
+
+
+        if(unCliente instanceof Particular){
+            rgSeleccionCliente(rbParticular);
+            etCedula.setText(String.valueOf(((Particular)unCliente).getCedula()));
+            etNombre.setText(((Particular) unCliente).getNombre());
+        } else {
+            rbComercial.setChecked(true);
+            rgSeleccionCliente(rbComercial);
+
+            etRut.setText(String.valueOf(((Comercial)unCliente).getRut()));
+            etRazonSocial.setText(((Comercial) unCliente).getRazonSocial());
+        }
+
+        rbComercial.setEnabled(false);
+        rbParticular.setEnabled(false);
+        etDireccion.setText(unCliente.getDireccion());
+        etTelefono.setText(unCliente.getTelefono());
+        etCorreo.setText(unCliente.getCorreo());
+
+
+
+
+
+
 
 
 
     }
 
     public void rgSeleccionCliente(View view) {
-       boolean activado = ((RadioButton)view).isChecked();
+        boolean activado = ((RadioButton)view).isChecked();
 
 
         switch (view.getId()){

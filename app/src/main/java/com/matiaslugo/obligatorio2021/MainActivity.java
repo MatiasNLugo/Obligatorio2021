@@ -1,6 +1,7 @@
 package com.matiaslugo.obligatorio2021;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,19 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
-import com.matiaslugo.obligatorio2021.db.DbClientes;
-import com.matiaslugo.obligatorio2021.db.DbEventos;
+import com.google.android.material.navigation.NavigationView;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteMantenimiento;
-import com.matiaslugo.obligatorio2021.viewseventos.ListarEventos;
+import com.matiaslugo.obligatorio2021.viewseventos.ListarEventosFragment;
 
-import java.util.ArrayList;
-import java.util.List;
+public class MainActivity extends AppCompatActivity{
 
-public class MainActivity extends AppCompatActivity {
-
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
     private Button btnAgregar, btnAgregarEvento, btnListarEvento;
     private TextView tv;
     private String paraMandar;
@@ -29,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         btnAgregar = findViewById(R.id.btnAgregarCliente);
         btnAgregarEvento = findViewById(R.id.btnAgregarEvento);
@@ -38,31 +37,7 @@ public class MainActivity extends AppCompatActivity {
     btnAgregar.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            try{/*DbClientes  dbClientes = new DbClientes(getApplicationContext());
-
-            Cliente unCliente =  new Particular();
-            ((Particular)unCliente).setCedula("42891681");
-            ((Particular)unCliente).setNombre("Matias Nicolas Lugo");
-            unCliente.setCorreo("Algo");
-            unCliente.setTelefono("099332922");
-            unCliente.setDireccion("algo");
-
-            dbClientes.insertarCliente(unCliente);
-
-            List<Cliente> clientes = new ArrayList<>();
-            clientes = dbClientes.listaClientes();
-
-            for (Cliente item : clientes) {
-
-                if (item instanceof Particular) {
-
-                    paraMandar = paraMandar + " // " + ((Particular) item).getNombre() + " - " + ((Particular) item).getCedula() + " - " + item.getIdCliente() + " - " + item.getDireccion() + " - " + item.getTelefono() + " - " + item.getCorreo();
-                }
-
-                tv.setText(paraMandar.toString());
-
-
-            }*/
+            try{
                 IrAclientes();
             } catch (Exception ex) {
                 String mensaje = ex.toString();
@@ -97,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
 
     protected void btnOnClickAgregarEvento(View view) {
 
-        Evento evento = new Evento();
-        DbEventos dbEventos = new DbEventos(this);
-        dbEventos.insertarEvento(evento);
+
     }
 
 
     protected void btnOnClickListarEventos(View view) {
-        Intent enviar = new Intent(this, ListarEventos.class);
+        Intent enviar = new Intent(this, ListarEventosFragment.class);
         startActivity(enviar);
     }
+
+
 }

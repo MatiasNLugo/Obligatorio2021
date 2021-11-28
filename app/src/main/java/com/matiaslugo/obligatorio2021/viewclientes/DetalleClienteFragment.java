@@ -20,7 +20,7 @@ import com.matiaslugo.obligatorio2021.db.DbClientes;
 @SuppressWarnings("ALL")
 public class DetalleClienteFragment extends Fragment {
 
-    protected String mensaje;
+    private String mensaje;
     private SearchView searchView;
     private Cliente cliente;
     DbClientes dbClientes;

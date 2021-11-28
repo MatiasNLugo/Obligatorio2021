@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewseventos.ListarEventos">
+    tools:context=".viewseventos.EventoMantenimiento">
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -16,13 +16,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         app:backgroundTint="@color/botones"
-        app:srcCompat="@drawable/ic_float_button_add_client"
+        app:srcCompat="@drawable/ic_add"
         app:tint="@color/black" />
-    <GridView
-        android:id="@+id/gvEventos"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frgListadoEventos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="@dimen/ancho_avatar"
-        android:numColumns="auto_fit"
-        android:stretchMode="spacingWidthUniform" />
+        android:name="com.matiaslugo.obligatorio2021.viewseventos.ListarEventosFragment"
+        tools:layout="@layout/fragment_listar_evento">
+
+    </androidx.fragment.app.FragmentContainerView>
+
 </RelativeLayout>

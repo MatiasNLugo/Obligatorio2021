@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewclientes.ClienteModificarActivity">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RadioGroup
+                android:id="@+id/rgRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp">
+                <RadioButton
+                    android:id="@+id/rbtnParticular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Particular"
+                    android:checked="true"
+                    android:onClick="rgSeleccionCliente"
+                    />
+                <RadioButton
+                    android:id="@+id/rbtnComercial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comercial"
+                    android:onClick="rgSeleccionCliente"
+                    />
+            </RadioGroup>
+            <LinearLayout
+                android:id="@+id/llTipo"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rgRadio">
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="Nombre"
+                    android:inputType="textPersonName"
+                    android:layout_below="@id/rgRadio" />
+                <EditText
+                    android:id="@+id/etRazonSocial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="RazonSocial"
+                    android:inputType="textPersonName"
+                    android:layout_below="@id/rgRadio" />
+                <EditText
+                    android:id="@+id/etCedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="Cedula"
+                    android:inputType="number"
+                    android:layout_below="@id/etNombre" />
+                <EditText
+                    android:id="@+id/etRut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="Rut"
+                    android:inputType="number"
+                    android:layout_below="@id/etRazonSocial" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Dirección"
+                android:inputType="textPostalAddress"
+                android:layout_below="@id/llTipo" />
+            <EditText
+                android:id="@+id/etTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_below="@+id/etDireccion"
+                android:hint="Teléfono"
+                android:inputType="phone" />
+            <EditText
+                android:id="@+id/etCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_below="@id/etTelefono"
+                android:hint="Correo"
+                android:inputType="textEmailAddress" />
+            <Button
+                android:id="@+id/btnAgregarCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_below="@id/etCorreo"
+                android:text="Modificar" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

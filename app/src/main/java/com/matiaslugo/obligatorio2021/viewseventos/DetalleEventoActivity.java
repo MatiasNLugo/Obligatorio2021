@@ -1,8 +1,11 @@
 package com.matiaslugo.obligatorio2021.viewseventos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,85 +13,44 @@ import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
 import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
 import com.matiaslugo.obligatorio2021.DataTypes.Evento;
 import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
 
-public class DetalleEventoActivity extends AppCompatActivity {
+public class DetalleEventoActivity extends MenuActivity {
 
-    protected TextView tvTitulo, tvFecha, tvHora,tvTipo, tvAsistentes,tvDuracion,tvIdCliente,
-            tvIdEvento,tvNombreCliente;
-    protected ImageView imvIcono;
+    protected DetalleEventoFragment frgDetalleEvento;
+    protected Evento evento;
+    protected MenuItem mniModificar,mniEliminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_evento);
 
-        tvNombreCliente = findViewById(R.id.tvNombreCliente);
-        tvTitulo = findViewById(R.id.tvTitulo);
-        tvFecha = findViewById(R.id.tvFecha);
-        tvHora = findViewById(R.id.tvHora);
-        tvDuracion = findViewById(R.id.tvDuracion);
-        tvAsistentes = findViewById(R.id.tvAsistetes);
-        tvTipo = findViewById(R.id.tvTipo);
-        tvIdCliente = findViewById(R.id.tvIdCliente);
-        tvIdEvento = findViewById(R.id.tvIdEvento);
-        imvIcono = findViewById(R.id.imvAvatar);
-
-        Bundle parametros = this.getIntent().getExtras();
-        if(parametros !=null){
-            Evento evento = (Evento)parametros.getSerializable("evento");
-            tvIdEvento.setText(String.valueOf(evento.getIdEvento()));
-            tvTitulo.setText(evento.getTitulo());
-            tvFecha.setText(evento.getFecha());
-            tvHora.setText(evento.getHora());
-            tvDuracion.setText(String.valueOf(evento.getDuracion()));
-            tvAsistentes.setText(String.valueOf(evento.getCantAsistentes()));
-            tvIdCliente.setText(String.valueOf(evento.getIdCliente()));
-            buscarCliente(evento.getIdCliente());
-            switch (evento.getTipo()){
-                case 1:
-                    tvTipo.setText("Familiar");
-                    //CreaR clase constante para los iconos.
-                    imvIcono.setImageResource(R.drawable.evento_1);
-                    return;
-                case 2:
-                    tvTipo.setText("Empresarial");
-                    //CreaR clase constante para los iconos.
-                    imvIcono.setImageResource(R.drawable.evento_2);
-                    return;
-                case 3:
-                    tvTipo.setText("Deportivo");
-                    //CreaR clase constante para los iconos.
-                    imvIcono.setImageResource(R.drawable.evento_3);
-                    return;
-                case 4:
-                    tvTipo.setText("Social");
-                    //CreaR clase constante para los iconos.
-                    imvIcono.setImageResource(R.drawable.evento_4);
-                    return;
-                case 5:
-                    tvTipo.setText("Politico");
-                    //CreaR clase constante para los iconos.
-                    imvIcono.setImageResource(R.drawable.evento_5);
-                    return;
-
-            }
+       frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
+       evento = (Evento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+         }
 
 
-        }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        frgDetalleEvento.mostrarEvento(evento);
     }
 
-    protected void buscarCliente(Integer id){
-        DbClientes dbClientes = new DbClientes(this);
-        Cliente cliente =  dbClientes.buscarCliente(id);;
-        if(cliente instanceof Particular){
-            tvNombreCliente.setText(((Particular) cliente).getNombre());
-        } else {
-            tvNombreCliente.setText(((Comercial) cliente).getRazonSocial());
-        }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
+        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(true);
+        return true;
     }
 }
+
+
+

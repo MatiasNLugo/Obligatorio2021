@@ -13,11 +13,6 @@
     <ListView
         android:id="@+id/lvEmpleados"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="15.0sp" />
-
-
-
-
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

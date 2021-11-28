@@ -1,5 +1,6 @@
 package com.matiaslugo.obligatorio2021.viewseventos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -24,6 +26,7 @@ import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
 import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
 import com.matiaslugo.obligatorio2021.DataTypes.Evento;
 import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
 import com.matiaslugo.obligatorio2021.db.DbEventos;
@@ -32,7 +35,7 @@ import com.matiaslugo.obligatorio2021.viewclientes.AdaptadorClientes;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class CrearEventoActivity extends AppCompatActivity {
+public class CrearEventoActivity extends MenuActivity {
 
     private ArrayList<Cliente> clientes;
     private Button btnAgregarCliente;
@@ -166,14 +169,19 @@ public class CrearEventoActivity extends AppCompatActivity {
         mes = c.get(Calendar.MONTH);
         ano = c.get(Calendar.YEAR);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this ,new DatePickerDialog.OnDateSetListener() {
+
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
                 etFecha.setText(dayOfMonth +"/"+ (month + 1) +"/"+ year);
             }
+
         },dia,mes,ano);
+        datePickerDialog.updateDate(ano,mes,dia);
         datePickerDialog.show();
-        Toast.makeText(this,"Click en EditText Fecha",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Click en EditText Fecha",Toast.LENGTH_SHORT).show();
     }
 
     public void btnOnClickAgregarEvento(View view) {
@@ -211,5 +219,8 @@ public class CrearEventoActivity extends AppCompatActivity {
         Toast.makeText(this,"Evento creado con exito.",Toast.LENGTH_SHORT).show();
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

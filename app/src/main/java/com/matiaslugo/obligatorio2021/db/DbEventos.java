@@ -31,15 +31,15 @@ public class DbEventos extends DataBaseHelper{
 
 
             //values.put("idEvento", null);
-            values.put("fecha",evento.getFecha());
-            values.put("hora", evento.getHora());
-            values.put("duracion", evento.getDuracion());
-            values.put("titulo", evento.getTitulo());
-            values.put("tipo", evento.getTipo());
-            values.put("cantAsistentes", evento.getCantAsistentes());
-            values.put("idCliente", evento.getIdCliente());
+            values.put(DB.Eventos.FECHA,evento.getFecha());
+            values.put(DB.Eventos.HORA, evento.getHora());
+            values.put(DB.Eventos.DURACION, evento.getDuracion());
+            values.put(DB.Eventos.TITULO, evento.getTitulo());
+            values.put(DB.Eventos.TIPO, evento.getTipo());
+            values.put(DB.Eventos.ASISTENTES, evento.getCantAsistentes());
+            values.put(DB.Eventos.IDCLIENTE, evento.getIdCliente());
 
-            res = db.insert(TABLA_EVENTOS, null, values);
+            res = db.insert(DB.TABLA_EVENTOS, null, values);
 
 
         } catch (Exception ex){
@@ -60,7 +60,7 @@ public class DbEventos extends DataBaseHelper{
         Evento unEvento = null;
         Cursor cursor = null;
 
-        cursor = db.rawQuery("SELECT * FROM eventos;", null);
+        cursor = db.query(DB.TABLA_EVENTOS, DB.Eventos.COLUMNAS,null,null,null,null,DB.Eventos._ID+" DESC");
         if(cursor.moveToFirst()){
             do{
                 unEvento = new Evento();
