@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -16,18 +17,14 @@ import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
 import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
+import com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment;
 
 public class ClienteMantenimiento extends MenuActivity
         implements ListadoClienteFragment.OnClienteSeleccionadoListener {
 
 
 
-    //protected FloatingActionButton btnAgregar;
-    //protected Fragment fragmentoA;
-    //protected Fragment fragmentoB;
-    //protected Fragment fragmentoC;
-    //private ListView lv;
-    //private Cliente cliente;
+    private MenuItem mniReunion,mniGastos,mniTareas;
     public static final String EXTRA_CLIENTE = "EXTRA_CLIENTE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +58,19 @@ public class ClienteMantenimiento extends MenuActivity
         }
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    DetalleClienteFragment frgDetalleCliente = (DetalleClienteFragment) getSupportFragmentManager().findFragmentById(R.id.frmClienteDetalle);
+    if(frgDetalleCliente == null){
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
+        mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+        mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+    }
+    return true;
+}
+
+
     public void btnOnClickAgregarCliente(View view) {
         Intent enviar = new Intent(this,ClienteCrearActivity.class);
         startActivity(enviar);

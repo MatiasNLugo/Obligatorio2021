@@ -1,10 +1,12 @@
 package com.matiaslugo.obligatorio2021.viewseventos;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -18,6 +20,7 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
 
     public static final String EXTRA_EVENTO = "EXTRA_EVENTO";
     private Evento evento;
+    private MenuItem mniReunion,mniGastos, mniTareas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,19 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
         Intent intencion = new Intent(this, CrearEventoActivity.class);
         startActivity(intencion);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        DetalleEventoFragment frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
+        if(frgDetalleEvento == null){
+            getMenuInflater().inflate(R.menu.menu_main,menu);
+            mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
+            mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+            mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+        }
+        return true;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -45,6 +61,7 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
         }
 
 
+
     }
 
     @Override
@@ -52,13 +69,13 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
 
         this.evento = evento;
         DetalleEventoFragment frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
-    if(frgDetalleEvento != null){
-        frgDetalleEvento.mostrarEvento(evento);
-    } else{
-        Intent enviarEvento = new Intent(this,DetalleEventoActivity.class);
-        enviarEvento.putExtra(EXTRA_EVENTO,evento);
-        startActivity(enviarEvento);
-    }
+        if(frgDetalleEvento != null){
+            frgDetalleEvento.mostrarEvento(evento);
+        } else{
+            Intent enviarEvento = new Intent(this,DetalleEventoActivity.class);
+            enviarEvento.putExtra(EXTRA_EVENTO,evento);
+            startActivity(enviarEvento);
+        }
 
     }
 
