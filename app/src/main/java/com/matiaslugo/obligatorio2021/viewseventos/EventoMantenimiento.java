@@ -37,7 +37,7 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
         switch (item.getItemId()){
             case R.id.mniReuniones:
                  enviar = new Intent(this, ReunionMantenimiento.class);
-                 enviar.putExtra("idEvento",evento.getIdEvento());
+                 enviar.putExtra(EXTRA_EVENTO,evento);
                  startActivity(enviar);
                 return true;
             default:

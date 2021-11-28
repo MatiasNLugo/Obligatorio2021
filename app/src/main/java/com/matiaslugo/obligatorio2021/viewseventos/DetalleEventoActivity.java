@@ -3,6 +3,7 @@ package com.matiaslugo.obligatorio2021.viewseventos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 
 public class DetalleEventoActivity extends MenuActivity {
 
@@ -41,7 +43,18 @@ public class DetalleEventoActivity extends MenuActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
+
+        Intent enviar;
+        switch (item.getItemId()){
+            case R.id.mniReuniones:
+                enviar = new Intent(this, ReunionMantenimiento.class);
+                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+                startActivity(enviar);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

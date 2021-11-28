@@ -17,24 +17,26 @@ import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteCrearActivity;
 import com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoActivity;
 import com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment;
+import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 
 public class ReunionMantenimiento extends MenuActivity
         implements ListadoReunionFragment.OnReunionSeleccionadoListener{
 
     public static final String EXTRA_REUNION = "EXTRA_REUNION";
-
+    private Evento evento;
     private Reunion reunion;
     private int idEvento;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reunion_mantenimiento);
 
-        idEvento = (int)getIntent().getIntExtra("idEvento",1);
+        evento = (Evento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
 
         ListadoReunionFragment listadoReunionFragment = new ListadoReunionFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("idEvento",idEvento);
+        bundle.putInt("idEvento",evento.getIdEvento());
 
         listadoReunionFragment.setArguments(bundle);
 
@@ -70,7 +72,7 @@ public class ReunionMantenimiento extends MenuActivity
         if(frgReunionFragment != null){
             frgReunionFragment.mostrarReunion(reunion);
         } else{
-            Intent enviarEvento = new Intent(this, DetalleEventoActivity.class);
+            Intent enviarEvento = new Intent(this, DetalleReunionActivity.class);
             enviarEvento.putExtra(EXTRA_REUNION,reunion);
             startActivity(enviarEvento);
         }
