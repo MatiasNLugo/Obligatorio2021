@@ -2,9 +2,11 @@ package com.matiaslugo.obligatorio2021.viewseventos;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,14 +36,17 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
         startActivity(intencion);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         DetalleEventoFragment frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
+        getMenuInflater().inflate(R.menu.menu_main,menu);
         if(frgDetalleEvento == null){
-            getMenuInflater().inflate(R.menu.menu_main,menu);
+
             mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
             mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
             mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+
         }
         return true;
     }
@@ -59,9 +64,6 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-
-
     }
 
     @Override
@@ -76,7 +78,6 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
             enviarEvento.putExtra(EXTRA_EVENTO,evento);
             startActivity(enviarEvento);
         }
-
     }
 
     public void btnOnClickAgregarCliente(View view) {

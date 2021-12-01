@@ -30,7 +30,6 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuCompat.setGroupDividerEnabled(menu,true);
         return true;
     }
 
