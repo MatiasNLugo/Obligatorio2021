@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obligatorio2021">
         <activity
+            android:name=".viewTareas.ModificarTareaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewGastos.ModificarGastoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewTareas.CrearTareaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewGastos.CrearGastoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewTareas.TareaMantenimientoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewGastos.GastoMantenimientoActivity"
+            android:exported="false" />
+        <activity
             android:name=".viewreuniones.DetalleReunionActivity"
             android:exported="false" />
         <activity

@@ -1,6 +1,8 @@
 package com.matiaslugo.obligatorio2021.DataTypes;
 
-public class Gasto {
+import java.io.Serializable;
+
+public class Gasto implements Serializable {
     private int idGasto;
     private String motivo;
     private String proveedor;

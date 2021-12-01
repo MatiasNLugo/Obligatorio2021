@@ -46,6 +46,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(1,'Descripcion 1','Objetivo 1','12/12/2021','13:00','Lugar 1',0,1);").toString());
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(2,'Descripcion 2','Objetivo 2','13/12/2021','16:00','Lugar 2',1,2);").toString());
 
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_GASTOS).append(" VALUES(1,'Motivo del gasto 1','Proveedor del gasto 1',101,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_GASTOS).append(" VALUES(2,'Motivo del gasto 2','Proveedor del gasto 2', 125,2);").toString());
+
+
+
 
 
 

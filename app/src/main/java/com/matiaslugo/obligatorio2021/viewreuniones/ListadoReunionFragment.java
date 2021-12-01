@@ -36,7 +36,7 @@ public class ListadoReunionFragment extends Fragment {
 
     }
 
-    int idEvento;
+    private int idEvento;
     private FloatingActionButton btnAgregar;
     private ListView lv;
     private SearchView searchView;

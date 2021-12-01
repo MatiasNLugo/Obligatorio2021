@@ -17,6 +17,8 @@ import com.matiaslugo.obligatorio2021.DataTypes.Particular;
 import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.viewGastos.GastoMantenimientoActivity;
+import com.matiaslugo.obligatorio2021.viewTareas.TareaMantenimientoActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 
 public class DetalleEventoActivity extends MenuActivity {
@@ -51,6 +53,16 @@ public class DetalleEventoActivity extends MenuActivity {
                 enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
                 startActivity(enviar);
                 return true;
+            case R.id.mniGastos:
+                enviar = new Intent(this, GastoMantenimientoActivity.class);
+                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+                startActivity(enviar);
+                return true;
+            case R.id.mniTareas:
+                enviar = new Intent(this, TareaMantenimientoActivity.class);
+                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+                startActivity(enviar);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -61,6 +73,7 @@ public class DetalleEventoActivity extends MenuActivity {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
         mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(true);
+
         return true;
     }
 }

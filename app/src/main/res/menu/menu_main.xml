@@ -21,7 +21,7 @@
     <item android:id="@+id/mniTareas"
         android:title="Ver Tareas"
         app:showAsAction="never"
-        android:visible="false"/>
+        android:visible="true"/>
     <item android:id="@+id/mniReuniones"
         android:title="Ver Reuniones"
         app:showAsAction="never"
@@ -29,7 +29,7 @@
     <item android:id="@+id/mniGastos"
         android:title="Ver Gastos"
         app:showAsAction="never"
-        android:visible="false"/>
+        android:visible="true"/>
 <item android:title="Más Opciones..."
     android:enabled="false">
     <menu>

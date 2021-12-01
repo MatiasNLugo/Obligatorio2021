@@ -15,6 +15,8 @@ import android.view.View;
 import com.matiaslugo.obligatorio2021.DataTypes.Evento;
 import com.matiaslugo.obligatorio2021.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
+import com.matiaslugo.obligatorio2021.viewGastos.GastoMantenimientoActivity;
+import com.matiaslugo.obligatorio2021.viewTareas.TareaMantenimientoActivity;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteCrearActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 
@@ -60,6 +62,16 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
                  enviar = new Intent(this, ReunionMantenimiento.class);
                  enviar.putExtra(EXTRA_EVENTO,evento);
                  startActivity(enviar);
+                return true;
+            case R.id.mniGastos:
+                enviar = new Intent(this, GastoMantenimientoActivity.class);
+                enviar.putExtra(EXTRA_EVENTO,evento);
+                startActivity(enviar);
+                return true;
+            case R.id.mniTareas:
+                enviar = new Intent(this, TareaMantenimientoActivity.class);
+                enviar.putExtra(EXTRA_EVENTO,evento);
+                startActivity(enviar);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
