@@ -1,8 +1,8 @@
-package com.matiaslugo.obligatorio2021.DataTypes;
+package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
 import java.io.Serializable;
 
-public class Evento implements Serializable {
+public class DTEvento implements Serializable {
     private int idEvento;
     private String fecha;
     private String hora;
@@ -76,7 +76,7 @@ public class Evento implements Serializable {
         this.cantAsistentes = cantAsistentes;
     }
 
-    public Evento(int idEvento, String fecha, String hora, String duracion, String titulo, int tipo, int cantAsistentes) {
+    public DTEvento(int idEvento, String fecha, String hora, String duracion, String titulo, int tipo, int cantAsistentes) {
         setIdEvento(idEvento);
         setFecha(fecha);
         setHora(hora);
@@ -86,7 +86,7 @@ public class Evento implements Serializable {
         setCantAsistentes(cantAsistentes);
     }
 
-    public Evento(){
+    public DTEvento(){
         this.idEvento = 0;
         this.fecha = "N/D";
         this.hora = "N/D";

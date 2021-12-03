@@ -7,12 +7,15 @@
     tools:context=".viewclientes.ListadoClienteFragment"
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
+    android:background="@color/botones"
     android:orientation="horizontal">
 
-
     <ListView
+        android:padding="16dp"
         android:id="@+id/lvEmpleados"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@color/botones"
+        android:dividerHeight="8dp"/>
 
 </RelativeLayout>

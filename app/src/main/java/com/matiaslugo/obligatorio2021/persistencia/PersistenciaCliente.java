@@ -1,27 +1,31 @@
-package com.matiaslugo.obligatorio2021.db;
+package com.matiaslugo.obligatorio2021.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
-import android.provider.Telephony;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTComercial;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTParticular;
 
-import java.security.cert.Extension;
 import java.util.ArrayList;
 
-public class DbClientes extends DataBaseHelper{
-    Context context;
-    protected ArrayList<Cliente> clientesOrdenados;
-    public DbClientes(@Nullable Context context) {
+public class PersistenciaCliente extends DataBaseHelper implements IPersistenciaCliente{
+
+    public static PersistenciaCliente instancia;
+
+    public static  PersistenciaCliente getInstance(Context contexto){
+        if ( instancia == null){
+            instancia = new PersistenciaCliente(contexto);
+        }
+        return instancia;
+    }
+
+    private  Context context;
+    public PersistenciaCliente(@Nullable Context context) {
         super(context);
         this.context = context;
 
@@ -30,10 +34,7 @@ public class DbClientes extends DataBaseHelper{
     }
 
 
-
-
-
-    public long insertarCliente(Cliente cliente){
+    public long insertarCliente(DTCliente cliente){
         long res = 0;
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -49,9 +50,9 @@ public class DbClientes extends DataBaseHelper{
 
             ContentValues valuesTipo = new ContentValues();
             // IDENTIFICAR EL TIPO DE CLIENTE PARA ASIGNAR LOS DATOS NECESARIOS.
-            if (cliente instanceof Comercial) {
-                valuesTipo.put("rut", ((Comercial) cliente).getRut());
-                valuesTipo.put("razonSocial",((Comercial) cliente).getRazonSocial());
+            if (cliente instanceof DTComercial) {
+                valuesTipo.put("rut", ((DTComercial) cliente).getRut());
+                valuesTipo.put("razonSocial",((DTComercial) cliente).getRazonSocial());
 
                 db.beginTransaction();
                 res = db.insert(DB.TABLA_CLIENTES, null, values);
@@ -59,9 +60,9 @@ public class DbClientes extends DataBaseHelper{
                 res = db.insert(DB.TABLA_COMERCIALES, null, valuesTipo);
 
 
-            } else if (cliente instanceof Particular) {
-                valuesTipo.put("cedula", ((Particular) cliente).getCedula());
-                valuesTipo.put("nombre", ((Particular) cliente).getNombre());
+            } else if (cliente instanceof DTParticular) {
+                valuesTipo.put("cedula", ((DTParticular) cliente).getCedula());
+                valuesTipo.put("nombre", ((DTParticular) cliente).getNombre());
 
                 db.beginTransaction();
                 res = db.insert(DB.TABLA_CLIENTES, null, values);
@@ -84,25 +85,25 @@ public class DbClientes extends DataBaseHelper{
     }
     }
 
-    public ArrayList<Cliente> listaClientes(){
+    public ArrayList<DTCliente> listaClientes(){
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        Cliente unCliente = null;
-        Cliente unClienteP = null;
+        ArrayList<DTCliente> clientes = new ArrayList<>();
+        DTCliente unCliente = null;
+        DTCliente unClienteP = null;
         Cursor cursor = null;
 
         cursor = db.rawQuery("SELECT * FROM "+ DB.TABLA_CLIENTES+" c inner join Comerciales p on p._id = c._id;", null);
         //cursor = db.query(DB.TABLA_CLIENTES,DB.Clientes.COLUMNAS,);
         if(cursor.moveToFirst()){
             do{
-                unCliente = new Comercial();
+                unCliente = new DTComercial();
                 unCliente.setIdCliente(cursor.getInt(0));
                 unCliente.setDireccion(cursor.getString(1));
                 unCliente.setTelefono(cursor.getString(2));
                 unCliente.setCorreo(cursor.getString(3));
-                ((Comercial)unCliente).setRut(cursor.getString(5));
-                ((Comercial)unCliente).setRazonSocial(cursor.getString(6));
+                ((DTComercial)unCliente).setRut(cursor.getString(5));
+                ((DTComercial)unCliente).setRazonSocial(cursor.getString(6));
                 clientes.add(unCliente);
             } while (cursor.moveToNext());
         }
@@ -112,13 +113,13 @@ public class DbClientes extends DataBaseHelper{
 
         if(cursor.moveToFirst()){
             do{
-                unClienteP = new Particular();
+                unClienteP = new DTParticular();
                 unClienteP.setIdCliente(cursor.getInt(0));
                 unClienteP.setDireccion(cursor.getString(1));
                 unClienteP.setTelefono(cursor.getString(2));
                 unClienteP.setCorreo(cursor.getString(3));
-                ((Particular)unClienteP).setNombre(cursor.getString(5));
-                ((Particular)unClienteP).setCedula(cursor.getString(6));
+                ((DTParticular)unClienteP).setNombre(cursor.getString(5));
+                ((DTParticular)unClienteP).setCedula(cursor.getString(6));
                 clientes.add(unClienteP);
             } while (cursor.moveToNext());
         }
@@ -128,7 +129,7 @@ public class DbClientes extends DataBaseHelper{
         return clientes;
     }
 
-    public boolean modificarCliente(Cliente unCliente){
+    public boolean modificarCliente(DTCliente unCliente){
 
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -139,14 +140,14 @@ public class DbClientes extends DataBaseHelper{
             db.execSQL("UPDATE " + DB.TABLA_CLIENTES + " SET Direccion = '"+unCliente.getDireccion()+"',Telefono = '"+unCliente.getTelefono()+"',Correo = '"+unCliente.getCorreo()+"' WHERE _ID = "+unCliente.getIdCliente());
             correcto = true;
             db.close();
-            if (unCliente instanceof Comercial){
+            if (unCliente instanceof DTComercial){
                 db = dbHelper.getWritableDatabase();
-                db.execSQL("UPDATE " + DB.TABLA_COMERCIALES + " SET Rut = '"+((Comercial) unCliente).getRut()+"',RazonSocial = '"+((Comercial) unCliente).getRazonSocial()+"' WHERE _ID = "+unCliente.getIdCliente());
+                db.execSQL("UPDATE " + DB.TABLA_COMERCIALES + " SET Rut = '"+((DTComercial) unCliente).getRut()+"',RazonSocial = '"+((DTComercial) unCliente).getRazonSocial()+"' WHERE _ID = "+unCliente.getIdCliente());
                 db.close();
                 correcto = true;
-            } else if (unCliente instanceof Particular){
+            } else if (unCliente instanceof DTParticular){
                 db = dbHelper.getWritableDatabase();
-                db.execSQL("UPDATE " + DB.TABLA_PARTICULARES + " SET Nombre = '"+((Particular) unCliente).getNombre()+"',Cedula = '"+((Particular) unCliente).getCedula()+"' WHERE _ID = "+unCliente.getIdCliente());
+                db.execSQL("UPDATE " + DB.TABLA_PARTICULARES + " SET Nombre = '"+((DTParticular) unCliente).getNombre()+"',Cedula = '"+((DTParticular) unCliente).getCedula()+"' WHERE _ID = "+unCliente.getIdCliente());
                 db.close();
                 correcto = true;
             }
@@ -229,35 +230,35 @@ public class DbClientes extends DataBaseHelper{
         }
     }
 
-    public Cliente buscarCliente(Integer id) {
+    public DTCliente buscarCliente(int id) {
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cliente unCliente = null;
+        DTCliente unCliente = null;
         Cursor cursor = null;
 
         cursor = db.rawQuery("SELECT * FROM Clientes c inner join Comerciales p on p._ID = c._ID WHERE c._ID = "+ id + ";" ,null);
         if(cursor.moveToFirst()){
 
-                unCliente = new Comercial();
+                unCliente = new DTComercial();
                 unCliente.setIdCliente(cursor.getInt(0));
                 unCliente.setDireccion(cursor.getString(1));
                 unCliente.setTelefono(cursor.getString(2));
                 unCliente.setCorreo(cursor.getString(3));
-                ((Comercial)unCliente).setRut(cursor.getString(5));
-                ((Comercial)unCliente).setRazonSocial(cursor.getString(6));
+                ((DTComercial)unCliente).setRut(cursor.getString(5));
+                ((DTComercial)unCliente).setRazonSocial(cursor.getString(6));
         }
         cursor.close();
         //cursor = db.rawQuery("SELECT c.*, co.*  FROM " + TABLA_CLIENTES + " c INNER JOIN " + TABLA_PARTICULARES + " co ON co.idCliente = c.idCliente;", null);
         cursor = db.rawQuery("SELECT * FROM Clientes c inner join Particulares p on p._ID = c._ID WHERE c._ID = "+ id + ";", null);
 
         if(cursor.moveToFirst()){
-                unCliente = new Particular();
+                unCliente = new DTParticular();
                 unCliente.setIdCliente(cursor.getInt(0));
                 unCliente.setDireccion(cursor.getString(1));
                 unCliente.setTelefono(cursor.getString(2));
                 unCliente.setCorreo(cursor.getString(3));
-                ((Particular)unCliente).setNombre(cursor.getString(5));
-                ((Particular)unCliente).setCedula(cursor.getString(6));
+                ((DTParticular)unCliente).setNombre(cursor.getString(5));
+                ((DTParticular)unCliente).setCedula(cursor.getString(6));
 
         }
         cursor.close();

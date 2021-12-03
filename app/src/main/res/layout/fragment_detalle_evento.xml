@@ -1,80 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:gravity="center_horizontal"
+    android:padding="26dp"
+    android:orientation="vertical"
+    android:background="@color/botones"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".viewseventos.EventoMantenimiento">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp"
+        android:gravity="center|top"
+        android:background="@drawable/list_item_backgraund">
     <ImageView
         android:id="@+id/imvAvatar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:layout_width="@dimen/ancho_avatar"
+        android:layout_height="@dimen/ancho_avatar"
         android:src="@drawable/evento_1" />
-    <TextView
-        android:id="@+id/tvIdEvento"
-        android:gravity="center_horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imvAvatar"
-        android:text="Id: 345667"/>
-    <TextView
-        android:id="@+id/tvTitulo"
-        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv1"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imvAvatar"
+            android:fontFamily="@font/segoe"
+            android:text="ID: "/>
+        <TextView
+            android:id="@+id/tvIdEvento"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_b"
+            android:layout_below="@id/imvAvatar"
+            android:text="Id: 345667"/>
+
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Titulo"
-        android:layout_below="@id/tvIdEvento"/>
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv2"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo: "
+            android:fontFamily="@font/segoe"
+            android:layout_below="@id/tvIdEvento"/>
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_b"
+            android:text="Titulo"
+            android:layout_below="@id/tvIdEvento"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv3"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitulo"
+            android:fontFamily="@font/segoe"
+            android:text="Fecha: " />
     <TextView
         android:id="@+id/tvFecha"
         android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_b"
+        android:layout_below="@id/tvTitulo"
+        android:text="Fecha" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvTitulo"
-        android:text="Fecha"
-        />
-    <TextView
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv4"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvFecha"
+            android:fontFamily="@font/segoe"
+            android:text="Hora: "/>
+        <TextView
         android:id="@+id/tvHora"
         android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_b"
         android:layout_below="@id/tvFecha"
         android:text="Hora"/>
-    <TextView
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv5"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe"
+            android:layout_below="@id/tvHora"
+            android:text="Duración: "/>
+        <TextView
         android:id="@+id/tvDuracion"
         android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvHora"
+            android:fontFamily="@font/segoe_b"
         android:text="Duracion: 160 hs"/>
-    <TextView
-        android:id="@+id/tvTipo"
-        android:gravity="center_horizontal"
+        <TextView
+            android:id="@+id/tv10"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/segoe"
+            android:layout_below="@id/tvHora"
+            android:text="min. "/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv6"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvDuracion"
-        android:text="Tipo: Familiar"/>
-    <TextView
-        android:id="@+id/tvAsistetes"
-        android:gravity="center_horizontal"
+        android:fontFamily="@font/segoe"
+        android:text="Tipo de Reunión:"/>
+        <TextView
+            android:id="@+id/tvTipo"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDuracion"
+            android:fontFamily="@font/segoe_b"
+            android:text="Tipo de Reunión:"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvTipo"
-        android:text="Numero de asistentes: 15"/>
-
+        android:orientation="horizontal">
     <TextView
-        android:id="@+id/tvIdCliente"
+        android:id="@+id/tv7"
         android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe"
+        android:layout_below="@id/tvTipo"
+        android:text="Cantidad de Asistentes: "/>
+        <TextView
+            android:id="@+id/tvAsistetes"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_b"
+            android:layout_below="@id/tvTipo"
+            android:text="Cantidad de Asistentes: "/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv8"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvAsistetes"
-        android:text="Cliente ID: 35"/>
+        android:fontFamily="@font/segoe"
+        android:text="ID del Cliente: "/>
+        <TextView
+            android:id="@+id/tvIdCliente"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAsistetes"
+            android:fontFamily="@font/segoe_b"
+            android:text="ID del Cliente: "/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv9"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/tvIdCliente"
+            android:fontFamily="@font/segoe"
+            android:text="Cliente: "/>
     <TextView
         android:id="@+id/tvNombreCliente"
         android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvIdCliente"
-        android:text="Nombre: Nombre del cliente"/>
+        android:fontFamily="@font/segoe_b"
+        android:text="Cliente: "/>
 
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>

@@ -2,7 +2,6 @@ package com.matiaslugo.obligatorio2021.viewseventos;
 
 
 import android.content.Context;
-import android.icu.text.Transliterator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +16,11 @@ import androidx.fragment.app.Fragment;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbEventos;
-import com.matiaslugo.obligatorio2021.viewclientes.ListadoClienteFragment;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaEvento;
 
 import java.util.ArrayList;
 
@@ -38,8 +38,8 @@ public class ListarEventosFragment extends Fragment {
     private GridView gv;
     private SearchView searchView;
     private AdaptadorEventos adapter;
-    private ArrayList<Evento> eventos = new ArrayList<Evento>();
-    private DbEventos dbEventos;
+    private ArrayList<DTEvento> eventos = new ArrayList<DTEvento>();
+    private PersistenciaEvento persistenciaEvento;
     private View view;
     protected OnEventoSeleccionadoListener onEventoSelecccionadoListener;
 
@@ -74,14 +74,22 @@ public class ListarEventosFragment extends Fragment {
 
         gv = (GridView) getView().findViewById(R.id.gvEventos);
 
-        eventos = new DbEventos(getContext()).listaEvento();
+        try {
+            eventos = FabricaLogica.getControladorMantenimientoEvento(getContext()).listaEvento();
+        } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+            excepcionPersonalizada.printStackTrace();
+        }
         AdaptadorEventos adapter = new AdaptadorEventos(getContext(), eventos);
         gv.setAdapter(adapter);
 
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                gvEventoOnItemClick(parent,view,position,id);
+                try {
+                    gvEventoOnItemClick(parent,view,position,id);
+                } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+                    excepcionPersonalizada.printStackTrace();
+                }
             }
         });
 
@@ -90,15 +98,15 @@ public class ListarEventosFragment extends Fragment {
 
 
 
-    public void gvEventoOnItemClick(AdapterView<?> parent, View view, int position, long id){
+    public void gvEventoOnItemClick(AdapterView<?> parent, View view, int position, long id) throws ExcepcionPersonalizada {
         if(onEventoSelecccionadoListener != null){
             onEventoSelecccionadoListener.onEventoSeleccionado(
-                    (Evento)parent.getItemAtPosition(position));
+                    (DTEvento)parent.getItemAtPosition(position));
         }
     }
 
     public interface OnEventoSeleccionadoListener{
-        void onEventoSeleccionado(Evento evento);
+        void onEventoSeleccionado(DTEvento evento) throws ExcepcionPersonalizada;
     }
 
 }

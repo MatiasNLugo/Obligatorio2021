@@ -10,4 +10,5 @@
     <color name="botones">#EDEDED</color>
     <color name="fondo">#DADADA</color>
     <color name="fondoLista">#D7DADD</color>
+    <color name="color_funte_oscuro">#757575</color>
 </resources>

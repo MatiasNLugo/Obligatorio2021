@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".presentacion.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".viewseventos.CrearEventoActivity"
@@ -70,7 +70,7 @@
             android:name=".viewclientes.ClienteMantenimiento"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentacion.MainActivity"
             android:exported="false" />
     </application>
 

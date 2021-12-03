@@ -1,13 +1,13 @@
-package com.matiaslugo.obligatorio2021.DataTypes;
+package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
 import java.io.Serializable;
 
-public class Gasto implements Serializable {
+public class DTGasto implements Serializable {
     private int idGasto;
     private String motivo;
     private String proveedor;
     private float monto;
-    private Evento unEvento;
+    private DTEvento unEvento;
 
     public int getIdGasto() {
         return idGasto;
@@ -41,15 +41,15 @@ public class Gasto implements Serializable {
         this.monto = monto;
     }
 
-    public Evento getUnEvento() {
+    public DTEvento getUnEvento() {
         return unEvento;
     }
 
-    public void setUnEvento(Evento unEvento) {
+    public void setUnEvento(DTEvento unEvento) {
         this.unEvento = unEvento;
     }
 
-    public Gasto(int idGasto, String motivo, String proveedor, float monto, Evento unEvento) {
+    public DTGasto(int idGasto, String motivo, String proveedor, float monto, DTEvento unEvento) {
         setIdGasto(idGasto);
         setMotivo(motivo);
         setProveedor(proveedor);
@@ -57,11 +57,11 @@ public class Gasto implements Serializable {
         setUnEvento(unEvento);
     }
 
-    public Gasto() {
+    public DTGasto() {
         this.idGasto = 0;
         this.motivo = "N/D";
         this.proveedor = "N/D";
         this.monto = 0;
-        this.unEvento = new Evento();
+        this.unEvento = new DTEvento();
     }
 }

@@ -9,29 +9,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Adapter;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTComercial;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTParticular;
 import com.matiaslugo.obligatorio2021.R;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-
-import com.matiaslugo.obligatorio2021.db.DbClientes;
-import com.matiaslugo.obligatorio2021.db.DbEventos;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.persistencia.FabricaPersistencia;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaCliente;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaEvento;
 
 @SuppressWarnings("deprecation")
 public class DetalleEventoFragment extends Fragment {
@@ -39,13 +30,13 @@ public class DetalleEventoFragment extends Fragment {
     private TextView  tvNombreCliente,tvTitulo,tvFecha,tvHora,tvDuracion,
     tvAsistentes, tvTipo, tvIdCliente, tvIdEvento;
     private ImageView imvIcono;
-    private DbEventos dbEventos;
+    private PersistenciaEvento persistenciaEvento;
     private Adapter adapter;
     private View view;
-    private Evento evento;
+    private DTEvento evento;
 
 
-    public static DetalleEventoFragment newInstance(Evento evento){
+    public static DetalleEventoFragment newInstance(DTEvento evento){
         return new DetalleEventoFragment();
     }
 
@@ -80,7 +71,7 @@ public class DetalleEventoFragment extends Fragment {
 
     }
 
-    public void mostrarEvento(Evento evento){
+    public void mostrarEvento(DTEvento evento) throws ExcepcionPersonalizada {
 
 
         tvIdEvento.setText(String.valueOf(evento.getIdEvento()));
@@ -90,47 +81,47 @@ public class DetalleEventoFragment extends Fragment {
         tvDuracion.setText(String.valueOf(evento.getDuracion()));
         tvAsistentes.setText(String.valueOf(evento.getCantAsistentes()));
         tvIdCliente.setText(String.valueOf(evento.getIdCliente()));
-        buscarCliente(evento.getIdCliente());
-        switch (evento.getTipo()){
-            case 1:
-                tvTipo.setText("Familiar");
-                //CreaR clase constante para los iconos.
-                imvIcono.setImageResource(R.drawable.evento_1);
-                return;
-            case 2:
-                tvTipo.setText("Empresarial");
-                //CreaR clase constante para los iconos.
-                imvIcono.setImageResource(R.drawable.evento_2);
-                return;
-            case 3:
-                tvTipo.setText("Deportivo");
-                //CreaR clase constante para los iconos.
-                imvIcono.setImageResource(R.drawable.evento_3);
-                return;
-            case 4:
-                tvTipo.setText("Social");
-                //CreaR clase constante para los iconos.
-                imvIcono.setImageResource(R.drawable.evento_4);
-                return;
-            case 5:
-                tvTipo.setText("Politico");
-                //CreaR clase constante para los iconos.
-                imvIcono.setImageResource(R.drawable.evento_5);
-                return;
+        try {
+            buscarCliente(evento.getIdCliente());
+            switch (evento.getTipo()) {
+                case 1:
+                    tvTipo.setText("Familiar");
+                    //CreaR clase constante para los iconos.
+                    imvIcono.setImageResource(R.drawable.evento_1);
+                    return;
+                case 2:
+                    tvTipo.setText("Empresarial");
+                    imvIcono.setImageResource(R.drawable.evento_2);
+                    return;
+                case 3:
+                    tvTipo.setText("Deportivo");
+                    imvIcono.setImageResource(R.drawable.evento_3);
+                    return;
+                case 4:
+                    tvTipo.setText("Social");
+                    imvIcono.setImageResource(R.drawable.evento_4);
+                    return;
+                case 5:
+                    tvTipo.setText("Politico");
+                    imvIcono.setImageResource(R.drawable.evento_5);
+                    return;
 
 
+            }
+        }catch(Exception ex) {
+            throw new ExcepcionPersonalizada("No se pudo buscar el cliente.");
         }
 
 }
-    protected void buscarCliente(Integer id){
-        DbClientes dbClientes = new DbClientes(getContext());
-        Cliente cliente =  dbClientes.buscarCliente(id);;
-        if(cliente instanceof Particular){
-            tvNombreCliente.setText(((Particular) cliente).getNombre());
-        } else {
-            tvNombreCliente.setText(((Comercial) cliente).getRazonSocial());
-        }
+    protected void buscarCliente(Integer id) throws ExcepcionPersonalizada {
 
+        DTCliente cliente = FabricaLogica.getControladorMantenimientoCliente(getContext()).buscarCliente(id);
+
+        if(cliente instanceof DTParticular){
+            tvNombreCliente.setText(((DTParticular) cliente).getNombre());
+        } else {
+            tvNombreCliente.setText(((DTComercial) cliente).getRazonSocial());
+        }
 
     }
 }

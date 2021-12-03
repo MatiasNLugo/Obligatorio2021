@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Reunion;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
 import com.matiaslugo.obligatorio2021.R;
 
 
@@ -25,7 +25,7 @@ public class DetalleReunionFragment extends Fragment {
     }
 
 
-    public static DetalleReunionFragment newInstance(Reunion reunion) {
+    public static DetalleReunionFragment newInstance(DTReunion DTReunion) {
         return new DetalleReunionFragment();
     }
 
@@ -55,14 +55,14 @@ public class DetalleReunionFragment extends Fragment {
 
     }
 
-    public void mostrarReunion(Reunion reunion){
-        tvIdReunion.setText(String.valueOf(reunion.getIdReunion()));
-        tvObjetivo.setText(reunion.getObjetivo());
-        tvFecha.setText(reunion.getFecha());
-        tvHora.setText(reunion.getHora());
-        tvDescripcion.setText(reunion.getDescripcion());
-        tvLugar.setText(reunion.getLugar());
-        if(reunion.isNotificar()) {
+    public void mostrarReunion(DTReunion DTReunion){
+        tvIdReunion.setText(String.valueOf(DTReunion.getIdReunion()));
+        tvObjetivo.setText(DTReunion.getObjetivo());
+        tvFecha.setText(DTReunion.getFecha());
+        tvHora.setText(DTReunion.getHora());
+        tvDescripcion.setText(DTReunion.getDescripcion());
+        tvLugar.setText(DTReunion.getLugar());
+        if(DTReunion.isNotificar()) {
             tvNotificar.setText(" Requiere notificar al cliente.");
         } else {
             tvNotificar.setText("No requiere notificar al cliente.");

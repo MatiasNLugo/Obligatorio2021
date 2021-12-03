@@ -1,7 +1,5 @@
 package com.matiaslugo.obligatorio2021.viewreuniones;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -12,14 +10,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TimePicker;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-import com.matiaslugo.obligatorio2021.DataTypes.Reunion;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbReuniones;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaReunion;
 import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 
 import java.util.Calendar;
@@ -30,20 +29,24 @@ public class CrearReunionActivity extends MenuActivity {
     private CheckBox chkAvisar;
     private Button btnAgregar;
     private int dia,mes, ano, hora,minutos;
-    private Reunion reunion;
-    private Evento evento;
+    private DTReunion DTReunion;
+    private DTEvento evento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_reunion);
         cargarView();
 
-        evento = (Evento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+        evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnOnClickAgregarReunion(v);
+                try {
+                    btnOnClickAgregarReunion(v);
+                } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+                    excepcionPersonalizada.printStackTrace();
+                }
             }
         });
         etFecha.setOnClickListener(new View.OnClickListener() {
@@ -122,17 +125,18 @@ public class CrearReunionActivity extends MenuActivity {
         datePickerDialog.show();
     }
 
-    public void btnOnClickAgregarReunion(View view) {
-        reunion = new Reunion();
-        reunion.setDescripcion(etDescripcion.getText().toString());
-        reunion.setObjetivo(etObjetivo.getText().toString());
-        reunion.setFecha(etFecha.getText().toString());
-        reunion.setHora(etHora.getText().toString());
-        reunion.setLugar(etLugar.getText().toString());
-        reunion.setNotificar(chkAvisar.isChecked());
-        reunion.setIdEvento(evento.getIdEvento());
-        DbReuniones dbReuniones = new DbReuniones(this);
-        dbReuniones.insertarReunion(reunion);
-        dbReuniones.close();
+    public void btnOnClickAgregarReunion(View view) throws ExcepcionPersonalizada {
+        DTReunion = new DTReunion();
+        DTReunion.setDescripcion(etDescripcion.getText().toString());
+        DTReunion.setObjetivo(etObjetivo.getText().toString());
+        DTReunion.setFecha(etFecha.getText().toString());
+        DTReunion.setHora(etHora.getText().toString());
+        DTReunion.setLugar(etLugar.getText().toString());
+        DTReunion.setNotificar(chkAvisar.isChecked());
+        DTReunion.setIdEvento(evento.getIdEvento());
+
+        FabricaLogica.getControladorMantenimientoReunion(getApplicationContext()).insertarReunion(DTReunion);
+
+
     }
 }

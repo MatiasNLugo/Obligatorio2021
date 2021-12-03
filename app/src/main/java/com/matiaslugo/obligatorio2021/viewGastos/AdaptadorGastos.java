@@ -7,33 +7,29 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Gasto;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTGasto;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.viewclientes.AdaptadorClientes;
 
 import java.util.ArrayList;
 
 public class AdaptadorGastos extends BaseAdapter {
     private Context contexto;
-    private ArrayList<Gasto> gastos = new ArrayList<Gasto>();
+    private ArrayList<DTGasto> DTGastos = new ArrayList<DTGasto>();
 
-    public AdaptadorGastos(Context contexto, ArrayList<Gasto> gastos){
+    public AdaptadorGastos(Context contexto, ArrayList<DTGasto> DTGastos){
         this.contexto = contexto;
-        this.gastos = gastos;
+        this.DTGastos = DTGastos;
     }
 
 
     @Override
     public int getCount() {
-        return gastos.size();
+        return DTGastos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return gastos.get(position);
+        return DTGastos.get(position);
     }
 
     @Override
@@ -62,7 +58,7 @@ public class AdaptadorGastos extends BaseAdapter {
 
         }
 
-        gastoViewHolder.enlazarGasto(gastos.get(position));
+        gastoViewHolder.enlazarGasto(DTGastos.get(position));
 
         return item;
     }
@@ -74,9 +70,9 @@ public class AdaptadorGastos extends BaseAdapter {
             tvMotivo = item.findViewById(R.id.tvMotivo);
             tvPrecio = item.findViewById(R.id.tvPrecio);
         }
-        public void enlazarGasto(Gasto gasto){
-            tvMotivo.setText(gasto.getMotivo());
-            tvPrecio.setText(String.valueOf(gasto.getMonto()));
+        public void enlazarGasto(DTGasto DTGasto){
+            tvMotivo.setText(DTGasto.getMotivo());
+            tvPrecio.setText(String.valueOf(DTGasto.getMonto()));
         }
     }
 }

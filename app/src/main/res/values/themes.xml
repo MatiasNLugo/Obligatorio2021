@@ -16,4 +16,13 @@
         <item name="android:actionBarTheme">"@android:color/transparent"</item>
     </style>
 
+    <style name="ListViewStyle.Light" parent="android:style/Widget.ListView">
+        <item name="background">@color/fondoLista</item>
+        <item name="android:divider">@color/fondoLista</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector">@color/purple_200</item>
+        <item name="android:drawSelectorOnTop">false</item>
+        <item name="android:cacheColorHint">#00000000</item>
+    </style>
+
 </resources>

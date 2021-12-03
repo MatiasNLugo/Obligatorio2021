@@ -1,8 +1,8 @@
-package com.matiaslugo.obligatorio2021.DataTypes;
+package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class DTCliente implements Serializable {
     private int idCliente;
     private String direccion;
     private String telefono;
@@ -40,13 +40,13 @@ public class Cliente implements Serializable {
         this.correo = correo;
     }
 
-    public Cliente(int idCliente, String direccion, String telefono, String correo) {
+    public DTCliente(int idCliente, String direccion, String telefono, String correo) {
         setIdCliente(idCliente);
         setDireccion(direccion);
         setTelefono(telefono);
         setCorreo(correo);
     }
-    public Cliente(){
+    public DTCliente(){
         this.idCliente = 0;
         this.direccion = "N/D";
         this.telefono = "N/D";

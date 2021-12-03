@@ -1,7 +1,6 @@
 package com.matiaslugo.obligatorio2021.viewclientes;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,18 +10,20 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTComercial;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTParticular;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaCliente;
 
 public class ClienteModificarActivity extends MenuActivity {
 
     protected EditText etCedula,etNombre,etRut,etRazonSocial,etDireccion,etTelefono,etCorreo;
     protected Button btnAgregar;
-    protected Cliente unCliente;
+    protected DTCliente unCliente;
     protected Integer idCliente;
     protected RadioButton rbParticular, rbComercial;
 
@@ -31,7 +32,7 @@ public class ClienteModificarActivity extends MenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente_modificar);
 
-        unCliente = (Cliente)getIntent().getSerializableExtra(ClienteMantenimiento.EXTRA_CLIENTE);
+        unCliente = (DTCliente)getIntent().getSerializableExtra(ClienteMantenimiento.EXTRA_CLIENTE);
         idCliente = unCliente.getIdCliente();
         cargarViews();
 
@@ -39,7 +40,11 @@ public class ClienteModificarActivity extends MenuActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBtnAgregarOnClick(v);
+                try {
+                    setBtnAgregarOnClick(v);
+                } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+                    Toast.makeText(getApplicationContext(), "Error al agregar el cliente.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -69,9 +74,9 @@ public class ClienteModificarActivity extends MenuActivity {
             if(cedula.trim().isEmpty()){
                 etCedula.setError("Debe ingresar una Cédula");
                 return false; }
-            unCliente = new Particular();
-            ((Particular)unCliente).setCedula(cedula);
-            ((Particular)unCliente).setNombre(nombre);
+            unCliente = new DTParticular();
+            ((DTParticular)unCliente).setCedula(cedula);
+            ((DTParticular)unCliente).setNombre(nombre);
 
         } else {
             if(razonSocial.trim().isEmpty()){
@@ -80,9 +85,9 @@ public class ClienteModificarActivity extends MenuActivity {
             if(rut.trim().isEmpty()){
                 etCedula.setError("Debe ingresar número de Rut");
                 retorno = false; }
-            unCliente = new Comercial();
-            ((Comercial)unCliente).setRut(rut);
-            ((Comercial)unCliente).setRazonSocial(razonSocial);
+            unCliente = new DTComercial();
+            ((DTComercial)unCliente).setRut(rut);
+            ((DTComercial)unCliente).setRazonSocial(razonSocial);
 
         }
         if(direccion.isEmpty()){
@@ -105,13 +110,12 @@ public class ClienteModificarActivity extends MenuActivity {
         return retorno;
     }
 
-    protected void setBtnAgregarOnClick(View v){
+    protected void setBtnAgregarOnClick(View v) throws ExcepcionPersonalizada {
 
         if(verificarCampos(v)){
 
-            DbClientes dbClientes = new DbClientes(this);
-            dbClientes.modificarCliente(unCliente);
-            Toast.makeText(this,"Cliente Modificado con éxito.", Toast.LENGTH_LONG).show();
+            FabricaLogica.getControladorMantenimientoCliente(getApplicationContext()).modificarCliente(unCliente);
+            Toast.makeText(this,"DTCliente Modificado con éxito.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -139,16 +143,16 @@ public class ClienteModificarActivity extends MenuActivity {
         rbComercial = findViewById(R.id.rbtnComercial);
 
 
-        if(unCliente instanceof Particular){
+        if(unCliente instanceof DTParticular){
             rgSeleccionCliente(rbParticular);
-            etCedula.setText(String.valueOf(((Particular)unCliente).getCedula()));
-            etNombre.setText(((Particular) unCliente).getNombre());
+            etCedula.setText(String.valueOf(((DTParticular)unCliente).getCedula()));
+            etNombre.setText(((DTParticular) unCliente).getNombre());
         } else {
             rbComercial.setChecked(true);
             rgSeleccionCliente(rbComercial);
 
-            etRut.setText(String.valueOf(((Comercial)unCliente).getRut()));
-            etRazonSocial.setText(((Comercial) unCliente).getRazonSocial());
+            etRut.setText(String.valueOf(((DTComercial)unCliente).getRut()));
+            etRazonSocial.setText(((DTComercial) unCliente).getRazonSocial());
         }
 
         rbComercial.setEnabled(false);

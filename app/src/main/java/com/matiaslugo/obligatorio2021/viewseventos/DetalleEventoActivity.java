@@ -1,22 +1,16 @@
 package com.matiaslugo.obligatorio2021.viewseventos;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbClientes;
 import com.matiaslugo.obligatorio2021.viewGastos.GastoMantenimientoActivity;
 import com.matiaslugo.obligatorio2021.viewTareas.TareaMantenimientoActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
@@ -24,7 +18,7 @@ import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 public class DetalleEventoActivity extends MenuActivity {
 
     protected DetalleEventoFragment frgDetalleEvento;
-    protected Evento evento;
+    protected DTEvento evento;
     protected MenuItem mniModificar,mniEliminar;
 
     @Override
@@ -33,14 +27,18 @@ public class DetalleEventoActivity extends MenuActivity {
         setContentView(R.layout.activity_detalle_evento);
 
        frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
-       evento = (Evento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+       evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
          }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        frgDetalleEvento.mostrarEvento(evento);
+        try {
+            frgDetalleEvento.mostrarEvento(evento);
+        } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+            excepcionPersonalizada.printStackTrace();
+        }
     }
 
     @Override

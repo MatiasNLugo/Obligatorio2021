@@ -1,9 +1,7 @@
 package com.matiaslugo.obligatorio2021.viewseventos;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
@@ -12,18 +10,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewGastos.GastoMantenimientoActivity;
 import com.matiaslugo.obligatorio2021.viewTareas.TareaMantenimientoActivity;
-import com.matiaslugo.obligatorio2021.viewclientes.ClienteCrearActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 
 public class EventoMantenimiento extends MenuActivity implements ListarEventosFragment.OnEventoSeleccionadoListener {
 
     public static final String EXTRA_EVENTO = "EXTRA_EVENTO";
-    private Evento evento;
+    private DTEvento evento;
     private MenuItem mniReunion,mniGastos, mniTareas;
 
     @Override
@@ -79,17 +77,19 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
     }
 
     @Override
-    public void onEventoSeleccionado(Evento evento) {
+    public void onEventoSeleccionado(DTEvento evento) throws ExcepcionPersonalizada {
 
-        this.evento = evento;
-        DetalleEventoFragment frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
-        if(frgDetalleEvento != null){
-            frgDetalleEvento.mostrarEvento(evento);
-        } else{
-            Intent enviarEvento = new Intent(this,DetalleEventoActivity.class);
-            enviarEvento.putExtra(EXTRA_EVENTO,evento);
-            startActivity(enviarEvento);
-        }
+
+            this.evento = evento;
+            DetalleEventoFragment frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);
+            if (frgDetalleEvento != null) {
+                frgDetalleEvento.mostrarEvento(evento);
+            } else {
+                Intent enviarEvento = new Intent(this, DetalleEventoActivity.class);
+                enviarEvento.putExtra(EXTRA_EVENTO, evento);
+                startActivity(enviarEvento);
+            }
+
     }
 
     public void btnOnClickAgregarCliente(View view) {

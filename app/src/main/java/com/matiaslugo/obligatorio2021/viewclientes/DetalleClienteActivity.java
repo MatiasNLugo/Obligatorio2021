@@ -1,25 +1,22 @@
 package com.matiaslugo.obligatorio2021.viewclientes;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaCliente;
 
 public class DetalleClienteActivity extends MenuActivity {
 
     protected DetalleClienteFragment frgDetalleCliente;
-    protected Cliente cliente;
+    protected DTCliente cliente;
     protected MenuItem mniModificar,mniEliminar, mniReunion, mniTareas,mniGastos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +28,7 @@ public class DetalleClienteActivity extends MenuActivity {
         frgDetalleCliente = (DetalleClienteFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.frmClienteDetalle);
 
-        cliente = (Cliente)getIntent().getSerializableExtra(ClienteMantenimiento.EXTRA_CLIENTE);
+        cliente = (DTCliente)getIntent().getSerializableExtra(ClienteMantenimiento.EXTRA_CLIENTE);
 
     }
 
@@ -51,17 +48,17 @@ public class DetalleClienteActivity extends MenuActivity {
                 startActivity(enviarCliente);
                 return true;
             case R.id.mniEliminar:
-                DbClientes dbClientes = new DbClientes(this);
-                if(dbClientes.verificarDependenciaCliente(cliente.getIdCliente())){
+                PersistenciaCliente persistenciaCliente = new PersistenciaCliente(this);
+                if(persistenciaCliente.verificarDependenciaCliente(cliente.getIdCliente())){
                     //TODO HACER MENU CONTEXTUAL para verificar
                     Toast.makeText(this,
                             "No se puede eliminar el cliente, tiene eventos asociados.",
                             Toast.LENGTH_LONG).show();
                     return true;
                 } else {
-                dbClientes.eliminarCliente(cliente.getIdCliente());
+                persistenciaCliente.eliminarCliente(cliente.getIdCliente());
                     Toast.makeText(this,
-                            "Cliente Eliminado con éxito.",
+                            "DTCliente Eliminado con éxito.",
                             Toast.LENGTH_LONG).show();
 
                     return true;

@@ -8,8 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.R;
 
 import java.util.HashMap;
@@ -18,12 +17,12 @@ import java.util.Map;
 
 public class AdaptadorEventos extends BaseAdapter {
    private Context contexto;
-   private List<Evento> eventos;
+   private List<DTEvento> eventos;
    private Map<Integer,Integer> idsImagenes;
 
 
 
-   public AdaptadorEventos(Context contexto, List<Evento> eventos){
+   public AdaptadorEventos(Context contexto, List<DTEvento> eventos){
        this.eventos = eventos;
        this.contexto = contexto;
 
@@ -87,7 +86,7 @@ public class AdaptadorEventos extends BaseAdapter {
             tvHora = (TextView) view.findViewById(R.id.tvHora);
         }
 
-        public void enlazarEvento(Evento evento){
+        public void enlazarEvento(DTEvento evento){
            // int id = 70010;
             int id = (int) idsImagenes.get(evento.getTipo());
             if ( idsImagenes.get(evento.getTipo()) == null){

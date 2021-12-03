@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Gasto;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTGasto;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbGastos;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaGasto;
 
 import java.util.ArrayList;
 
@@ -25,8 +25,8 @@ public class ListadoGastoFragment extends Fragment {
         return new ListadoGastoFragment();
     }
     private AdaptadorGastos adapter;
-    private ArrayList<Gasto> gastos = new ArrayList<Gasto>();
-    private DbGastos dbGastos;
+    private ArrayList<DTGasto> DTGastos = new ArrayList<DTGasto>();
+    private PersistenciaGasto persistenciaGasto;
     private ListView lv;
     private View view;
     private int idEvento;
@@ -61,12 +61,11 @@ public class ListadoGastoFragment extends Fragment {
 
         lv = (ListView) getView().findViewById(R.id.lvGastos);
 
-        dbGastos = new DbGastos(getActivity());
-        gastos = dbGastos.listaGastos(idEvento);
+        persistenciaGasto = new PersistenciaGasto(getActivity());
+        DTGastos = persistenciaGasto.listaGastos(idEvento);
 
-        adapter = new AdaptadorGastos(getContext(),gastos);
+        adapter = new AdaptadorGastos(getContext(), DTGastos);
         lv.setAdapter(adapter);
-        dbGastos.close();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -81,11 +80,11 @@ public class ListadoGastoFragment extends Fragment {
     public void lvGastoOnItemClick(AdapterView<?> parent, View view, int position) {
         if(onGastoSeleccionadoListener != null){
             onGastoSeleccionadoListener.onGastoSeleccionado(
-                    (Gasto)parent.getItemAtPosition(position));
+                    (DTGasto)parent.getItemAtPosition(position));
         }
     }
 
     public interface OnGastoSeleccionadoListener{
-        void onGastoSeleccionado(Gasto gasto);
+        void onGastoSeleccionado(DTGasto DTGasto);
     }
 }

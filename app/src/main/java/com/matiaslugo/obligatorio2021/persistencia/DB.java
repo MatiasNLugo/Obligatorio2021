@@ -1,8 +1,8 @@
-package com.matiaslugo.obligatorio2021.db;
+package com.matiaslugo.obligatorio2021.persistencia;
 
 import android.provider.BaseColumns;
 
-public final class DB {
+ final class DB {
 
     public static final String DATA_BASE_NOMBRE = "empresa.db";
     public static final int DATA_BASE_VERSION = 1;

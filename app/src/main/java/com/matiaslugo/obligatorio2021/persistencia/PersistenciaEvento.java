@@ -1,4 +1,4 @@
-package com.matiaslugo.obligatorio2021.db;
+package com.matiaslugo.obligatorio2021.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,21 +7,30 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 
 import java.util.ArrayList;
 
-public class DbEventos extends DataBaseHelper{
+public class PersistenciaEvento implements IPersistenciaEvento{
+
+
+    private static PersistenciaEvento instancia;
+
+    public static PersistenciaEvento getInstance(Context contexto){
+        if (instancia == null){
+            instancia = new PersistenciaEvento(contexto);
+        }
+
+        return instancia;
+    }
+
     private Context context;
-    public DbEventos(@Nullable Context context) {
-        super(context);
+
+    public PersistenciaEvento(@Nullable Context context) {
         this.context = context;
     }
 
-    public long insertarEvento(Evento evento){
+    public long insertarEvento(DTEvento evento){
         long res = 0;
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -51,19 +60,17 @@ public class DbEventos extends DataBaseHelper{
         }
     }
 
-
-
-    public ArrayList<Evento> listaEvento(){
+    public ArrayList<DTEvento> listaEvento(){
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ArrayList<Evento> eventos = new ArrayList<>();
-        Evento unEvento = null;
+        ArrayList<DTEvento> eventos = new ArrayList<>();
+        DTEvento unEvento = null;
         Cursor cursor = null;
 
         cursor = db.query(DB.TABLA_EVENTOS, DB.Eventos.COLUMNAS,null,null,null,null,DB.Eventos._ID+" DESC");
         if(cursor.moveToFirst()){
             do{
-                unEvento = new Evento();
+                unEvento = new DTEvento();
                 unEvento.setIdEvento(cursor.getInt(0));
                 unEvento.setFecha(cursor.getString(1));
                 unEvento.setHora(cursor.getString(2));

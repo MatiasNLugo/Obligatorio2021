@@ -1,14 +1,11 @@
 package com.matiaslugo.obligatorio2021.viewseventos;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -22,14 +19,16 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTComercial;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTParticular;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbClientes;
-import com.matiaslugo.obligatorio2021.db.DbEventos;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaCliente;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaEvento;
 import com.matiaslugo.obligatorio2021.viewclientes.AdaptadorClientes;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ import java.util.Calendar;
 
 public class CrearEventoActivity extends MenuActivity {
 
-    private ArrayList<Cliente> clientes;
+    private ArrayList<DTCliente> clientes;
     private Button btnAgregarCliente;
     private EditText etTitulo,etFecha, etHora,etAsistentes;
     private Spinner spClientes,spDuracion, spTipoEvento;
@@ -45,7 +44,7 @@ public class CrearEventoActivity extends MenuActivity {
     private int media = 30;
     private ListView lvClientes;
     private AdaptadorClientes adapter;
-    private Evento evento = new Evento();
+    private DTEvento evento = new DTEvento();
     private ArrayList<Integer> ids = new ArrayList<Integer>();
     private ArrayList<String> horas = new ArrayList<String>();
     private ArrayList<String> nombres = new ArrayList<String>();
@@ -103,23 +102,23 @@ public class CrearEventoActivity extends MenuActivity {
     }
 
     public void spAgregarSpinners() {
-        DbClientes dbClientes = new DbClientes(this);
-        clientes = dbClientes.listaClientes();
+        PersistenciaCliente persistenciaCliente = new PersistenciaCliente(this);
+        clientes = persistenciaCliente.listaClientes();
 
-        for (Cliente item : clientes) {
+        for (DTCliente item : clientes) {
             ids.add(item.getIdCliente());
-            if (item instanceof Particular) {
-                nombres.add(((Particular) item).getNombre());
+            if (item instanceof DTParticular) {
+                nombres.add(((DTParticular) item).getNombre());
 
             }else{
-                nombres.add(((Comercial)item).getRazonSocial());
+                nombres.add(((DTComercial)item).getRazonSocial());
         }
 
     }
 
        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,nombres);
        spClientes.setAdapter(adapter);
-       dbClientes.close();
+       persistenciaCliente.close();
 
        for(int i=1 ; i < 100; i++){
            if(i<10){
@@ -184,7 +183,7 @@ public class CrearEventoActivity extends MenuActivity {
         //Toast.makeText(this,"Click en EditText Fecha",Toast.LENGTH_SHORT).show();
     }
 
-    public void btnOnClickAgregarEvento(View view) {
+    public void btnOnClickAgregarEvento(View view) throws ExcepcionPersonalizada {
         evento.setTitulo(etTitulo.getText().toString());
         evento.setFecha(etFecha.getText().toString());
         evento.setHora(etHora.getText().toString());
@@ -213,10 +212,8 @@ public class CrearEventoActivity extends MenuActivity {
         }
 
 
-        DbEventos dbEventos = new DbEventos(this);
-        dbEventos.insertarEvento(evento);
-
-        Toast.makeText(this,"Evento creado con exito.",Toast.LENGTH_SHORT).show();
+        FabricaLogica.getControladorMantenimientoEvento(getApplicationContext()).insertarEvento(evento);
+        Toast.makeText(this,"DTEvento creado con exito.",Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -1,23 +1,16 @@
 package com.matiaslugo.obligatorio2021.viewclientes;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
-import com.matiaslugo.obligatorio2021.MenuActivity;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment;
 
 public class ClienteMantenimiento extends MenuActivity
         implements ListadoClienteFragment.OnClienteSeleccionadoListener {
@@ -36,7 +29,7 @@ public class ClienteMantenimiento extends MenuActivity
 
     }
     @Override
-    public void onClienteSelecionado(Cliente cliente) {
+    public void onClienteSelecionado(DTCliente cliente) {
 
 
             DetalleClienteFragment frgDetalleCliente = (DetalleClienteFragment)getSupportFragmentManager().findFragmentById(R.id.frmClienteDetalle);

@@ -14,9 +14,11 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.db.DbClientes;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.persistencia.PersistenciaCliente;
 
 import java.util.ArrayList;
 
@@ -35,8 +37,8 @@ public class ListadoClienteFragment extends Fragment {
     private ListView lv;
     private SearchView searchView;
     AdaptadorClientes adapter;
-    private ArrayList<Cliente> clientes = new ArrayList<>();
-    DbClientes dbClientes;
+    private ArrayList<DTCliente> clientes = new ArrayList<>();
+    PersistenciaCliente persistenciaCliente;
     View view;
     protected OnClienteSeleccionadoListener onClienteSeleccionadoListener;
 
@@ -76,12 +78,15 @@ public class ListadoClienteFragment extends Fragment {
 
         lv = (ListView)getView().findViewById(R.id.lvEmpleados);
 
-        dbClientes = new DbClientes(getActivity());
-        clientes = dbClientes.listaClientes();
+
+        try {
+            clientes = FabricaLogica.getControladorMantenimientoCliente(getContext()).listaClientes();
+        } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+            excepcionPersonalizada.printStackTrace();
+        }
 
         adapter = new AdaptadorClientes(getActivity().getApplicationContext(),clientes);
         lv.setAdapter(adapter);
-        dbClientes.close();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -97,7 +102,7 @@ public class ListadoClienteFragment extends Fragment {
    /* public void lvClientesOnItemLongClickListener(AdapterView<?> parent, View view, int position, long id){
         if(onClienteSeleccionadoListener != null){
             onClienteSeleccionadoListener.onClienteSelecionado(
-                    (Cliente)parent.getItemAtPosition(position));
+                    (DTCliente)parent.getItemAtPosition(position));
         }
     }*/
 
@@ -106,12 +111,12 @@ public class ListadoClienteFragment extends Fragment {
         //parent es el listview
         if(onClienteSeleccionadoListener != null){
             onClienteSeleccionadoListener.onClienteSelecionado(
-                    (Cliente)parent.getItemAtPosition(position));
+                    (DTCliente)parent.getItemAtPosition(position));
         }
     }
 
     public interface OnClienteSeleccionadoListener{
-        void onClienteSelecionado(Cliente cliente);
+        void onClienteSelecionado(DTCliente cliente);
     }
 
 }

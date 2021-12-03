@@ -1,10 +1,10 @@
-package com.matiaslugo.obligatorio2021.DataTypes;
+package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
-public class Tarea {
+public class DTTarea {
     private int idTarea;
     private String descipcion;
     private String fechaLimite;
-    private Evento unEvento;
+    private DTEvento unEvento;
 
     public int getIdTarea() {
         return idTarea;
@@ -30,25 +30,25 @@ public class Tarea {
         this.fechaLimite = fechaLimite;
     }
 
-    public Evento getUnEvento() {
+    public DTEvento getUnEvento() {
         return unEvento;
     }
 
-    public void setUnEvento(Evento unEvento) {
+    public void setUnEvento(DTEvento unEvento) {
         this.unEvento = unEvento;
     }
 
-    public Tarea(int idTarea, String descipcion, String fechaLimite, Evento unEvento) {
+    public DTTarea(int idTarea, String descipcion, String fechaLimite, DTEvento unEvento) {
         this.idTarea = idTarea;
         this.descipcion = descipcion;
         this.fechaLimite = fechaLimite;
         this.unEvento = unEvento;
     }
 
-    public Tarea() {
+    public DTTarea() {
         this.idTarea = 0;
         this.descipcion = "N/D";
         this.fechaLimite = "N/D";
-        this.unEvento = new Evento();
+        this.unEvento = new DTEvento();
     }
 }

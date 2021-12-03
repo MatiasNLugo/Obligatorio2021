@@ -1,4 +1,4 @@
-package com.matiaslugo.obligatorio2021.db;
+package com.matiaslugo.obligatorio2021.persistencia;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -40,8 +40,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_COMERCIALES).append(" VALUES(2,'1562783740012','Empresa 1');").toString());
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_PARTICULARES).append(" VALUES(3,'Jean Paul Sartre','768848391');").toString());
 
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'13/01/2022','18:00','120','Titulo de Evento',4,0,1);").toString());
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'24/02/2022','13:00','60','Evento Corto',2,5,3);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'13/01/2022','18:00','120','Titulo de DTEvento',4,0,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'24/02/2022','13:00','60','DTEvento Corto',2,5,3);").toString());
 
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(1,'Descripcion 1','Objetivo 1','12/12/2021','13:00','Lugar 1',0,1);").toString());
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(2,'Descripcion 2','Objetivo 2','13/12/2021','16:00','Lugar 2',1,2);").toString());

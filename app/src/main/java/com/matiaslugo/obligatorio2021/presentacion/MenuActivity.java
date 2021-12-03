@@ -1,4 +1,4 @@
-package com.matiaslugo.obligatorio2021;
+package com.matiaslugo.obligatorio2021.presentacion;
 
 import android.content.Intent;
 import android.os.Build;
@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuCompat;
 
+import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteMantenimiento;
 import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;

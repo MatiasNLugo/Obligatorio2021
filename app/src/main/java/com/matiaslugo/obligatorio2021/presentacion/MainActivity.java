@@ -1,4 +1,4 @@
-package com.matiaslugo.obligatorio2021;
+package com.matiaslugo.obligatorio2021.presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewclientes.ClienteMantenimiento;
 import com.matiaslugo.obligatorio2021.viewseventos.ListarEventosFragment;
 

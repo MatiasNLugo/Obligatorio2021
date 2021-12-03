@@ -1,6 +1,5 @@
 package com.matiaslugo.obligatorio2021.viewclientes;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,22 +7,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTComercial;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTParticular;
 import com.matiaslugo.obligatorio2021.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdaptadorClientes extends BaseAdapter {
 
     private Context contexto;
-    private ArrayList<Cliente> clientes;
+    private ArrayList<DTCliente> clientes;
 
 
 
-    public AdaptadorClientes(Context contexto, ArrayList<Cliente> clientes){
+    public AdaptadorClientes(Context contexto, ArrayList<DTCliente> clientes){
        this.clientes = clientes;
        this.contexto = contexto;
     }
@@ -34,7 +32,7 @@ public class AdaptadorClientes extends BaseAdapter {
     }
 
     @Override
-    public Cliente getItem(int position) {
+    public DTCliente getItem(int position) {
         return clientes.get(position);
     }
 
@@ -80,13 +78,13 @@ public class AdaptadorClientes extends BaseAdapter {
             tvId = item.findViewById(R.id.tvIdCliente);
             tvNombre = item.findViewById(R.id.tvNombre);
         }
-        public void enlazarCliente(Cliente cliente){
+        public void enlazarCliente(DTCliente cliente){
             tvId.setText( id + String.valueOf(cliente.getIdCliente()));
-            if(cliente instanceof Particular){
-                tvNombre.setText(((Particular) cliente).getNombre());
+            if(cliente instanceof DTParticular){
+                tvNombre.setText(((DTParticular) cliente).getNombre());
             }
-            if(cliente instanceof Comercial){
-                tvNombre.setText(((Comercial) cliente).getRazonSocial());
+            if(cliente instanceof DTComercial){
+                tvNombre.setText(((DTComercial) cliente).getRazonSocial());
             }
 
 

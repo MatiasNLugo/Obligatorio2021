@@ -1,8 +1,8 @@
-package com.matiaslugo.obligatorio2021.DataTypes;
+package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
 import java.io.Serializable;
 
-public class Comercial extends Cliente implements Serializable {
+public class DTComercial extends DTCliente implements Serializable {
     private String rut;
     private String razonSocial;
 
@@ -22,17 +22,17 @@ public class Comercial extends Cliente implements Serializable {
         this.razonSocial = razonSocial;
     }
 
-    public Comercial(int idCliente, String direccion, String telefono, String correo, String rut, String razonSocial) {
+    public DTComercial(int idCliente, String direccion, String telefono, String correo, String rut, String razonSocial) {
         super(idCliente, direccion, telefono, correo);
         setRut(rut);
         setRazonSocial(razonSocial);
     }
 
-    public Comercial(String rut, String razonSocial) {
+    public DTComercial(String rut, String razonSocial) {
         this.rut = rut;
         this.razonSocial = razonSocial;
     }
-    public Comercial(){
+    public DTComercial(){
         super();
         this.rut = "S/D";
         this.razonSocial = "S/D";

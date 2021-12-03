@@ -7,20 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Cliente;
-import com.matiaslugo.obligatorio2021.DataTypes.Comercial;
-import com.matiaslugo.obligatorio2021.DataTypes.Particular;
-import com.matiaslugo.obligatorio2021.DataTypes.Reunion;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.viewclientes.AdaptadorClientes;
 
 import java.util.ArrayList;
 
 public class AdaptadorReuniones extends BaseAdapter {
     private Context contexto;
-    private ArrayList<Reunion> reuniones;
+    private ArrayList<DTReunion> reuniones;
 
-    public AdaptadorReuniones(Context contexto, ArrayList<Reunion> reuniones){
+    public AdaptadorReuniones(Context contexto, ArrayList<DTReunion> reuniones){
         this.contexto = contexto;
         this.reuniones = reuniones;
     }
@@ -76,10 +72,10 @@ public class AdaptadorReuniones extends BaseAdapter {
             tvFecha = (TextView) item.findViewById(R.id.tvFecha);
             tvObjetivo = (TextView) item.findViewById(R.id.tvObjetivo);
         }
-        public void enlazarReunion(Reunion reunion){
-            tvHora.setText(reunion.getHora().toString());
-            tvFecha.setText(reunion.getFecha().toString());
-            tvObjetivo.setText(reunion.getObjetivo().toString());
+        public void enlazarReunion(DTReunion DTReunion){
+            tvHora.setText(DTReunion.getHora().toString());
+            tvFecha.setText(DTReunion.getFecha().toString());
+            tvObjetivo.setText(DTReunion.getObjetivo().toString());
 
         }
     }

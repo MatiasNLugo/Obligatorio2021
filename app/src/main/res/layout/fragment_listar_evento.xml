@@ -12,5 +12,8 @@
         android:layout_height="match_parent"
         android:columnWidth="@dimen/ancho_avatar"
         android:numColumns="auto_fit"
+        android:background="@color/botones"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
         android:stretchMode="spacingWidthUniform" />
 </RelativeLayout>

@@ -8,22 +8,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.matiaslugo.obligatorio2021.DataTypes.Evento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.viewreuniones.ListadoReunionFragment;
-import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 
 public class GastoMantenimientoActivity extends AppCompatActivity {
 
-    private Evento evento;
+    private DTEvento evento;
     private Intent enviar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gasto_mantenimiento);
 
-        evento = (Evento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+        evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
         ListadoGastoFragment listadoGastoFragment = new ListadoGastoFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("idEvento",evento.getIdEvento());
