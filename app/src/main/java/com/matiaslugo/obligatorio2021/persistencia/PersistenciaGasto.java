@@ -69,7 +69,9 @@ public class PersistenciaGasto implements  IPersistenciaGasto{
             values.put(DB.Gastos.PROVEEDOR, gasto.getProveedor());
 
             res = db.insert(DB.TABLA_GASTOS,null,values);
-
+            if(res > 1 ){
+                id += 1;
+            }
             return res;
         } catch (Exception ex){
             throw  new ExcepcionPersistencia("No se pudo crear el Gasto.");

@@ -70,6 +70,8 @@ public class ListadoTareaFragment extends Fragment {
         try{
 
             lv = (ListView) getView().findViewById(R.id.lvTareas);
+            lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            lv.setItemsCanFocus(false);
             tareas = FabricaLogica.getControladorMantenimientoTarea(getContext()).listaTareas(idEvento);
 
             adapter = new AdaptadorTareas(getContext(), tareas);

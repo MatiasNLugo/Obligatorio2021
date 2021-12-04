@@ -26,7 +26,7 @@ public class PersistenciaTarea implements IPeristenciaTarea{
     }
 
     private Context context;
-    public static int id = 3;
+    public static int id = 4;
 
     public PersistenciaTarea(@Nullable Context context) {
         this.context = context;
@@ -40,7 +40,7 @@ public class PersistenciaTarea implements IPeristenciaTarea{
 
         try {
             cursor = db.query(DB.TABLA_TAREAS,DB.Tareas.COLUMNAS,DB.Tareas.IDEVENTO +
-                    " = ? ",new String[] {String.valueOf(idEvento)},null,null,DB.Tareas._ID + " DESC",null);
+                    " = ? ",new String[] {String.valueOf(idEvento)},null,null,DB.Tareas._ID + " ASC",null);
             //cursor = db.rawQuery("Select * from Gastos", null);
             while(cursor.moveToNext()){
                 unaTarea = new DTTarea();
@@ -70,6 +70,9 @@ public class PersistenciaTarea implements IPeristenciaTarea{
 
             res = db.insert(DB.TABLA_TAREAS,null,values);
 
+            if(res > 0) {
+                id += 1;
+            }
             return res;
         } catch (Exception ex){
             throw  new ExcepcionPersistencia("No se pudo crear el Gasto.");
