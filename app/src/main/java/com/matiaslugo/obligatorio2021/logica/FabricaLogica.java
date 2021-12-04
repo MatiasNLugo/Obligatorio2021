@@ -2,8 +2,6 @@ package com.matiaslugo.obligatorio2021.logica;
 
 import android.content.Context;
 
-import com.matiaslugo.obligatorio2021.persistencia.ControladorMantenimientoGasto;
-
 public class FabricaLogica {
 
     public static IControladorMantenimientoReunion getControladorMantenimientoReunion(Context context){
@@ -20,5 +18,9 @@ public class FabricaLogica {
 
     public static IControladorMantenimientoGasto getControladorMantenimientoGasto(Context context){
         return ControladorMantenimientoGasto.getInstancia(context);
+    }
+
+    public static IControladorMantenimientoTarea getControladorMantenimientoTarea(Context context){
+        return ControladorMantenimientoTarea.getInstancia(context);
     }
 }

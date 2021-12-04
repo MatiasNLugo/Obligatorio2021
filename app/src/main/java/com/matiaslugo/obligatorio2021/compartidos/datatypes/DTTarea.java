@@ -1,9 +1,12 @@
 package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
-public class DTTarea {
+import java.io.Serializable;
+
+public class DTTarea implements Serializable {
     private int idTarea;
     private String descipcion;
     private String fechaLimite;
+    private boolean realizada;
     private DTEvento unEvento;
 
     public int getIdTarea() {
@@ -38,11 +41,20 @@ public class DTTarea {
         this.unEvento = unEvento;
     }
 
-    public DTTarea(int idTarea, String descipcion, String fechaLimite, DTEvento unEvento) {
+    public boolean isRealizada() {
+        return realizada;
+    }
+
+    public void setRealizada(boolean realizada) {
+        this.realizada = realizada;
+    }
+
+    public DTTarea(int idTarea, String descipcion, String fechaLimite, Boolean realizada, DTEvento unEvento) {
         this.idTarea = idTarea;
         this.descipcion = descipcion;
         this.fechaLimite = fechaLimite;
         this.unEvento = unEvento;
+        this.realizada = realizada;
     }
 
     public DTTarea() {

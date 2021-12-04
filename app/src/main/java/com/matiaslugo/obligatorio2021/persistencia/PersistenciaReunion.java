@@ -43,7 +43,7 @@ public class PersistenciaReunion implements IPeristenciaReunion{
             //cursor = db.rawQuery("SELECT * FROM " + DB.TABLA_REUNIONES + " WHERE idEvento = " + idEvento + ";",
               //      null);
             cursor = db.query(DB.TABLA_REUNIONES,DB.Reuniones.COLUMNAS,DB.Reuniones.IDEVENTO +
-                    " = ? ", new String[] { String.valueOf(idEvento) }, null,null,DB.Reuniones._ID + " DESC" );
+                    " = ? ", new String[] { String.valueOf(idEvento) }, null,null,DB.Reuniones._ID + " DESC", null );
             while (cursor.moveToNext()){
                     unaDTReunion = new DTReunion();
                     unaDTReunion =  instanciarReunion(cursor);

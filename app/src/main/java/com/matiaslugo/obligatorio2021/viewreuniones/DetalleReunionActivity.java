@@ -17,7 +17,7 @@ import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 public class DetalleReunionActivity extends MenuActivity {
 
     private DetalleReunionFragment frgDetalleReunion;
-    private DTReunion DTReunion;
+    private DTReunion reunion;
     private DTEvento evento;
     private MenuItem mniModificar,mniEliminar,mniReuniones;
     private Intent enviar;
@@ -27,16 +27,19 @@ public class DetalleReunionActivity extends MenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_reunion);
 
-        frgDetalleReunion = (DetalleReunionFragment)getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
-        DTReunion = (DTReunion)getIntent().getSerializableExtra(ReunionMantenimiento.EXTRA_REUNION);
-        evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+        frgDetalleReunion = (DetalleReunionFragment)
+                getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
+        reunion = (DTReunion)
+                getIntent().getSerializableExtra(ReunionMantenimiento.EXTRA_REUNION);
+        evento = (DTEvento)
+                getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        frgDetalleReunion.mostrarReunion(DTReunion);
+        frgDetalleReunion.mostrarReunion(reunion);
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -44,7 +47,6 @@ public class DetalleReunionActivity extends MenuActivity {
             case R.id.mniModificar:
                 enviar = new Intent(this, ModificarReunionActivity.class);
                 enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO, evento);
-                enviar.putExtra(ReunionMantenimiento.EXTRA_REUNION, DTReunion);
                 startActivity(enviar);
                 return true;
             default:

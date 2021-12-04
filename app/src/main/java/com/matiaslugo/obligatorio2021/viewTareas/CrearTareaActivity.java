@@ -2,15 +2,105 @@ package com.matiaslugo.obligatorio2021.viewTareas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.matiaslugo.obligatorio2021.R;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTTarea;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
+
+import java.util.Calendar;
 
 public class CrearTareaActivity extends AppCompatActivity {
 
+    private Button btnAgregarTarea;
+    private EditText etFecha, etDescripcion;
+    private int dia, ano, mes;
+    private DTTarea tarea;
+    private DTEvento evento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_tarea);
+
+        cargarView();
+
+        evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+
+        btnAgregarTarea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    btnAgregarTareaOnClickListener(v);
+                } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+                    String mensaje = excepcionPersonalizada.getMessage().toString();
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+        etFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(etFecha.getWindowToken(), 0);
+                etFechaOnClick(v);
+            }
+        });
+
+    }
+
+    private void btnAgregarTareaOnClickListener(View v) throws ExcepcionPersonalizada {
+        tarea = new DTTarea();
+        tarea.setDescipcion(etDescripcion.getText().toString());
+        tarea.setFechaLimite(etFecha.getText().toString());
+        tarea.setRealizada(false);
+        tarea.setUnEvento(evento);
+
+        FabricaLogica.getControladorMantenimientoTarea(getApplicationContext()).insertarTarea(tarea);
+
+    }
+
+    private void cargarView() {
+        etFecha = findViewById(R.id.etFecha);
+        etDescripcion = findViewById(R.id.etDescripcion);
+        btnAgregarTarea = findViewById(R.id.btnAgregarTarea);
+    }
+
+    public void etFechaOnClick(View view) {
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(etFecha.getWindowToken(), 0);
+
+
+        final Calendar c = Calendar.getInstance();
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        mes = c.get(Calendar.MONTH);
+        ano = c.get(Calendar.YEAR);
+
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this ,new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                etFecha.setText(dayOfMonth +"/"+ (month + 1) +"/"+ year);
+            }
+
+        },dia,mes,ano);
+        datePickerDialog.updateDate(ano,mes,dia);
+        datePickerDialog.show();
     }
 }

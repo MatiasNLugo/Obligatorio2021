@@ -41,18 +41,14 @@ public class ListadoReunionFragment extends Fragment {
     private ListView lv;
     private SearchView searchView;
     private AdaptadorReuniones adapter;
-
     private ArrayList<DTReunion> reuniones = new ArrayList<>();
-    PersistenciaReunion dbReunion;
-    View view;
+    private View view;
     protected OnReunionSeleccionadoListener onReunionSeleccionadoListener;
 
 
     public ListadoReunionFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,8 +66,6 @@ public class ListadoReunionFragment extends Fragment {
             onReunionSeleccionadoListener = (OnReunionSeleccionadoListener) context;
         }
     }
-
-
 
     @Override
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable  ViewGroup container,
@@ -121,5 +115,6 @@ public class ListadoReunionFragment extends Fragment {
     public interface OnReunionSeleccionadoListener{
         void onReunionSelecionado(DTReunion DTReunion);
     }
+
 
 }

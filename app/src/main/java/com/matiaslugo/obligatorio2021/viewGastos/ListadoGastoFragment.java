@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTGasto;
 import com.matiaslugo.obligatorio2021.R;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
 import com.matiaslugo.obligatorio2021.persistencia.PersistenciaGasto;
 
 import java.util.ArrayList;
@@ -24,10 +27,11 @@ public class ListadoGastoFragment extends Fragment {
     public ListadoGastoFragment newInstance(){
         return new ListadoGastoFragment();
     }
+
     private AdaptadorGastos adapter;
-    private ArrayList<DTGasto> DTGastos = new ArrayList<DTGasto>();
-    private PersistenciaGasto persistenciaGasto;
+    private ArrayList<DTGasto> DTGastos;
     private ListView lv;
+    private TextView tvTotal;
     private View view;
     private int idEvento;
     protected OnGastoSeleccionadoListener onGastoSeleccionadoListener;
@@ -58,15 +62,22 @@ public class ListadoGastoFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        try {
         lv = (ListView) getView().findViewById(R.id.lvGastos);
+        tvTotal= (TextView) getView().findViewById(R.id.tvTotal);
+        DTGastos = FabricaLogica.getControladorMantenimientoGasto(getContext()).listaGastos(idEvento);
 
-        persistenciaGasto = new PersistenciaGasto(getActivity());
-        DTGastos = persistenciaGasto.listaGastos(idEvento);
 
+        verTotal();
         adapter = new AdaptadorGastos(getContext(), DTGastos);
         lv.setAdapter(adapter);
-
+        } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+            try {
+                throw new ExcepcionPersonalizada("No se pudo listar los gastos.");
+            } catch (ExcepcionPersonalizada personalizada) {
+                personalizada.printStackTrace();
+            }
+        }
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -85,6 +96,17 @@ public class ListadoGastoFragment extends Fragment {
     }
 
     public interface OnGastoSeleccionadoListener{
-        void onGastoSeleccionado(DTGasto DTGasto);
+        void onGastoSeleccionado(DTGasto gasto);
+    }
+
+
+    public void verTotal(){
+        float total = 0;
+        for (DTGasto item:DTGastos) {
+            total = total + item.getMonto();
+        }
+
+        tvTotal.setText(new StringBuilder().append("TOTAL: $ ").append(String.valueOf(total)));
+
     }
 }

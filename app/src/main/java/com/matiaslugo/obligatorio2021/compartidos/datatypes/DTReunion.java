@@ -10,7 +10,6 @@ public class DTReunion implements Serializable {
     private String hora;
     private String lugar;
     private boolean notificar;
-
     private int idEvento;
 
     public int getIdReunion() {

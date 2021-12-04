@@ -17,6 +17,10 @@ import com.matiaslugo.obligatorio2021.R;
 @SuppressWarnings("deprecation")
 public class DetalleReunionFragment extends Fragment {
 
+    public static DetalleReunionFragment newInstance(DTReunion DTReunion) {
+        return new DetalleReunionFragment();
+    }
+
     private TextView tvIdReunion,tvObjetivo,tvFecha,tvHora,tvDescripcion,
             tvLugar,tvNotificar, tvIdCliente;
 
@@ -24,10 +28,6 @@ public class DetalleReunionFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-    public static DetalleReunionFragment newInstance(DTReunion DTReunion) {
-        return new DetalleReunionFragment();
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -28,9 +28,6 @@ public class PersistenciaCliente extends DataBaseHelper implements IPersistencia
     public PersistenciaCliente(@Nullable Context context) {
         super(context);
         this.context = context;
-
-
-
     }
 
 

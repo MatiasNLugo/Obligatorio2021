@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".viewGastos.CrearGastoActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/llCampos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <EditText
+            android:id="@+id/etMotivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Motivo del Gasto..."
+            android:fontFamily="@font/segoe"
+            android:inputType="textLongMessage"/>
+        <EditText
+            android:id="@+id/etProveedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe"
+            android:hint="Proveedor"
+            android:inputType="text"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/etPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_b"
+            android:hint="$"
+            android:textSize="26sp"
+            android:inputType="numberDecimal"/>
+        <EditText
+            android:id="@+id/etMonto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:fontFamily="@font/segoe"
+            android:textAlignment="textStart"
+            android:hint="Monto"
+            android:inputType="numberDecimal"/>
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/btnAgregarGasto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Agregar" />
+    </RelativeLayout>
+</RelativeLayout>

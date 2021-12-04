@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obligatorio2021">
         <activity
+            android:name=".viewGastos.DetalleGastoActivity"
+            android:exported="false" />
+        <activity
             android:name=".viewTareas.ModificarTareaActivity"
             android:exported="false" />
         <activity
