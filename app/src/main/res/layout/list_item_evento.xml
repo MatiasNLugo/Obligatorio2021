@@ -4,13 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     android:background="@drawable/list_item_backgraund">
 
 
         <ImageView
        android:id="@+id/imvAvatar"
        android:layout_width="@dimen/ancho_avatar"
-       android:layout_height="@dimen/ancho_avatar"/>
+       android:layout_height="@dimen/ancho_avatar" />
         <LinearLayout
             android:id="@+id/ll1"
             android:layout_width="wrap_content"

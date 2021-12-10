@@ -33,7 +33,9 @@ public class ControladorMantenimientoGasto implements IControladorMantenimientoG
     }
 
     @Override
-    public long insertarGasto(DTGasto gasto) throws ExcepcionPersistencia {
+    public long insertarGasto(DTGasto gasto) throws ExcepcionPersonalizada {
+
+        LogicaGasto.getInstancia().validarGasto(gasto);
         return FabricaPersistencia.getPersistenciaGasto(context).insertarGasto(gasto);
     }
 }

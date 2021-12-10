@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 import com.matiaslugo.obligatorio2021.R;
@@ -17,6 +19,7 @@ public class AdaptadorTareas  extends BaseAdapter {
 
     private Context contexto;
     private ArrayList<DTTarea> tareas;
+    CheckBox chkRealizado;
 
     public AdaptadorTareas(Context contexto, ArrayList<DTTarea> tareas){
         this.tareas = tareas;
@@ -63,11 +66,19 @@ public class AdaptadorTareas  extends BaseAdapter {
         public TareasViewHolder(View item){
             tvFecha = (TextView) item.findViewById(R.id.tvFecha);
             tvDescripcion = (TextView) item.findViewById(R.id.tvDescripcion);
+            chkRealizado = item.findViewById(R.id.chkRealizado);
+
         }
 
     public void enlazarTarea(DTTarea tarea){
         tvFecha.setText(tarea.getFechaLimite());
         tvDescripcion.setText(tarea.getDescipcion());
+
+        if(tarea.isRealizada()){
+            chkRealizado.setChecked(true);
+        } else {
+            chkRealizado.setChecked(false);
+        }
     }
     }
 }

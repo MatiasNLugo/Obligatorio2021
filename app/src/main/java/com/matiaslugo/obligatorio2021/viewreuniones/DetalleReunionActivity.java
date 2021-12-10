@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
@@ -30,9 +31,9 @@ public class DetalleReunionActivity extends MenuActivity {
         frgDetalleReunion = (DetalleReunionFragment)
                 getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
         reunion = (DTReunion)
-                getIntent().getSerializableExtra(ReunionMantenimiento.EXTRA_REUNION);
+                getIntent().getSerializableExtra(Constantes.EXTRA_REUNION);
         evento = (DTEvento)
-                getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+                getIntent().getSerializableExtra(Constantes.EXTRA_EVENTO);
 
     }
 
@@ -46,7 +47,7 @@ public class DetalleReunionActivity extends MenuActivity {
         switch(item.getItemId()) {
             case R.id.mniModificar:
                 enviar = new Intent(this, ModificarReunionActivity.class);
-                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO, evento);
+                enviar.putExtra(Constantes.EXTRA_EVENTO, evento);
                 startActivity(enviar);
                 return true;
             default:
@@ -57,7 +58,7 @@ public class DetalleReunionActivity extends MenuActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
-        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
+        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(true);
         mniReuniones = menu.findItem(R.id.mniReuniones).setVisible(false);
         return true;
     }

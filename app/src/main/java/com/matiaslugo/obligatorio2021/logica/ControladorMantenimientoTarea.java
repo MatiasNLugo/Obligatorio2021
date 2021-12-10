@@ -34,4 +34,11 @@ public class ControladorMantenimientoTarea implements IControladorMantenimientoT
     public long insertarTarea(DTTarea tarea) throws ExcepcionPersistencia {
         return FabricaPersistencia.getPersistenciaTarea(context).insertarTarea(tarea);
     }
+
+    @Override
+    public long cambiarEstadoTarea(DTTarea tarea) throws ExcepcionPersistencia {
+        return FabricaPersistencia.getPersistenciaTarea(context).cambiarEstadoTarea(tarea);
+    }
+
+
 }

@@ -11,7 +11,7 @@ public interface IPersistenciaCliente {
     ArrayList<DTCliente> listaClientes() throws ExcepcionPersonalizada;
     long insertarCliente(DTCliente cliente) throws ExcepcionPersonalizada;
     boolean modificarCliente(DTCliente cliente) throws ExcepcionPersonalizada;
-    boolean eliminarCliente(int idCliente) throws ExcepcionPersonalizada;
+    long eliminarCliente(int idCliente) throws ExcepcionPersonalizada;
     boolean verificarDependenciaCliente(int idCliente) throws ExcepcionPersonalizada;
     DTCliente buscarCliente(int id) throws ExcepcionPersonalizada;
 }

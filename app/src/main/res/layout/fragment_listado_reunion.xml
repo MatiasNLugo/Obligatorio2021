@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".viewreuniones.ListadoReunionFragment">
 
+    <Switch
+        android:id="@+id/swPendientes"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pendientes" />
+
 
     <ListView
         android:id="@+id/lvReuniones"
+        android:layout_below="@+id/swPendientes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"></ListView>
 
-</FrameLayout>
+
+</RelativeLayout>

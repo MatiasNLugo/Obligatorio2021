@@ -2,6 +2,7 @@ package com.matiaslugo.obligatorio2021.viewclientes;
 
 import androidx.annotation.NonNull;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,11 +41,7 @@ public class ClienteModificarActivity extends MenuActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    setBtnAgregarOnClick(v);
-                } catch (ExcepcionPersonalizada excepcionPersonalizada) {
-                    Toast.makeText(getApplicationContext(), "Error al agregar el cliente.", Toast.LENGTH_SHORT).show();
-                }
+                setBtnAgregarOnClick(v);
             }
         });
 
@@ -110,19 +107,22 @@ public class ClienteModificarActivity extends MenuActivity {
         return retorno;
     }
 
-    protected void setBtnAgregarOnClick(View v) throws ExcepcionPersonalizada {
+    protected void setBtnAgregarOnClick(View v) {
+        try {
+            if (verificarCampos(v)) {
 
-        if(verificarCampos(v)){
+                FabricaLogica.getControladorMantenimientoCliente(getApplicationContext()).modificarCliente(unCliente);
+                Toast.makeText(this, "Cliente Modificado con éxito.", Toast.LENGTH_LONG).show();
 
-            FabricaLogica.getControladorMantenimientoCliente(getApplicationContext()).modificarCliente(unCliente);
-            Toast.makeText(this,"DTCliente Modificado con éxito.", Toast.LENGTH_LONG).show();
+                Intent enviarCliente = new Intent(this, ClienteMantenimiento.class);
+                startActivity(enviarCliente);
+            }
+        } catch(ExcepcionPersonalizada excepcionPersonalizada){
+            Toast.makeText(this, excepcionPersonalizada.getMessage(), Toast.LENGTH_LONG).show();
+        } catch(Exception ex){
+            Toast.makeText(getApplicationContext(), "Error al Modificar el Cliente.", Toast.LENGTH_LONG).show();
 
         }
-
-
-
-
-
 
     }
 
@@ -160,14 +160,6 @@ public class ClienteModificarActivity extends MenuActivity {
         etDireccion.setText(unCliente.getDireccion());
         etTelefono.setText(unCliente.getTelefono());
         etCorreo.setText(unCliente.getCorreo());
-
-
-
-
-
-
-
-
 
     }
 

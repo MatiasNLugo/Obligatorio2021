@@ -54,6 +54,30 @@ public class PersistenciaTarea implements IPeristenciaTarea{
         }
     }
 
+    public long cambiarEstadoTarea(DTTarea tarea) throws ExcepcionPersistencia {
+        long res = 0;
+        DataBaseHelper dbHelper = new DataBaseHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        try{
+            values.put(DB.Tareas._ID,tarea.getIdTarea());
+
+            int realizada = (tarea.isRealizada()) ? 1 : 0;
+            values.put(DB.Tareas.REALIZADA, realizada);
+
+            res = db.update(DB.TABLA_TAREAS, values, DB.Tareas._ID + " = ? ", new String[]{String.valueOf(tarea.getIdTarea())} );
+
+
+            return res;
+        } catch (Exception ex){
+            throw  new ExcepcionPersistencia("No se pudo crear el Gasto.");
+        } finally {
+            db.close();
+            dbHelper.close();
+        }
+
+    }
+
     public long insertarTarea(DTTarea tarea ) throws ExcepcionPersistencia {
         long res = 0;
         DataBaseHelper dbHelper = new DataBaseHelper(context);

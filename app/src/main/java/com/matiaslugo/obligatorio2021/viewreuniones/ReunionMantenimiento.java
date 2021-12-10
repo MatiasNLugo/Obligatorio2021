@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
@@ -19,24 +20,23 @@ import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 public class ReunionMantenimiento extends MenuActivity
         implements ListadoReunionFragment.OnReunionSeleccionadoListener{
 
-    public static final String EXTRA_REUNION = "EXTRA_REUNION";
     private DTEvento evento;
-    private DTReunion DTReunion;
+    private DTReunion reunion;
     private int idEvento;
-    private MenuItem mniReunion,mniGastos,mniTareas;
+    private MenuItem mniReunion,mniGastos,mniTareas, mniModificar,mniEliminar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reunion_mantenimiento);
 
-        evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+        evento = (DTEvento)getIntent().getSerializableExtra(Constantes.EXTRA_EVENTO);
         agregarFragmento();
     }
 
     public void agregarFragmento(){
         ListadoReunionFragment listadoReunionFragment = new ListadoReunionFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("idEvento",evento.getIdEvento());
+        bundle.putInt(Constantes.ID_EVENTO,evento.getIdEvento());
         listadoReunionFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -50,6 +50,8 @@ public class ReunionMantenimiento extends MenuActivity
         DetalleReunionFragment frgDetalleReunion = (DetalleReunionFragment) getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
         if(frgDetalleReunion == null){
             getMenuInflater().inflate(R.menu.menu_main,menu);
+            mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
+            mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
             mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
             mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
             mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
@@ -62,15 +64,22 @@ public class ReunionMantenimiento extends MenuActivity
         switch (item.getItemId()){
             case R.id.mniReuniones:
                 enviar = new Intent(this, ReunionMantenimiento.class);
-                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+                enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
                 startActivity(enviar);
                 return true;
             case R.id.mniModificar:
                 enviar = new Intent(this, ModificarReunionActivity.class);
-                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
-                enviar.putExtra(ReunionMantenimiento.EXTRA_REUNION, DTReunion);
+                enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
                 startActivity(enviar);
                 return true;
+            //
+            // case R.id.mniEliminar:
+
+                //TODO Implementar Funcionalidad Eliminar
+               // enviar = new Intent(this, ModificarReunionActivity.class);
+               // enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
+               // startActivity(enviar);
+               // return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -79,23 +88,29 @@ public class ReunionMantenimiento extends MenuActivity
 
     public void btnOnClickAgregarReunion(View view) {
        Intent enviar = new Intent(this, CrearReunionActivity.class);
-       enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+       enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
        startActivity(enviar);
     }
 
     @Override
-    public void onReunionSelecionado(DTReunion DTReunion) {
+    public void onReunionSelecionado(DTReunion reunion) {
 
-        this.DTReunion = DTReunion;
+        this.reunion = reunion;
         DetalleReunionFragment frgReunionFragment =
                 (DetalleReunionFragment) getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
         if(frgReunionFragment != null){
-            frgReunionFragment.mostrarReunion(DTReunion);
+
+
+
+
+            frgReunionFragment.mostrarReunion(reunion);
         } else{
             Intent enviarEvento = new Intent(this, DetalleReunionActivity.class);
-            enviarEvento.putExtra(EXTRA_REUNION, DTReunion);
+            enviarEvento.putExtra(Constantes.EXTRA_REUNION, reunion);
             startActivity(enviarEvento);
         }
 
     }
+
+
 }

@@ -3,6 +3,7 @@ package com.matiaslugo.obligatorio2021.logica;
 import android.content.Context;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionLogica;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
 import com.matiaslugo.obligatorio2021.persistencia.FabricaPersistencia;
 
@@ -29,7 +30,9 @@ public class ControladorMantenimientoCliente implements IControladorMantenimient
 
     @Override
     public long insertarCliente(DTCliente cliente) throws ExcepcionPersonalizada {
-        return FabricaPersistencia.getPersistenciaCliente(context).insertarCliente(cliente);
+           LogicaCliente.getInstancia().validarCliente(cliente);
+           return FabricaPersistencia.getPersistenciaCliente(context).insertarCliente(cliente);
+
     }
 
     @Override
@@ -39,12 +42,17 @@ public class ControladorMantenimientoCliente implements IControladorMantenimient
 
     @Override
     public boolean modificarCliente(DTCliente unCliente) throws ExcepcionPersonalizada {
-        return FabricaPersistencia.getPersistenciaCliente(context).modificarCliente(unCliente);
+            LogicaCliente.getInstancia().validarCliente(unCliente);
+            return FabricaPersistencia.getPersistenciaCliente(context).modificarCliente(unCliente);
     }
 
     @Override
-    public boolean eliminarCliente(int idCliente) throws ExcepcionPersonalizada {
-        return FabricaPersistencia.getPersistenciaCliente(context).eliminarCliente(idCliente);
+    public long eliminarCliente(int idCliente) throws ExcepcionPersonalizada {
+        if (FabricaPersistencia.getPersistenciaEvento(context).verificarDependencia(idCliente)){
+            return FabricaPersistencia.getPersistenciaCliente(context).eliminarCliente(idCliente);
+    }else {
+        throw new ExcepcionLogica("Error al verificar el cliente.");
+        }
     }
 
     @Override

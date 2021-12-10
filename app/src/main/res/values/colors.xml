@@ -11,4 +11,5 @@
     <color name="fondo">#DADADA</color>
     <color name="fondoLista">#D7DADD</color>
     <color name="color_funte_oscuro">#757575</color>
+    <color name="color_acento">#6F82A3</color>
 </resources>

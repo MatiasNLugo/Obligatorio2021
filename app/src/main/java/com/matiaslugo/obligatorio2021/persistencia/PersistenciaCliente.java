@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTComercial;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTParticular;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersistencia;
 
 import java.util.ArrayList;
 
@@ -161,46 +162,28 @@ public class PersistenciaCliente extends DataBaseHelper implements IPersistencia
 
     }
 
-    public boolean eliminarCliente(int idCliente){
+    public long eliminarCliente(int idCliente) throws ExcepcionPersistencia {
 
         DataBaseHelper dbHelper = new DataBaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        boolean correcto = false;
-        boolean dependencia = false;
-        Cursor cursor = null;
+        long res =0;
 
-        try{
+            try {
+                db.beginTransaction();
+                res = db.delete(DB.TABLA_COMERCIALES, DB.Comerciales._ID + " = ? ", new String[]{String.valueOf(idCliente)});
+                res += db.delete(DB.TABLA_PARTICULARES, DB.Particulares._ID + " = ? ", new String[]{String.valueOf(idCliente)});
+                res += db.delete(DB.TABLA_CLIENTES, DB.Clientes._ID + " = ? ", new String[]{String.valueOf(idCliente)});
 
-            cursor = db.rawQuery(" SELECT * FROM " +DB.TABLA_EVENTOS+ " WHERE idCliente = "+idCliente+";",null);
-            if(cursor.moveToNext()){
-                cursor.close();
+                db.setTransactionSuccessful();
+                return  res;
+            } catch (Exception ex) {
+                throw new ExcepcionPersistencia("No se pudo eliminar el cliente.");
+            } finally {
+                db.endTransaction();
                 db.close();
-                dependencia = true;
+                dbHelper.close();
+                return res;
             }
-            if (dependencia = true){
-                db.execSQL("UPDATE "+DB.TABLA_CLIENTES+" SET activo=0;");
-                db.close();
-            } else {
-                db.execSQL("DELETE FROM  " + DB.TABLA_COMERCIALES + " WHERE _ID = "+idCliente+"; " );
-                db.close();
-                db.execSQL("DELETE FROM  " + DB.TABLA_PARTICULARES + " WHERE _ID = "+idCliente+";" );
-                db.close();
-                db.execSQL("DELETE FROM  " + DB.TABLA_CLIENTES + " WHERE _ID = "+idCliente+";" );
-
-            }
-            correcto = true;
-
-        } catch (Exception ex){
-            ex.toString();
-            correcto = false;
-        } finally {
-            db.close();
-            cursor.close();
-        }
-
-        return  correcto;
-
-
 
     }
 

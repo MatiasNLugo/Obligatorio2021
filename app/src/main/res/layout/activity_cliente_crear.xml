@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:background="@color/botones"
     tools:context=".viewclientes.ClienteCrearActivity"
     android:overScrollMode="ifContentScrolls"
     android:scrollbarStyle="insideOverlay"
@@ -14,7 +15,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rlFormulario"
+        android:layout_margin="@dimen/activity_vertical_margin"
+       android:background="@drawable/list_item_backgraund"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     <RadioGroup
         android:id="@+id/rgRadio"
@@ -23,13 +30,14 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/activity_vertical_margin">
         <RadioButton
             android:id="@+id/rbtnParticular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/activity_vertical_margin"
             android:text="Particular"
+            android:fontFamily="@font/segoe"
             android:checked="true"
             android:onClick="rgSeleccionCliente"
             />
@@ -37,6 +45,7 @@
             android:id="@+id/rbtnComercial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe"
             android:text="Comercial"
             android:onClick="rgSeleccionCliente"
              />
@@ -51,7 +60,9 @@
         android:id="@+id/etNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:textSize="@dimen/tamanio_texto"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/segoe"
         android:hint="Nombre"
         android:inputType="textPersonName"
         android:layout_below="@id/rgRadio" />
@@ -59,7 +70,9 @@
         android:id="@+id/etRazonSocial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/segoe"
+        android:textSize="@dimen/tamanio_texto"
         android:hint="RazonSocial"
         android:inputType="textPersonName"
         android:layout_below="@id/rgRadio" />
@@ -67,7 +80,9 @@
         android:id="@+id/etCedula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/segoe"
+        android:textSize="@dimen/tamanio_texto"
         android:hint="Cedula"
         android:inputType="number"
         android:layout_below="@id/etNombre" />
@@ -75,17 +90,20 @@
         android:id="@+id/etRut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/segoe"
+        android:textSize="@dimen/tamanio_texto"
         android:hint="Rut"
         android:inputType="number"
         android:layout_below="@id/etRazonSocial" />
     </LinearLayout>
-
     <EditText
         android:id="@+id/etDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/segoe"
+        android:textSize="@dimen/tamanio_texto"
         android:hint="Dirección"
         android:inputType="textPostalAddress"
         android:layout_below="@id/llTipo" />
@@ -93,26 +111,38 @@
         android:id="@+id/etTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_below="@+id/etDireccion"
+        android:fontFamily="@font/segoe"
+        android:textSize="@dimen/tamanio_texto"
         android:hint="Teléfono"
         android:inputType="phone" />
     <EditText
         android:id="@+id/etCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/segoe"
+        android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/etTelefono"
         android:hint="Correo"
         android:inputType="textEmailAddress" />
-    <Button
-        android:id="@+id/btnAgregarCliente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_below="@id/etCorreo"
-        android:text="Agregar" />
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:layout_below="@+id/rlFormulario">
+        <Button
+            android:id="@+id/btnAgregarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:fontFamily="@font/segoe_b"
+            android:text="Agregar" />
+    </RelativeLayout>
+</RelativeLayout>
 </ScrollView>
 
 

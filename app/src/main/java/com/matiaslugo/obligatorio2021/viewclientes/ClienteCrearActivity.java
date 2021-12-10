@@ -2,7 +2,9 @@ package com.matiaslugo.obligatorio2021.viewclientes;
 
 import androidx.annotation.NonNull;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +22,12 @@ import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.persistencia.PersistenciaCliente;
 
 public class ClienteCrearActivity extends MenuActivity {
+
     protected EditText etCedula,etNombre,etRut,etRazonSocial,etDireccion,etTelefono,etCorreo;
     protected Button btnAgregar;
     protected DTCliente unCliente;
     protected RadioButton rbParticular;
-
+    protected MenuItem mniModificar,mniEliminar,mniOpciones,mniReunion,mniGastos,mniTareas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +113,8 @@ public class ClienteCrearActivity extends MenuActivity {
         if(verificarCampos(v)){
             FabricaLogica.getControladorMantenimientoCliente(getApplicationContext()).insertarCliente(unCliente);
             Toast.makeText(this,"DTCliente agregado con éxito.", Toast.LENGTH_LONG).show();
+            Intent enviarCliente = new Intent(this, DetalleClienteActivity.class);
+            startActivity(enviarCliente);
         }
     }
 
@@ -157,8 +162,23 @@ public class ClienteCrearActivity extends MenuActivity {
 
 
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
+        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
+        mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(false);
+        mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
+        mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+        mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+
+        return true;
+
     }
 }

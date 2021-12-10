@@ -1,7 +1,9 @@
 package com.matiaslugo.obligatorio2021.compartidos.datatypes;
 
 import java.io.Serializable;
+import java.util.Date;
 
+@SuppressWarnings("deprecation")
 public class DTReunion implements Serializable {
     private int idReunion;
     private String descripcion;
@@ -10,7 +12,7 @@ public class DTReunion implements Serializable {
     private String hora;
     private String lugar;
     private boolean notificar;
-    private int idEvento;
+    private DTEvento evento;
 
     public int getIdReunion() {
         return idReunion;
@@ -68,15 +70,15 @@ public class DTReunion implements Serializable {
         this.notificar = notificar;
     }
 
-    public int getIdEvento() {
-        return idEvento;
+    public DTEvento getEvento() {
+        return evento;
     }
 
-    public void setIdEvento(int idEvento) {
-        this.idEvento = idEvento;
+    public void setEvento(DTEvento evento) {
+        this.evento = evento;
     }
 
-    public DTReunion(int idReunion, String descripcion, String objetivo, String fecha, String hora, String lugar, boolean notificar, int idEvento) {
+    public DTReunion(int idReunion, String descripcion, String objetivo, String fecha, String hora, String lugar, boolean notificar, DTEvento evento) {
         setIdReunion(idReunion);
         setDescripcion(descripcion);
         setObjetivo(objetivo);
@@ -84,7 +86,7 @@ public class DTReunion implements Serializable {
         setHora(hora);
         setLugar(lugar);
         setNotificar(notificar);
-        setIdEvento(idEvento);
+        setEvento(evento);
     }
 
     public DTReunion() {
@@ -95,6 +97,6 @@ public class DTReunion implements Serializable {
         this.hora = "N/D";
         this.lugar = "N/D";
         this.notificar = true;
-        this.idEvento = 1;
+        this.evento = new DTEvento();
     }
 }

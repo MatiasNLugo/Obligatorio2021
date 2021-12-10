@@ -1,6 +1,5 @@
 package com.matiaslugo.obligatorio2021.viewGastos;
 
-import static com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento.EXTRA_REUNION;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +16,7 @@ import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTGasto;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.DetalleReunionActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.DetalleReunionFragment;
@@ -27,7 +27,6 @@ import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 public class GastoMantenimientoActivity extends MenuActivity implements ListadoGastoFragment.OnGastoSeleccionadoListener{
 
 
-    public static final String EXTRA_GASTO = "EXTRA_GASTO";
     private MenuItem mniReunion,mniGastos,mniTareas;
     private DTGasto gasto;
     private DTEvento evento;
@@ -37,7 +36,7 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gasto_mantenimiento);
 
-        evento = (DTEvento)getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+        evento = (DTEvento)getIntent().getSerializableExtra(Constantes.EXTRA_EVENTO);
         agregarFragment();
     }
 
@@ -73,11 +72,11 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
         switch (item.getItemId()){
             case R.id.mniModificar:
                 enviar = new Intent(this, ModificarGastoActivity.class);
-                enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
-                enviar.putExtra(EXTRA_GASTO, gasto);
+                enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
+                enviar.putExtra(Constantes.EXTRA_GASTO, gasto);
                 startActivity(enviar);
                 return true;
-
+            // TODO ELIMIAR EL GASTO
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -85,7 +84,7 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
 
     public void btnOnClickAgregarGasto(View view) {
         Intent enviar = new Intent(this, CrearGastoActivity.class);
-        enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+        enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
         startActivity(enviar);
     }
 
@@ -99,7 +98,7 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
             frgGastoFragment.mostrarGasto(gasto);
         } else{
             Intent enviarGasto = new Intent(this, DetalleGastoActivity.class);
-            enviarGasto.putExtra(EXTRA_GASTO, gasto);
+            enviarGasto.putExtra(Constantes.EXTRA_GASTO, gasto);
             startActivity(enviarGasto);
         }
     }

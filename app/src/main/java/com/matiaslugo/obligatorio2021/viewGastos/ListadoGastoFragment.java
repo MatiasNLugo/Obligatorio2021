@@ -18,6 +18,7 @@ import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
 import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
 import com.matiaslugo.obligatorio2021.persistencia.PersistenciaGasto;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class ListadoGastoFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            idEvento = getArguments().getInt("idEvento",1);
+            idEvento = getArguments().getInt(Constantes.ID_EVENTO,1);
         }
     }
 

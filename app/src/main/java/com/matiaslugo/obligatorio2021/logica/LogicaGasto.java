@@ -21,7 +21,19 @@ public class LogicaGasto {
 
     public void validarGasto(DTGasto gasto) throws ExcepcionPersonalizada {
         if (gasto == null){
-            throw new ExcepcionLogica();
+            throw new ExcepcionLogica("El gato no puede ser nulo.");
+        }
+        if (gasto.getMonto() < 0 ){
+            throw new ExcepcionLogica("El monto no puede ser negativo.");
+        }
+        if ( gasto.getMotivo().isEmpty()){
+            throw new ExcepcionLogica("El Motivo del Gasto no puede estar vacío.");
+        }
+        if(gasto.getProveedor().isEmpty()){
+            throw new ExcepcionLogica("El Proveedor del Gasto no puede estar vacío.");
+        }
+        if(gasto.getUnEvento() == null){
+            throw new ExcepcionLogica("El Evento asociado al gasto no puede ser nulo.");
         }
     }
 }

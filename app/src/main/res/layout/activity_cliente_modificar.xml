@@ -9,8 +9,9 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin">
             <RadioGroup
                 android:id="@+id/rgRadio"
                 android:layout_width="match_parent"
@@ -23,11 +24,12 @@
                     android:id="@+id/rbtnParticular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin"
+                    android:fontFamily="@font/segoe"
+                    android:textSize="@dimen/tamanio_texto"
                     android:text="Particular"
                     android:checked="true"
-                    android:onClick="rgSeleccionCliente"
-                    />
+                    android:onClick="rgSeleccionCliente" />
                 <RadioButton
                     android:id="@+id/rbtnComercial"
                     android:layout_width="wrap_content"
@@ -46,7 +48,9 @@
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:fontFamily="@font/segoe"
+                    android:textSize="@dimen/tamanio_texto"
                     android:hint="Nombre"
                     android:inputType="textPersonName"
                     android:layout_below="@id/rgRadio" />
@@ -54,7 +58,9 @@
                     android:id="@+id/etRazonSocial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:fontFamily="@font/segoe"
+                    android:textSize="@dimen/tamanio_texto"
                     android:hint="RazonSocial"
                     android:inputType="textPersonName"
                     android:layout_below="@id/rgRadio" />
@@ -62,7 +68,9 @@
                     android:id="@+id/etCedula"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:fontFamily="@font/segoe"
+                    android:textSize="@dimen/tamanio_texto"
                     android:hint="Cedula"
                     android:inputType="number"
                     android:layout_below="@id/etNombre" />
@@ -70,7 +78,9 @@
                     android:id="@+id/etRut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:fontFamily="@font/segoe"
+                    android:textSize="@dimen/tamanio_texto"
                     android:hint="Rut"
                     android:inputType="number"
                     android:layout_below="@id/etRazonSocial" />
@@ -80,7 +90,9 @@
                 android:id="@+id/etDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:hint="Dirección"
                 android:inputType="textPostalAddress"
                 android:layout_below="@id/llTipo" />
@@ -88,7 +100,9 @@
                 android:id="@+id/etTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:layout_below="@+id/etDireccion"
                 android:hint="Teléfono"
                 android:inputType="phone" />
@@ -96,7 +110,9 @@
                 android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:layout_below="@id/etTelefono"
                 android:hint="Correo"
                 android:inputType="textEmailAddress" />
@@ -104,7 +120,9 @@
                 android:id="@+id/btnAgregarCliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
                 android:layout_below="@id/etCorreo"
                 android:text="Modificar" />
         </RelativeLayout>

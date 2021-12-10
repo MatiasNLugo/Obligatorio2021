@@ -12,5 +12,6 @@ public interface IPeristenciaTarea {
 
     ArrayList<DTTarea> listaTareas(int idEvento) throws ExcepcionPersistencia;
     long insertarTarea(DTTarea tarea ) throws ExcepcionPersistencia;
+    long cambiarEstadoTarea(DTTarea tarea) throws ExcepcionPersistencia;
 
 }

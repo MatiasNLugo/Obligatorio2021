@@ -8,5 +8,5 @@ import java.util.ArrayList;
 public interface IControladorMantenimientoTarea {
     ArrayList<DTTarea> listaTareas(int idEvento) throws ExcepcionPersistencia;
     long insertarTarea(DTTarea tarea ) throws ExcepcionPersistencia;
-
+    long cambiarEstadoTarea(DTTarea tarea) throws ExcepcionPersistencia;
 }

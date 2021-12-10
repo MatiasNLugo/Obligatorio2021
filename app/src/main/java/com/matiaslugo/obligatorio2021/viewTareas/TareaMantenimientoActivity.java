@@ -10,11 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTTarea;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.CrearReunionActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.DetalleReunionFragment;
@@ -33,7 +35,7 @@ public class TareaMantenimientoActivity extends MenuActivity implements ListadoT
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarea_mantenimiento);
 
-        evento = (DTEvento) getIntent().getSerializableExtra(EventoMantenimiento.EXTRA_EVENTO);
+        evento = (DTEvento) getIntent().getSerializableExtra(Constantes.EXTRA_EVENTO);
         agregarFragmento();
 
 
@@ -70,9 +72,9 @@ public class TareaMantenimientoActivity extends MenuActivity implements ListadoT
 
     }
 
-    public void btnOnClickAgregarReunion(View view) {
+    public void btnOnClickAgregarTarea(View view) {
         Intent enviar = new Intent(this, CrearTareaActivity.class);
-        enviar.putExtra(EventoMantenimiento.EXTRA_EVENTO,evento);
+        enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
         startActivity(enviar);
     }
 }

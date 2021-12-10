@@ -12,6 +12,7 @@ import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTGasto;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.DetalleReunionFragment;
 import com.matiaslugo.obligatorio2021.viewreuniones.ModificarReunionActivity;
@@ -34,7 +35,7 @@ public class DetalleGastoActivity extends MenuActivity {
         frgDetalleGasto = (DetalleGastoFragment)
                 getSupportFragmentManager().findFragmentById(R.id.frmDetalleGastos);
         gasto = (DTGasto)
-                getIntent().getSerializableExtra(GastoMantenimientoActivity.EXTRA_GASTO);
+                getIntent().getSerializableExtra(Constantes.EXTRA_GASTO);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class DetalleGastoActivity extends MenuActivity {
         switch(item.getItemId()) {
             case R.id.mniModificar:
                 enviar = new Intent(this, ModificarGastoActivity.class);
-                enviar.putExtra(GastoMantenimientoActivity.EXTRA_GASTO, gasto);
+                enviar.putExtra(Constantes.EXTRA_GASTO, gasto);
                 startActivity(enviar);
                 return true;
             default:

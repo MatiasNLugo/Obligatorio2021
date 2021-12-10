@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/drawable-anydpi/ic_checked.xml" value="0.37037037037037035" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/drawable-anydpi/ic_checked_true.xml" value="0.37037037037037035" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.37037037037037035" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/drawable/list_item_backgraund.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/drawable/txt_view_gb.xml" value="0.37037037037037035" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_cliente_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_evento_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_gasto_mantenimiento.xml" value="0.183203125" />
@@ -29,21 +33,23 @@
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_evento_mantenimiento.xml" value="0.2359375" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_gasto_mantenimiento.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_listar_eventos.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_listar_tareas.xml" value="0.3625" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_menu.xml" value="0.2359375" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_menu_navegacion.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_menu_principal.xml" value="0.25" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_modificar_evento.xml" value="0.536" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_modificar_reunion.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_reunion_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_tarea_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_b.xml" value="0.264" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_c.xml" value="0.25" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_detalle.xml" value="0.264" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_detalle.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_lista.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_listado.xml" value="0.12760416666666666" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_comercial_cliente_detalle.xml" value="0.15104166666666666" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_evento.xml" value="0.264" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_evento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_gasto.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_reunion.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_home.xml" value="0.25" />
@@ -57,11 +63,13 @@
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_Evento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_cliente.xml" value="0.264" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_evento.xml" value="0.2" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_gastos.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_gastos.xml" value="0.4" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_reunion.xml" value="0.4" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_tarea.xml" value="0.264" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/list_item_tarea.xml" value="0.536" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/lista_fragment_cliente.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/toolbar.xml" value="0.152" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/menu-night/menu_main.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/menu/menu_contextual_lista.xml" value="0.2" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/menu/menu_main.xml" value="0.536" />
       </map>
     </option>

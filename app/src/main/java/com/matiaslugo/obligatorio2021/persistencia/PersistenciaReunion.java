@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersistencia;
 
@@ -70,6 +71,45 @@ public class PersistenciaReunion implements IPeristenciaReunion{
         }
     }
 
+    public ArrayList<DTReunion> listaReuniones() throws ExcepcionPersistencia {
+        DataBaseHelper dbHelper ;
+        SQLiteDatabase db ;
+        ArrayList<DTReunion> reuniones = new ArrayList<>();
+        DTReunion unaDTReunion = null;
+        Cursor cursor = null;
+        try {
+            dbHelper = new DataBaseHelper(context);
+            db  = dbHelper.getReadableDatabase();
+
+            //cursor = db.rawQuery("SELECT * FROM " + DB.TABLA_REUNIONES + " WHERE idEvento = " + idEvento + ";",
+            //      null);
+            cursor = db.query(DB.TABLA_REUNIONES,DB.Reuniones.COLUMNAS,null, null, null,null,DB.Reuniones._ID + " DESC", null );
+            while (cursor.moveToNext()){
+                unaDTReunion = new DTReunion();
+                unaDTReunion =  instanciarReunion(cursor);
+
+                reuniones.add(unaDTReunion);
+            }
+
+            cursor.close();
+
+
+            return reuniones;
+
+        }catch (Exception ex ){
+            throw  new ExcepcionPersistencia( "No se pudo listar las reuniones.");
+
+        } finally {
+            {
+                if (cursor != null){
+                    cursor.close();
+                }
+                // if(db != null) db.close();
+                //if (dbHelper != null) dbHelper.close();
+            }
+        }
+    }
+
     public long insertarReunion(DTReunion DTReunion){
         long res = 0;
         DataBaseHelper dbHelper = new DataBaseHelper(context);
@@ -88,7 +128,7 @@ public class PersistenciaReunion implements IPeristenciaReunion{
             values.put(DB.Reuniones.HORA, DTReunion.getHora());
             values.put(DB.Reuniones.DESCRIPCION, DTReunion.getDescripcion());
             values.put(DB.Reuniones.LUGAR, DTReunion.getLugar());
-            values.put(DB.Reuniones.IDEVENTO, DTReunion.getIdEvento());
+            values.put(DB.Reuniones.IDEVENTO, DTReunion.getEvento().getIdEvento());
             values.put(DB.Reuniones.NOTIFICAR_CLIENTE,notificar);
             values.put(DB.Reuniones.OBJETIVO, DTReunion.getObjetivo());
 
@@ -146,8 +186,11 @@ public class PersistenciaReunion implements IPeristenciaReunion{
         int columnaAvisarCliente = cursor.getColumnIndex(DB.Reuniones.NOTIFICAR_CLIENTE);
 
         boolean notificar = (cursor.getInt(columnaAvisarCliente)==1) ?true : false;
+
+        DTEvento evento = new DTEvento();
+        evento.setIdEvento(cursor.getInt(columnaIdEvento));
         DTReunion reunion = new DTReunion(cursor.getInt(columnaId),cursor.getString(columnaDescripcion),
-                cursor.getString(columnaObjetivo),cursor.getString(columnaFecha),cursor.getString(columnaHora),cursor.getString(columnaLugar),notificar,cursor.getInt(columnaIdEvento));
+                cursor.getString(columnaObjetivo),cursor.getString(columnaFecha),cursor.getString(columnaHora),cursor.getString(columnaLugar),notificar,evento);
 
         return reunion;
 

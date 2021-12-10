@@ -28,13 +28,12 @@ public class DetalleClienteFragment extends Fragment {
     View view;
 
     private TextView tvIdCliente, tvNombreCliete,tvCedula,tvDireccion,tvTelefono,tvCorreo
-            ,tvRut, tvRazonSocial;
+            ,tvRut, tvRazonSocial,tvTituloCedula,tvTituloNombre,tvTituloRut,tvTituloRazonSocial;
 
 
 
 
     public static DetalleClienteFragment newInstance(DTCliente cliente){
-
         return new DetalleClienteFragment();
 
     }
@@ -69,6 +68,10 @@ public class DetalleClienteFragment extends Fragment {
        tvDireccion = getView().findViewById(R.id.tvDireccion);
        tvTelefono = getView().findViewById(R.id.tvTelefono);
        tvCorreo = getView().findViewById(R.id.tvCorreo);
+       tvTituloCedula = getView().findViewById(R.id.tvTituloCedula);
+       tvTituloNombre = getView().findViewById(R.id.tvTituloNombre);
+       tvTituloRut = getView().findViewById(R.id.tvTituloRut);
+       tvTituloRazonSocial = getView().findViewById(R.id.tvTituloRazonSocial);
     }
 
     public  void mostrarCliente(DTCliente cliente){
@@ -86,8 +89,13 @@ public class DetalleClienteFragment extends Fragment {
 
             tvCedula.setVisibility(View.VISIBLE);
             tvNombreCliete.setVisibility(View.VISIBLE);
+            tvTituloCedula.setVisibility(view.VISIBLE);
+            tvTituloNombre.setVisibility(view.VISIBLE);
+
             tvRut.setVisibility(View.GONE);
             tvRazonSocial.setVisibility(View.GONE);
+            tvTituloRazonSocial.setVisibility(View.GONE);
+            tvTituloRut.setVisibility(View.GONE);
         }
         if (cliente instanceof DTComercial){
             tvRut.setText(String.valueOf(((DTComercial) cliente).getRut()));
@@ -95,8 +103,14 @@ public class DetalleClienteFragment extends Fragment {
 
             tvCedula.setVisibility(View.GONE);
             tvNombreCliete.setVisibility(View.GONE);
+            tvTituloCedula.setVisibility(view.GONE);
+            tvTituloNombre.setVisibility(view.GONE);
+
+
             tvRut.setVisibility(View.VISIBLE);
             tvRazonSocial.setVisibility(View.VISIBLE);
+            tvTituloRazonSocial.setVisibility(View.VISIBLE);
+            tvTituloRut.setVisibility(View.VISIBLE);
 
         }
     }

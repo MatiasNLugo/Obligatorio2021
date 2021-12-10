@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 public interface IControladorMantenimientoGasto {
     ArrayList<DTGasto> listaGastos(int idEvento) throws ExcepcionPersonalizada;
-    long insertarGasto(DTGasto gasto) throws ExcepcionPersistencia;
+    long insertarGasto(DTGasto gasto) throws ExcepcionPersonalizada;
 
 }

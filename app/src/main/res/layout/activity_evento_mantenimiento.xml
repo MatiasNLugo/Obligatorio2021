@@ -24,7 +24,6 @@
         android:layout_height="match_parent"
         android:name="com.matiaslugo.obligatorio2021.viewseventos.ListarEventosFragment"
         tools:layout="@layout/fragment_listar_evento">
-
     </androidx.fragment.app.FragmentContainerView>
 
 </RelativeLayout>

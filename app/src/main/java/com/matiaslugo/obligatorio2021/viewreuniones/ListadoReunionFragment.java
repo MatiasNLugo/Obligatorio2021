@@ -14,7 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
@@ -23,6 +26,7 @@ import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersisten
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
 import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
 import com.matiaslugo.obligatorio2021.persistencia.PersistenciaReunion;
+import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 
 import java.util.ArrayList;
 
@@ -36,12 +40,14 @@ public class ListadoReunionFragment extends Fragment {
 
     }
 
+    private Switch swPendientes;
     private int idEvento;
     private FloatingActionButton btnAgregar;
     private ListView lv;
     private SearchView searchView;
     private AdaptadorReuniones adapter;
     private ArrayList<DTReunion> reuniones = new ArrayList<>();
+    private ArrayList<DTReunion> pendientes ;
     private View view;
     protected OnReunionSeleccionadoListener onReunionSeleccionadoListener;
 
@@ -54,7 +60,7 @@ public class ListadoReunionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            idEvento = getArguments().getInt("idEvento",1);
+            idEvento = getArguments().getInt(Constantes.ID_EVENTO,1);
         }
 
     }
@@ -79,24 +85,42 @@ public class ListadoReunionFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         try {
-
+            swPendientes = (Switch)getView().findViewById(R.id.swPendientes);
             lv = (ListView) getView().findViewById(R.id.lvReuniones);
             reuniones = FabricaLogica.getControladorMantenimientoReunion(getContext()).listaReuniones(idEvento);
 
             AdaptadorReuniones adapter = new AdaptadorReuniones(getContext(), reuniones);
             lv.setAdapter(adapter);
-        } catch (Exception ex){
-            try {
-                throw new ExcepcionPersonalizada("No se pudo crear el fragmento");
-            } catch (ExcepcionPersonalizada excepcionPersonalizada) {
-                excepcionPersonalizada.printStackTrace();
-            }
-
+        } catch (ExcepcionPersonalizada ex){
+            Toast.makeText(getContext(), "No se pudo crear el fragmento", Toast.LENGTH_SHORT).show();
         }
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 lvReunionOnItemClick(parent,view,position,id);
+            }
+        });
+
+        swPendientes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    try {
+                        if (pendientes == null) {
+                            pendientes = FabricaLogica.getControladorMantenimientoReunion(getContext()).listarPendientes(reuniones);
+                        }
+                        adapter = new AdaptadorReuniones(getContext(), pendientes);
+                        lv.setAdapter(adapter);
+
+                    } catch (ExcepcionPersonalizada excepcionPersonalizada) {
+                        Toast.makeText(getContext(), excepcionPersonalizada.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                if (!isChecked){
+                    adapter = new AdaptadorReuniones(getContext(), reuniones);
+                    lv.setAdapter(adapter);
+                }
             }
         });
 
@@ -113,7 +137,7 @@ public class ListadoReunionFragment extends Fragment {
     }
 
     public interface OnReunionSeleccionadoListener{
-        void onReunionSelecionado(DTReunion DTReunion);
+        void onReunionSelecionado(DTReunion reunion);
     }
 
 

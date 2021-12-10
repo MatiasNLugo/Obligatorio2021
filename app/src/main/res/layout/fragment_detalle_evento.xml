@@ -34,6 +34,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/imvAvatar"
             android:fontFamily="@font/segoe"
             android:text="ID: "/>
@@ -42,6 +43,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
             android:layout_below="@id/imvAvatar"
             android:text="Id: 345667"/>
@@ -56,6 +58,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:text="Titulo: "
             android:fontFamily="@font/segoe"
             android:layout_below="@id/tvIdEvento"/>
@@ -64,6 +67,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
             android:text="Titulo"
             android:layout_below="@id/tvIdEvento"/>
@@ -77,6 +81,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/tvTitulo"
             android:fontFamily="@font/segoe"
             android:text="Fecha: " />
@@ -85,6 +90,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanio_texto"
         android:fontFamily="@font/segoe_b"
         android:layout_below="@id/tvTitulo"
         android:text="Fecha" />
@@ -98,6 +104,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/tvFecha"
             android:fontFamily="@font/segoe"
             android:text="Hora: "/>
@@ -106,6 +113,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
         android:layout_below="@id/tvFecha"
         android:text="Hora"/>
@@ -120,6 +128,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe"
             android:layout_below="@id/tvHora"
             android:text="Duración: "/>
@@ -128,6 +137,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/tvHora"
             android:fontFamily="@font/segoe_b"
         android:text="Duracion: 160 hs"/>
@@ -136,6 +146,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_marginLeft="8dp"
             android:fontFamily="@font/segoe"
             android:layout_below="@id/tvHora"
@@ -150,6 +161,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/tvDuracion"
         android:fontFamily="@font/segoe"
         android:text="Tipo de Reunión:"/>
@@ -158,6 +170,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/tvDuracion"
             android:fontFamily="@font/segoe_b"
             android:text="Tipo de Reunión:"/>
@@ -172,6 +185,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanio_texto"
         android:fontFamily="@font/segoe"
         android:layout_below="@id/tvTipo"
         android:text="Cantidad de Asistentes: "/>
@@ -180,6 +194,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
             android:layout_below="@id/tvTipo"
             android:text="Cantidad de Asistentes: "/>
@@ -194,6 +209,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/tvAsistetes"
         android:fontFamily="@font/segoe"
         android:text="ID del Cliente: "/>
@@ -202,6 +218,7 @@
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/tvAsistetes"
             android:fontFamily="@font/segoe_b"
             android:text="ID del Cliente: "/>
@@ -216,6 +233,7 @@
             android:id="@+id/tv9"
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
+            android:textSize="@dimen/tamanio_texto"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_below="@id/tvIdCliente"
@@ -226,6 +244,7 @@
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/tvIdCliente"
         android:fontFamily="@font/segoe_b"
         android:text="Cliente: "/>
