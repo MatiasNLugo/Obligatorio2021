@@ -187,28 +187,7 @@ public class PersistenciaCliente extends DataBaseHelper implements IPersistencia
 
     }
 
-    public boolean verificarDependenciaCliente(int idCliente){
 
-        Boolean res = false;
-        DataBaseHelper dbHelper = new DataBaseHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor;
-        try {
-            cursor = db.rawQuery("SELECT * FROM Eventos WHERE idCliente = " + idCliente + ";", null);
-            if (cursor.moveToFirst()) {
-                res = true;
-            }
-            cursor.close();
-            return res;
-        } catch (Exception ex){
-            ex.toString();
-
-    } finally {
-
-            db.close();
-            return res;
-        }
-    }
 
     public DTCliente buscarCliente(int id) {
         DataBaseHelper dbHelper = new DataBaseHelper(context);

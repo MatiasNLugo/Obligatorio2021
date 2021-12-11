@@ -48,17 +48,13 @@ public class ControladorMantenimientoCliente implements IControladorMantenimient
 
     @Override
     public long eliminarCliente(int idCliente) throws ExcepcionPersonalizada {
-        if (FabricaPersistencia.getPersistenciaEvento(context).verificarDependencia(idCliente)){
+        if (!FabricaPersistencia.getPersistenciaEvento(context).verificarDependencia(idCliente)){
             return FabricaPersistencia.getPersistenciaCliente(context).eliminarCliente(idCliente);
     }else {
-        throw new ExcepcionLogica("Error al verificar el cliente.");
+        throw new ExcepcionLogica("Cliente posee Eventos asociados.");
         }
     }
 
-    @Override
-    public boolean verificarDependenciaCliente(int idCliente) throws ExcepcionPersonalizada {
-        return FabricaPersistencia.getPersistenciaCliente(context).verificarDependenciaCliente(idCliente);
-    }
 
     @Override
     public DTCliente buscarCliente(int id) throws ExcepcionPersonalizada {

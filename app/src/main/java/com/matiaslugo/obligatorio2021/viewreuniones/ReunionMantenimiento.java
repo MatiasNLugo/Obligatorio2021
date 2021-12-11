@@ -47,9 +47,14 @@ public class ReunionMantenimiento extends MenuActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
+        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
+        mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
+        mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+        mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
         DetalleReunionFragment frgDetalleReunion = (DetalleReunionFragment) getSupportFragmentManager().findFragmentById(R.id.frmDetallereunion);
         if(frgDetalleReunion == null){
-            getMenuInflater().inflate(R.menu.menu_main,menu);
             mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
             mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
             mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);

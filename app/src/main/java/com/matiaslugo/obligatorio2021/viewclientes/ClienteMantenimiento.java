@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTCliente;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
 import com.matiaslugo.obligatorio2021.persistencia.FabricaPersistencia;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
@@ -82,7 +83,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
-                            FabricaPersistencia.getPersistenciaCliente(getApplicationContext())
+                            FabricaLogica.getControladorMantenimientoCliente(getApplicationContext())
                                     .eliminarCliente(cliente.getIdCliente());
                             finish();
                         } catch (ExcepcionPersonalizada excepcionPersonalizada) {

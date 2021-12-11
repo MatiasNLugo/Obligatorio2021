@@ -27,7 +27,7 @@ import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
 public class GastoMantenimientoActivity extends MenuActivity implements ListadoGastoFragment.OnGastoSeleccionadoListener{
 
 
-    private MenuItem mniReunion,mniGastos,mniTareas;
+    private MenuItem mniReunion,mniGastos,mniTareas, mniModificar, mniEliminar,mniOpciones;
     private DTGasto gasto;
     private DTEvento evento;
     private Intent enviar;
@@ -67,6 +67,9 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
         mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
         mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
         mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
+        mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
+        mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(false);
         DetalleGastoFragment frgDetalleGasto = (DetalleGastoFragment) getSupportFragmentManager().findFragmentById(R.id.frmDetalleGastos);
         if(frgDetalleGasto == null){
 

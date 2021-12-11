@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/botones"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -26,12 +27,14 @@
         android:id="@+id/frmListadoGastos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="60"
         android:name="com.matiaslugo.obligatorio2021.viewGastos.ListadoGastoFragment"
         tools:layout="@layout/list_item_gastos"/>
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frmDetalleGastos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="40"
             android:name="com.matiaslugo.obligatorio2021.viewGastos.DetalleGastoFragment"
             tools:layout="@layout/fragment_detalle_gasto"/>
 

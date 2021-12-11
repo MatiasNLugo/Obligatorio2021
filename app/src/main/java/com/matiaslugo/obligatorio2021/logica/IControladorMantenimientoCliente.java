@@ -10,6 +10,5 @@ public interface IControladorMantenimientoCliente {
     ArrayList<DTCliente> listaClientes() throws ExcepcionPersonalizada;
     boolean modificarCliente(DTCliente unCliente) throws  ExcepcionPersonalizada;
     long eliminarCliente(int idCliente) throws  ExcepcionPersonalizada;
-    boolean verificarDependenciaCliente(int idCliente) throws  ExcepcionPersonalizada;
     DTCliente buscarCliente(int id) throws  ExcepcionPersonalizada;
 }
