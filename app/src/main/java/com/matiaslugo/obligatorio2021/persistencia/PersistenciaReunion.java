@@ -25,7 +25,6 @@ public class PersistenciaReunion implements IPeristenciaReunion{
 
 
     private Context context;
-    public static int id = 3;
 
     public PersistenciaReunion(@Nullable Context context) {
         this.context = context;
@@ -122,8 +121,7 @@ public class PersistenciaReunion implements IPeristenciaReunion{
             if(DTReunion.isNotificar() ){
                 notificar = 1;
             }
-            //values.put("idEvento", null);
-            values.put(DB.Reuniones._ID,id);
+
             values.put(DB.Reuniones.FECHA, DTReunion.getFecha());
             values.put(DB.Reuniones.HORA, DTReunion.getHora());
             values.put(DB.Reuniones.DESCRIPCION, DTReunion.getDescripcion());
@@ -133,9 +131,7 @@ public class PersistenciaReunion implements IPeristenciaReunion{
             values.put(DB.Reuniones.OBJETIVO, DTReunion.getObjetivo());
 
             res = db.insert(DB.TABLA_REUNIONES, null, values);
-            if(res > 1 ){
-                id += 1;
-            }
+
         } catch (Exception ex){
             ex.toString();
         } finally {

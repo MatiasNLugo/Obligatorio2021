@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:onClick="btnOnClickAgregarReunion"
+        android:onClick="btnOnClickAgregarGasto"
         android:layout_margin="16dp"
         android:layout_gravity="bottom|right"
         android:layout_alignParentBottom="true"
@@ -21,20 +21,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frmListadoGastos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="30"
             android:name="com.matiaslugo.obligatorio2021.viewGastos.ListadoGastoFragment"
-            tools:layout="@layout/list_item_gastos"/>
+            tools:layout="@layout/list_item_gastos">
+        </androidx.fragment.app.FragmentContainerView>
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frmDetalleGastos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/botones"
+            android:layout_weight="130"
             android:name="com.matiaslugo.obligatorio2021.viewGastos.DetalleGastoFragment"
             tools:layout="@layout/fragment_detalle_gasto"/>
-
     </LinearLayout>
 
 </RelativeLayout>

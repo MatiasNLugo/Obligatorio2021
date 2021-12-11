@@ -2,12 +2,14 @@ package com.matiaslugo.obligatorio2021.viewGastos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
@@ -54,20 +56,40 @@ public class CrearGastoActivity extends AppCompatActivity {
     }
 
     public void btnOnClickAgregarGasto(View view) throws ExcepcionPersonalizada {
+        try {
+            verificarCampos();
         gasto = new DTGasto();
         gasto.setUnEvento(evento);
         gasto.setMonto(Float.parseFloat(etMonto.getText().toString()));
         gasto.setMotivo(etMotivo.getText().toString());
         gasto.setProveedor(etProveedor.getText().toString());
 
-        verificarCampos();
-        FabricaLogica.getControladorMantenimientoGasto(this).insertarGasto(gasto);
 
+
+            FabricaLogica.getControladorMantenimientoGasto(this).insertarGasto(gasto);
+
+            Toast.makeText(getApplicationContext(), "Gasto Agregado con Éxito.", Toast.LENGTH_SHORT).show();
+            Intent enviar = new Intent(this, GastoMantenimientoActivity.class);
+            enviar.putExtra(Constantes.EXTRA_EVENTO, evento);
+            startActivity(enviar);
+        } catch(ExcepcionPersonalizada excepcionPersonalizada){
+            Toast.makeText(this, excepcionPersonalizada.getMessage(), Toast.LENGTH_LONG).show();
+        } catch (Exception ex) {
+            Toast.makeText(this, "No se pudo crear el gasto", Toast.LENGTH_LONG).show();
+
+        }
     }
 
     private void verificarCampos(){
+        String motivo, proveedor, monto;
+        motivo = etMotivo.getText().toString();
+        proveedor = etProveedor.getText().toString();
+        monto = etMonto.getText().toString();
 
-    }
+        if(motivo.isEmpty()) etMotivo.setError("Debe ingresar un Motivo.");
+        if(proveedor.isEmpty()) etProveedor.setError("Debe ingresar un Proveedor.");
+        if(monto.isEmpty()) etMonto.setError("Debe ingresar un Monto.");
+     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

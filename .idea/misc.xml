@@ -11,13 +11,13 @@
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_cliente_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_evento_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_gasto_mantenimiento.xml" value="0.183203125" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_reunion_mantenimiento.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_reunion_mantenimiento.xml" value="0.4" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_reunoin_mantenimiento.xml" value="0.21953125" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-land/activity_tarea_mantenimiento.xml" value="0.183203125" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_cliente_mantenimiento.xml" value="0.1875" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_evento_mantenimiento.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_gasto_mantenimiento.xml" value="0.1875" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_reunion_mantenimiento.xml" value="0.1875" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_reunion_mantenimiento.xml" value="0.3153409090909091" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout-large-port/activity_tarea_mantenimiento.xml" value="0.1875" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_cliente_crear.xml" value="0.264" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/activity_cliente_mantenimiento.xml" value="0.25" />
@@ -49,8 +49,8 @@
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_cliente_listado.xml" value="0.12760416666666666" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_comercial_cliente_detalle.xml" value="0.15104166666666666" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_evento.xml" value="0.1" />
-        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_gasto.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_evento.xml" value="0.3055045871559633" />
+        <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_gasto.xml" value="0.48826979472140764" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_detalle_reunion.xml" value="0.1" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Android/AndroidStudioProjects/Obligatorio2021/app/src/main/res/layout/fragment_listado_gastos.xml" value="0.136" />

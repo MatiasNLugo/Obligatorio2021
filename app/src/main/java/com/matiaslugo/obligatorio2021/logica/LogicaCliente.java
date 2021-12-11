@@ -62,7 +62,8 @@ class LogicaCliente {
              throw new ExcepcionLogica("El Teléfono no es correcto.");
          }
 
-         if(cliente.getCorreo() == null || !cliente.getCorreo().matches("^[\\w-+]+(\\.[\\w-]{1,62}){0,126}@[\\w-]{1,63}(\\.[\\w-]{1,62})+/[\\w-]+$"))
+         //!cliente.getCorreo().matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")
+         if(cliente.getCorreo() == null || cliente.getCorreo().isEmpty())
          {
              throw  new ExcepcionLogica("El Correo no es correcto.");
          }

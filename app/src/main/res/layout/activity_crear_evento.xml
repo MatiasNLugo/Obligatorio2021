@@ -97,7 +97,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/llDuracion"
                 android:hint="Cantidad de Asistentes"
-                android:text="0"
                 android:inputType="number" />
             <TextView
                 android:id="@+id/tvTipoEvento"

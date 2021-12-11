@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,7 +54,7 @@ public class CrearTareaActivity extends MenuActivity {
                     btnAgregarTareaOnClickListener(v);
                 } catch (ExcepcionPersonalizada excepcionPersonalizada) {
                     String mensaje = excepcionPersonalizada.getMessage().toString();
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -93,6 +94,11 @@ public class CrearTareaActivity extends MenuActivity {
 
         verificarCampos();
         FabricaLogica.getControladorMantenimientoTarea(getApplicationContext()).insertarTarea(tarea);
+        Toast.makeText(getApplicationContext(), "Tarea Creada con Exito.", Toast.LENGTH_LONG).show();
+
+        Intent enviar = new Intent(getApplicationContext(),ListarTareasActivity.class);
+        enviar.putExtra(Constantes.EXTRA_EVENTO, tarea.getUnEvento());
+        startActivity(enviar);
 
 
     }

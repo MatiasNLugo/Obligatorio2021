@@ -26,7 +26,6 @@ public class PersistenciaGasto implements  IPersistenciaGasto{
     }
 
     private Context context;
-    public static int id = 3;
 
     public PersistenciaGasto(@Nullable Context context) {
         this.context = context.getApplicationContext();
@@ -62,16 +61,14 @@ public class PersistenciaGasto implements  IPersistenciaGasto{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         try{
-            values.put(DB.Gastos._ID,id);
+
             values.put(DB.Gastos.IDEVENTO,gasto.getUnEvento().getIdEvento());
             values.put(DB.Gastos.MONTO,gasto.getMonto());
             values.put(DB.Gastos.MOTIVO, gasto.getMotivo());
             values.put(DB.Gastos.PROVEEDOR, gasto.getProveedor());
 
             res = db.insert(DB.TABLA_GASTOS,null,values);
-            if(res > 1 ){
-                id += 1;
-            }
+
             return res;
         } catch (Exception ex){
             throw  new ExcepcionPersistencia("No se pudo crear el Gasto.");

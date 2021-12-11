@@ -75,7 +75,7 @@ public class ModificarEventoActivity extends MenuActivity {
         etTitulo.setText(evento.getTitulo());
         etFecha.setText(evento.getFecha());
         etHora.setText(evento.getHora());
-        spDuracion.setSelection(Integer.parseInt(evento.getDuracion())-1);
+        spDuracion.setSelection((Integer.parseInt(evento.getDuracion())/30)-1);
         etAsistentes.setText(String.valueOf(evento.getCantAsistentes()));
         int index = 0;
         for(DTCliente item : clientes){
@@ -170,12 +170,11 @@ public class ModificarEventoActivity extends MenuActivity {
                    break;
            }
 
-
-
            FabricaLogica.getControladorMantenimientoEvento(getApplicationContext()).modificarEvento(evento);
-           Toast.makeText(this, "Evento creado con exito.", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "Evento modificado con exito.", Toast.LENGTH_SHORT).show();
            Intent enviarCliente = new Intent(this, EventoMantenimiento.class);
            startActivity(enviarCliente);
+
            }
 
        } catch (ExcepcionPersonalizada ex){
@@ -206,24 +205,18 @@ public class ModificarEventoActivity extends MenuActivity {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, nombres);
             spClientes.setAdapter(adapter);
-            //adapter.clear();
-            for (int i = 1; i < 100; i++) {
-                if (i < 10) {
-                    String hora = "0" + i;
-                    horas.add(hora);
-                } else {
-                    horas.add(String.valueOf(i));
-                }
+
+            for (int i = 30; i < 500; i+= 30) {
+                horas.add(String.valueOf(i));
             }
             ArrayAdapter<String> adapterDuracion = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, horas);
             spDuracion.setAdapter(adapterDuracion);
 
-
         } catch (ExcepcionPersonalizada ex){
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
 
         } catch (Exception e){
-            Toast.makeText(getApplicationContext(), "No se pudo crear los spinners.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "No se pudo crear los spinners.", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -238,12 +231,20 @@ public class ModificarEventoActivity extends MenuActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                if(minute < 10){
-                    etHora.setText(hourOfDay +":0"+ (minute) );
+                StringBuilder unaHora = new StringBuilder();
+                if(hourOfDay < 10 ) {
+                    unaHora.append("0").append(hourOfDay);
                 } else {
-                    etHora.setText(hourOfDay +":"+ (minute));
+                    unaHora.append(hourOfDay).append(":");
                 }
+                if (minute < 10) {
+                    unaHora.append(":0").append(minute);
+                } else {
+                    unaHora.append(minute);
+                }
+                etHora.setText(unaHora);
             }
+
         },hora,minutos,false);
         timePickerDialog.show();
     }
@@ -277,7 +278,6 @@ public class ModificarEventoActivity extends MenuActivity {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         setTitle("Modificar Evento");
         return true;
-
     }
 
     @Override
@@ -307,6 +307,10 @@ public class ModificarEventoActivity extends MenuActivity {
         }
         if (hora.isEmpty()){
             etHora.setError("Debe ingresar una Hora");
+            return false;
+        }
+        if(asistentes.isEmpty()){
+            etAsistentes.setError("Debe ingresar cantidad de asistentes");
             return false;
         }
         try {

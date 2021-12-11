@@ -22,12 +22,11 @@
         android:layout_marginTop="8dp"
         android:outlineAmbientShadowColor="@color/black"
         android:layout_width="@dimen/ancho_avatar"
-        android:layout_height="@dimen/ancho_avatar"
-        android:src="@drawable/evento_1" />
+        android:layout_height="@dimen/ancho_avatar" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv1"
@@ -45,8 +44,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
-            android:layout_below="@id/imvAvatar"
-            android:text="Id: 345667"/>
+            android:layout_below="@id/imvAvatar" />
 
     </LinearLayout>
     <LinearLayout
@@ -69,7 +67,6 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
-            android:text="Titulo"
             android:layout_below="@id/tvIdEvento"/>
     </LinearLayout>
     <LinearLayout
@@ -93,7 +90,7 @@
         android:textSize="@dimen/tamanio_texto"
         android:fontFamily="@font/segoe_b"
         android:layout_below="@id/tvTitulo"
-        android:text="Fecha" />
+         />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,7 +113,7 @@
             android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
         android:layout_below="@id/tvFecha"
-        android:text="Hora"/>
+        />
 
     </LinearLayout>
     <LinearLayout
@@ -139,8 +136,7 @@
         android:layout_height="wrap_content"
             android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/tvHora"
-            android:fontFamily="@font/segoe_b"
-        android:text="Duracion: 160 hs"/>
+            android:fontFamily="@font/segoe_b" />
         <TextView
             android:id="@+id/tv10"
             android:gravity="center_horizontal"
@@ -173,7 +169,7 @@
             android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/tvDuracion"
             android:fontFamily="@font/segoe_b"
-            android:text="Tipo de Reunión:"/>
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -196,8 +192,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/tamanio_texto"
             android:fontFamily="@font/segoe_b"
-            android:layout_below="@id/tvTipo"
-            android:text="Cantidad de Asistentes: "/>
+            android:layout_below="@id/tvTipo" />
     </LinearLayout>
 
     <LinearLayout
@@ -220,8 +215,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/tamanio_texto"
             android:layout_below="@id/tvAsistetes"
-            android:fontFamily="@font/segoe_b"
-            android:text="ID del Cliente: "/>
+            android:fontFamily="@font/segoe_b" />
 
     </LinearLayout>
 
@@ -246,8 +240,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/tamanio_texto"
         android:layout_below="@id/tvIdCliente"
-        android:fontFamily="@font/segoe_b"
-        android:text="Cliente: "/>
+        android:fontFamily="@font/segoe_b" />
 
     </LinearLayout>
 

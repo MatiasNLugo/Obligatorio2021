@@ -3,19 +3,26 @@ package com.matiaslugo.obligatorio2021.viewseventos;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersistencia;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
+import com.matiaslugo.obligatorio2021.persistencia.FabricaPersistencia;
 import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
 import com.matiaslugo.obligatorio2021.R;
 import com.matiaslugo.obligatorio2021.viewGastos.GastoMantenimientoActivity;
+import com.matiaslugo.obligatorio2021.viewTareas.ListarTareasActivity;
 import com.matiaslugo.obligatorio2021.viewTareas.TareaMantenimientoActivity;
 import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
 
@@ -30,6 +37,11 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
         setContentView(R.layout.activity_evento_mantenimiento);
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     public void btnOnClickAgregarEvento(View view) {
@@ -52,6 +64,31 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
         return true;
     }
 
+    private void mostrarDialogo(){
+        new AlertDialog.Builder(this)
+                .setTitle("Eliminar el Evento")
+                .setMessage("¿Desea eliminar el evento y sus gastos, tareas y reuniones asociadas?")
+                .setPositiveButton("Eliminar ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+
+                            FabricaPersistencia.getPersistenciaEvento(getApplicationContext()).eliminarEvento(evento.getIdEvento());
+                            finish();
+                        } catch (ExcepcionPersistencia excepcionPersistencia) {
+                            Toast.makeText(getApplicationContext(), excepcionPersistencia.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .show();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent enviar;
@@ -62,8 +99,7 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
                 startActivity(enviar);
                 return true;
             case R.id.mniEliminar:
-
-                //TODO Eliminar Evento
+                mostrarDialogo();
                 return true;
             case R.id.mniReuniones:
                  enviar = new Intent(this, ReunionMantenimiento.class);
@@ -76,7 +112,7 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
                 startActivity(enviar);
                 return true;
             case R.id.mniTareas:
-                enviar = new Intent(this, TareaMantenimientoActivity.class);
+                enviar = new Intent(this, ListarTareasActivity.class);
                 enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
                 startActivity(enviar);
                 return true;

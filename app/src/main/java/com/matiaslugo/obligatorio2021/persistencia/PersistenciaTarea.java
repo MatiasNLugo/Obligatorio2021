@@ -2,6 +2,7 @@ package com.matiaslugo.obligatorio2021.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -70,7 +71,7 @@ public class PersistenciaTarea implements IPeristenciaTarea{
 
             return res;
         } catch (Exception ex){
-            throw  new ExcepcionPersistencia("No se pudo crear el Gasto.");
+            throw  new ExcepcionPersistencia("No se pudo modificar La tarea.");
         } finally {
             db.close();
             dbHelper.close();
@@ -84,7 +85,7 @@ public class PersistenciaTarea implements IPeristenciaTarea{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         try{
-            values.put(DB.Tareas._ID,id);
+            //values.put(DB.Tareas._ID,null);
             values.put(DB.Tareas.IDEVENTO,tarea.getUnEvento().getIdEvento());
             values.put(DB.Tareas.DESCIPCION,tarea.getDescipcion());
             values.put(DB.Tareas.FECHALIMITE, tarea.getFechaLimite());
@@ -99,7 +100,7 @@ public class PersistenciaTarea implements IPeristenciaTarea{
             }
             return res;
         } catch (Exception ex){
-            throw  new ExcepcionPersistencia("No se pudo crear el Gasto.");
+            throw  new ExcepcionPersistencia("No se pudo crear la Tarea.");
         } finally {
             db.close();
             dbHelper.close();

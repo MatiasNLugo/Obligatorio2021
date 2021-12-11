@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTTarea;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersistencia;
+import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
 import com.matiaslugo.obligatorio2021.persistencia.FabricaPersistencia;
 
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class ControladorMantenimientoTarea implements IControladorMantenimientoT
     }
 
     @Override
-    public long insertarTarea(DTTarea tarea) throws ExcepcionPersistencia {
+    public long insertarTarea(DTTarea tarea) throws ExcepcionPersonalizada {
+        LogicaTarea.getInstancia().validarTarea(tarea);
         return FabricaPersistencia.getPersistenciaTarea(context).insertarTarea(tarea);
     }
 

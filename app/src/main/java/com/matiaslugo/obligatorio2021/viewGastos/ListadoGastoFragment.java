@@ -30,7 +30,7 @@ public class ListadoGastoFragment extends Fragment {
     }
 
     private AdaptadorGastos adapter;
-    private ArrayList<DTGasto> DTGastos;
+    private ArrayList<DTGasto> gastos;
     private ListView lv;
     private TextView tvTotal;
     private View view;
@@ -66,11 +66,11 @@ public class ListadoGastoFragment extends Fragment {
         try {
         lv = (ListView) getView().findViewById(R.id.lvGastos);
         tvTotal= (TextView) getView().findViewById(R.id.tvTotal);
-        DTGastos = FabricaLogica.getControladorMantenimientoGasto(getContext()).listaGastos(idEvento);
+        gastos = FabricaLogica.getControladorMantenimientoGasto(getContext()).listaGastos(idEvento);
 
 
         verTotal();
-        adapter = new AdaptadorGastos(getContext(), DTGastos);
+        adapter = new AdaptadorGastos(getContext(), gastos);
         lv.setAdapter(adapter);
         } catch (ExcepcionPersonalizada excepcionPersonalizada) {
             try {
@@ -85,8 +85,7 @@ public class ListadoGastoFragment extends Fragment {
                 lvGastoOnItemClick(parent,view,position);
             }
         });
-
-
+        
     }
 
     public void lvGastoOnItemClick(AdapterView<?> parent, View view, int position) {
@@ -103,7 +102,7 @@ public class ListadoGastoFragment extends Fragment {
 
     public void verTotal(){
         float total = 0;
-        for (DTGasto item:DTGastos) {
+        for (DTGasto item: gastos) {
             total = total + item.getMonto();
         }
 

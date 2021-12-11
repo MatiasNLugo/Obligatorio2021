@@ -40,17 +40,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_COMERCIALES).append(" VALUES(2,'1562783740012','Empresa 1');").toString());
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_PARTICULARES).append(" VALUES(3,'Jean Paul Sartre','768848391');").toString());
 
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'13/01/2022','18:00','99','Fiesta de Cumpleaños',4,0,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'13/01/2022','18:00','90','Fiesta de Cumpleaños',4,0,1);").toString());
         db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_EVENTOS).append(" VALUES(NULL,'24/02/2022','13:00','60','Reunion Empresarial',2,5,3);").toString());
 
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(1,'Descripcion 1','Objetivo 1','12/12/2021','13:00','Lugar 1',0,1);").toString());
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(2,'Descripcion 2','Objetivo 2','13/12/2021','16:00','Lugar 2',1,2);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(NULL,'Descripcion 1','Objetivo 1','12/12/2021','13:00','Lugar 1',0,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_REUNIONES).append(" VALUES(NULL,'Descripcion 2','Objetivo 2','13/12/2021','16:00','Lugar 2',1,2);").toString());
 
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_GASTOS).append(" VALUES(1,'Motivo del gasto 1','Proveedor del gasto 1',101,1);").toString());
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_GASTOS).append(" VALUES(2,'Motivo del gasto 2','Proveedor del gasto 2', 125,2);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_GASTOS).append(" VALUES(NULL,'Motivo del gasto 1','Proveedor del gasto 1',101,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_GASTOS).append(" VALUES(NULL,'Motivo del gasto 2','Proveedor del gasto 2', 125,2);").toString());
 
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_TAREAS).append(" VALUES(1,'Alquila Local', '12/12/2021',1,1);").toString());
-        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_TAREAS).append(" VALUES(2,'Contratar Comico','15/01/2022',0,2);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_TAREAS).append(" VALUES(NULL,'Alquila Local', '12/12/2021',1,1);").toString());
+        db.execSQL(new StringBuilder("INSERT INTO ").append(DB.TABLA_TAREAS).append(" VALUES(NULL,'Contratar Comico','15/01/2022',0,2);").toString());
 
 
 

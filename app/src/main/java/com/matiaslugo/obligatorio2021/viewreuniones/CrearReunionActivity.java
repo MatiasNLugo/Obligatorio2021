@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTEvento;
 import com.matiaslugo.obligatorio2021.compartidos.datatypes.DTReunion;
 import com.matiaslugo.obligatorio2021.compartidos.excepciones.ExcepcionPersonalizada;
+import com.matiaslugo.obligatorio2021.logica.ControladorMantenimientoReunion;
 import com.matiaslugo.obligatorio2021.logica.FabricaLogica;
 import com.matiaslugo.obligatorio2021.presentacion.Constantes;
 import com.matiaslugo.obligatorio2021.presentacion.MenuActivity;
@@ -150,6 +151,10 @@ public class CrearReunionActivity extends MenuActivity {
             FabricaLogica.getControladorMantenimientoReunion(getApplicationContext()).insertarReunion(reunion);
 
             Toast.makeText(this, "Reunión creada con éxito.", Toast.LENGTH_LONG).show();
+
+            Intent enviar = new Intent(this, ReunionMantenimiento.class);
+            enviar.putExtra(Constantes.EXTRA_EVENTO,evento);
+            startActivity(enviar);
         } catch(ExcepcionPersonalizada ex){
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         } catch (Exception e){
@@ -163,8 +168,6 @@ public class CrearReunionActivity extends MenuActivity {
         descripcion = etDescripcion.getText().toString();
         objetivo = etObjetivo.getText().toString();
         lugar = etLugar.getText().toString();
-
-
 
         fecha = etFecha.getText().toString();
 

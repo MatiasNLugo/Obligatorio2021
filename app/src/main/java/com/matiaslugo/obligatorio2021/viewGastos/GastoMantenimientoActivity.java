@@ -40,12 +40,19 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
         agregarFragment();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent enviar = new Intent(this, EventoMantenimiento.class);
+        startActivity(enviar);
+
+    }
 
 
     public void agregarFragment(){
         ListadoGastoFragment listadoGastoFragment = new ListadoGastoFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("idEvento",evento.getIdEvento());
+        bundle.putInt(Constantes.ID_EVENTO,evento.getIdEvento());
         listadoGastoFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -56,12 +63,13 @@ public class GastoMantenimientoActivity extends MenuActivity implements ListadoG
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
+        mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+        mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
         DetalleGastoFragment frgDetalleGasto = (DetalleGastoFragment) getSupportFragmentManager().findFragmentById(R.id.frmDetalleGastos);
         if(frgDetalleGasto == null){
-            getMenuInflater().inflate(R.menu.menu_main,menu);
-            mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
-            mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
-            mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+
         }
         return true;
     }

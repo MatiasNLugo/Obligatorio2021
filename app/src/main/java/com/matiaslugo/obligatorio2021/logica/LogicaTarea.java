@@ -35,7 +35,7 @@ public class LogicaTarea {
                 throw new ExcepcionLogica("La fecha Limite de la tarea no puede ser anterior a la fecha actual");
             }
         } catch (Exception ex){
-
+            throw new ExcepcionLogica("Error en el formato de la fecha.");
         }
         if(tarea.getDescipcion().isEmpty()){
             throw new ExcepcionLogica("La Descripción no puede estar vacía.");

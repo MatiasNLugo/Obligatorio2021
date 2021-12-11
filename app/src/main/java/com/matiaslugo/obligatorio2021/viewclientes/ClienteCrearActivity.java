@@ -112,7 +112,7 @@ public class ClienteCrearActivity extends MenuActivity {
 
         if(verificarCampos(v)){
             FabricaLogica.getControladorMantenimientoCliente(getApplicationContext()).insertarCliente(unCliente);
-            Toast.makeText(this,"DTCliente agregado con éxito.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Cliente agregado con éxito.", Toast.LENGTH_LONG).show();
             Intent enviarCliente = new Intent(this, DetalleClienteActivity.class);
             startActivity(enviarCliente);
         }

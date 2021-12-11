@@ -2,13 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".viewreuniones.DetalleReunionFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_backgraund"
         android:orientation="vertical"
         android:layout_margin="16dp">
         <LinearLayout
@@ -18,13 +19,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="ID :"/>
             <TextView
                 android:id="@+id/tvIdReunion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="AlgoMas"/>
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,13 +37,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="Objetivo :"/>
             <TextView
                 android:id="@+id/tvObjetivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Objetivo"/>
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,13 +55,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="Descripción :"/>
             <TextView
                 android:id="@+id/tvDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Descripcion"/>
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,13 +73,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="Fecha :"/>
             <TextView
                 android:id="@+id/tvFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Fecha"/>
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,13 +91,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="Hora :"/>
             <TextView
                 android:id="@+id/tvHora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Descripcion"/>
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,13 +109,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="Lugar :"/>
             <TextView
                 android:id="@+id/tvLugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Lugar"/>
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,20 +127,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:textSize="@dimen/tamanio_texto"
                 android:text="Notificar al cliente :"/>
             <TextView
                 android:id="@+id/tvNotificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="Notificar"/>
+                android:fontFamily="@font/segoe_b"
+                android:textSize="@dimen/tamanio_texto"
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-
-
-
 </FrameLayout>

@@ -132,6 +132,10 @@ public class CrearEventoActivity extends MenuActivity {
             etHora.setError("Debe ingresar una Hora");
             return false;
         }
+        if(asistentes.isEmpty()){
+            etAsistentes.setError("Debe ingresar cantidad de asistentes");
+            return false;
+        }
         try{
 
             Date fechaFormto =  new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
@@ -161,31 +165,28 @@ public class CrearEventoActivity extends MenuActivity {
     }
 
     public void spAgregarSpinners() {
-        PersistenciaCliente persistenciaCliente = new PersistenciaCliente(this);
-        clientes = persistenciaCliente.listaClientes();
+        try {
+            clientes = FabricaLogica.getControladorMantenimientoCliente(getApplicationContext()).listaClientes();
 
-        for (DTCliente item : clientes) {
-            ids.add(item.getIdCliente());
-            if (item instanceof DTParticular) {
-                nombres.add(((DTParticular) item).getNombre());
+            for (DTCliente item : clientes) {
+                ids.add(item.getIdCliente());
+                if (item instanceof DTParticular) {
+                    nombres.add(((DTParticular) item).getNombre());
 
-            }else{
-                nombres.add(((DTComercial)item).getRazonSocial());
+                } else {
+                    nombres.add(((DTComercial) item).getRazonSocial());
+                }
+
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, nombres);
+            spClientes.setAdapter(adapter);
+        } catch(ExcepcionPersonalizada excepcionPersonalizada){
+            Toast.makeText(this, excepcionPersonalizada.getMessage(), Toast.LENGTH_LONG).show();
         }
 
-    }
-
-       ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,nombres);
-       spClientes.setAdapter(adapter);
-       persistenciaCliente.close();
-
-       for(int i=1 ; i < 100; i++){
-           if(i<10){
-           String hora = "0" + i ;
-           horas.add(hora);
-           } else{
+       for(int i=30 ; i < 500; i+= 30){
                horas.add(String.valueOf(i));
-           }
        }
         ArrayAdapter<String> adapterDuracion = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,horas);
         spDuracion.setAdapter(adapterDuracion);
@@ -206,12 +207,20 @@ public class CrearEventoActivity extends MenuActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-               if(minute < 10){
-                etHora.setText(hourOfDay +":0"+ (minute) );
-               } else {
-                   etHora.setText(hourOfDay +":"+ (minute));
+                StringBuilder unaHora = new StringBuilder() ;
+                if(hourOfDay < 10 ) {
+                    unaHora.append("0").append(hourOfDay).append(":");
+                } else {
+                    unaHora.append(hourOfDay).append(":");
+                }
+                if (minute < 10) {
+                       unaHora.append("0").append(minute);
+                   } else {
+                    unaHora.append(minute);
                }
-            }
+                etHora.setText(unaHora);
+               }
+
         },hora,minutos,false);
         timePickerDialog.show();
     }
@@ -272,9 +281,8 @@ public class CrearEventoActivity extends MenuActivity {
 
                }
 
-
                FabricaLogica.getControladorMantenimientoEvento(getApplicationContext()).insertarEvento(evento);
-               Toast.makeText(this, "DTEvento creado con exito.", Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, "Evento creado con exito.", Toast.LENGTH_SHORT).show();
                Intent enviarCliente = new Intent(this, EventoMantenimiento.class);
                startActivity(enviarCliente);
 

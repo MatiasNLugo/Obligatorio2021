@@ -113,7 +113,7 @@ import android.provider.BaseColumns;
 
         public static final String SQL_CREAR_TABLA_REUNIONES = new StringBuilder("CREATE TABLE ")
                 .append(TABLA_REUNIONES).append(" (")
-                .append(_ID).append(" INTEGER, ")
+                .append(_ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ")
                 .append(DESCRIPCION).append(" TEXT,")
                 .append(OBJETIVO).append(" TEXT,")
                 .append(FECHA).append(" TEXT,")
@@ -123,7 +123,7 @@ import android.provider.BaseColumns;
                 .append(IDEVENTO).append(" INTEGER,")
                 .append("FOREIGN KEY (").append(IDEVENTO)
                 .append(") REFERENCES ").append(TABLA_EVENTOS).append(" (").append(_ID).append("), ")
-                .append(" PRIMARY KEY (").append(IDEVENTO).append(",").append(_ID).append("));").toString();
+                .append(" UNIQUE (").append(IDEVENTO).append(",").append(_ID).append("));").toString();
     }
 
     public static abstract class Gastos implements BaseColumns{
@@ -137,14 +137,14 @@ import android.provider.BaseColumns;
 
         public static final String SQL_CREAR_TABLA_GASTOS = new StringBuilder("CREATE TABLE ")
                 .append(TABLA_GASTOS).append(" (")
-                .append(_ID).append(" INTEGER , ")
+                .append(_ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ")
                 .append(MOTIVO).append(" TEXT,")
                 .append(PROVEEDOR).append(" TEXT,")
                 .append(MONTO).append(" REAL,")
                 .append(IDEVENTO).append(" INTEGER,")
                 .append("FOREIGN KEY (").append(IDEVENTO)
                 .append(") REFERENCES ").append(TABLA_EVENTOS).append("(").append(_ID).append("), ")
-                .append(" PRIMARY KEY (").append(IDEVENTO).append(",").append(_ID).append("));").toString();
+                .append(" UNIQUE (").append(IDEVENTO).append(",").append(_ID).append("));").toString();
     }
 
     public static abstract class Tareas implements BaseColumns{
@@ -158,14 +158,14 @@ import android.provider.BaseColumns;
 
         public static final String SQL_CREAR_TABLA_TAREAS = new StringBuilder("CREATE TABLE ")
                 .append(TABLA_TAREAS).append(" (")
-                .append(_ID).append(" INTEGER , ")
+                .append(_ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ")
                 .append(DESCIPCION).append(" TEXT,")
                 .append(FECHALIMITE).append(" TEXT,")
                 .append(REALIZADA).append(" BOOLEAN NOT NULL CHECK(").append(REALIZADA).append(" in (0,1)),")
                 .append(IDEVENTO).append(" INTEGER,")
                 .append("FOREIGN KEY (").append(IDEVENTO)
                 .append(") REFERENCES ").append(TABLA_EVENTOS).append("(").append(_ID).append("), ")
-                .append(" PRIMARY KEY (").append(IDEVENTO).append(",").append(_ID).append("));").toString();
+                .append("UNIQUE (").append(IDEVENTO).append(",").append(_ID).append("));").toString();
     }
 
 

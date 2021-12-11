@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/botones"
     tools:context=".viewTareas.ListarTareasActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,8 +22,11 @@
         app:tint="@color/black" />
     <ListView
         android:id="@+id/lvTareas"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:background="@drawable/list_item_backgraund"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ListViewStyle.Light"
         android:choiceMode="multipleChoice"
         />
 </RelativeLayout>
