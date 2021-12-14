@@ -303,6 +303,7 @@ public class CrearEventoActivity extends MenuActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
+        setTitle("Crear Evento");
         mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
         mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
         mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(false);

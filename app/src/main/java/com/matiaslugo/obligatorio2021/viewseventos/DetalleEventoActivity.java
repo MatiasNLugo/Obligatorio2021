@@ -108,6 +108,7 @@ public class DetalleEventoActivity extends MenuActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
+        setTitle("Detalle de Evento");
         mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
         mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(true);
         mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(true);

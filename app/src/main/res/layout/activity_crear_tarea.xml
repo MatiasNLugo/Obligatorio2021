@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
     android:background="@color/botones"
     tools:context=".viewTareas.CrearTareaActivity">
     <LinearLayout
         android:id="@+id/llCampos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/list_item_backgraund"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/activity_vertical_margin">
     <EditText
         android:id="@+id/etDescripcion"
         android:layout_width="match_parent"
@@ -22,7 +24,7 @@
         android:id="@+id/etFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha..."
+        android:hint="Fecha Limite"
         android:focusable="false"
         android:inputType="text" />
     </LinearLayout>

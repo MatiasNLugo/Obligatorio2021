@@ -4,13 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/botones"
     tools:context=".viewclientes.ClienteModificarActivity">
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rlFormulario"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/list_item_backgraund"
+            android:padding="@dimen/activity_vertical_margin"
             android:layout_margin="@dimen/activity_vertical_margin">
             <RadioGroup
                 android:id="@+id/rgRadio"
@@ -116,6 +123,12 @@
                 android:layout_below="@id/etTelefono"
                 android:hint="Correo"
                 android:inputType="textEmailAddress" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlFormulario"
+            android:gravity="bottom">
             <Button
                 android:id="@+id/btnAgregarCliente"
                 android:layout_width="match_parent"
@@ -123,10 +136,9 @@
                 android:layout_margin="@dimen/activity_vertical_margin"
                 android:fontFamily="@font/segoe_b"
                 android:textSize="@dimen/tamanio_texto"
-                android:layout_below="@id/etCorreo"
                 android:text="Modificar" />
         </RelativeLayout>
+        </RelativeLayout>
     </ScrollView>
-
 
 </RelativeLayout>

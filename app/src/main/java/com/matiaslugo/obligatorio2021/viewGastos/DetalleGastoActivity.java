@@ -24,7 +24,7 @@ public class DetalleGastoActivity extends MenuActivity {
     private DetalleGastoFragment frgDetalleGasto;
     private DTGasto gasto;
     private DTEvento evento;
-    private MenuItem mniModificar,mniEliminar,mniGastos;
+    private MenuItem mniModificar,mniEliminar,mniGastos, mniOpciones;
     private Intent enviar;
 
     @Override
@@ -58,9 +58,11 @@ public class DetalleGastoActivity extends MenuActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
-        mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
+        setTitle("Detalle del Gasto");
+        mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
         mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
         mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+        mniOpciones = menu.findItem(R.id.mniOpciones).setEnabled(false).setVisible(false);
         return true;
     }
 

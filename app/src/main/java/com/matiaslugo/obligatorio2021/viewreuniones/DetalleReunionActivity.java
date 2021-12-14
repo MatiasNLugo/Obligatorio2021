@@ -20,7 +20,7 @@ public class DetalleReunionActivity extends MenuActivity {
     private DetalleReunionFragment frgDetalleReunion;
     private DTReunion reunion;
     private DTEvento evento;
-    private MenuItem mniModificar,mniEliminar,mniReuniones;
+    private MenuItem mniModificar,mniEliminar,mniReuniones,mniOpciones;
     private Intent enviar;
 
     @Override
@@ -57,9 +57,11 @@ public class DetalleReunionActivity extends MenuActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
-        mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
-        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(true);
+        setTitle("Reuniones");
+        mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
+        mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
         mniReuniones = menu.findItem(R.id.mniReuniones).setVisible(false);
+        mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(false);
         return true;
     }
 

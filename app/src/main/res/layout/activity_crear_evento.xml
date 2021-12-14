@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/botones"
     tools:context=".viewseventos.CrearEventoActivity">
 
@@ -11,9 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
       <RelativeLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="fill_parent">
+
+          <RelativeLayout
             android:id="@+id/rlFormulario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -133,21 +134,22 @@
                 android:fontFamily="@font/segoe_b"
                 android:layout_below="@+id/llTituloClientes" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:gravity="bottom"
-            android:layout_below="@id/rlFormulario">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginBottom="8dp"
-            android:onClick="btnOnClickAgregarEvento"
-            android:text="Agregar" />
-        </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_below="@id/rlFormulario"
+              android:gravity="bottom"
+              android:padding="16dp">
+              <Button
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="32dp"
+                  android:layout_marginRight="32dp"
+                  android:layout_marginBottom="8dp"
+                  android:onClick="btnOnClickAgregarEvento"
+                  android:text="Agregar" />
+          </RelativeLayout>
       </RelativeLayout>
     </ScrollView>
 

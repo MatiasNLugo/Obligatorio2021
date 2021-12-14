@@ -52,7 +52,7 @@ public class DetalleClienteActivity extends MenuActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
-                            FabricaPersistencia.getPersistenciaCliente(getApplicationContext())
+                            FabricaLogica.getControladorMantenimientoCliente(getApplicationContext())
                                     .eliminarCliente(cliente.getIdCliente());
                             finish();
                         } catch (ExcepcionPersonalizada excepcionPersonalizada) {

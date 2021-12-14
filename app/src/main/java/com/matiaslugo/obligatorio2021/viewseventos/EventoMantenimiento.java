@@ -54,6 +54,7 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main,menu);
+        setTitle("Eventos");
             mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(false);
             mniModificar = menu.findItem(R.id.mniModificar).setVisible(false);
             mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(false);
@@ -123,7 +124,6 @@ public class EventoMantenimiento extends MenuActivity implements ListarEventosFr
 
     @Override
     public void onEventoSeleccionado(DTEvento evento) throws ExcepcionPersonalizada {
-
 
             this.evento = evento;
             DetalleEventoFragment frgDetalleEvento = (DetalleEventoFragment) getSupportFragmentManager().findFragmentById(R.id.frmEventoDetalle);

@@ -66,6 +66,7 @@ public class ListarTareasActivity extends MenuActivity {
                             }
                             try {
                                 FabricaLogica.getControladorMantenimientoTarea(getApplicationContext()).cambiarEstadoTarea(unaTarea);
+                                Toast.makeText(getApplicationContext(), "Tarea Modificada !", Toast.LENGTH_SHORT).show();
                             } catch (ExcepcionPersistencia excepcionPersistencia) {
                                 excepcionPersistencia.printStackTrace();
                             }
@@ -81,12 +82,13 @@ public class ListarTareasActivity extends MenuActivity {
 
 
 
-        lv.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+       lv.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
                 try {
+                    Toast.makeText(getApplicationContext(), "Tarea Modificada !", Toast.LENGTH_LONG).show();
                     FabricaLogica.getControladorMantenimientoTarea(getApplicationContext()).cambiarEstadoTarea(tareas.get(position));
-                    Toast.makeText(getApplicationContext(), "Tarea Modificada !", Toast.LENGTH_SHORT).show();
+
                 } catch (ExcepcionPersistencia excepcionPersistencia) {
                     Toast.makeText(getApplicationContext(), excepcionPersistencia.getMessage(), Toast.LENGTH_LONG).show();
                 }
@@ -162,34 +164,6 @@ public class ListarTareasActivity extends MenuActivity {
         } catch (ExcepcionPersistencia excepcionPersistencia) {
             Toast.makeText(this, excepcionPersistencia.getMessage(), Toast.LENGTH_LONG).show();;
         }
-
-
-/*
-       StringBuilder stringBuilder = new StringBuilder();
-        String[][] tareasListar = new String[tareas.size()][];
-        for(DTTarea item : tareas){
-
-            stringBuilder.append("{");
-            String descripcion = "Descripción: " + item.getDescipcion();
-            String fechaLimite = "Fecha Limite: " + item.getFechaLimite();
-            stringBuilder.append(descripcion).append(",").append(fechaLimite);
-            if(tareas.size()-1 == tareas.indexOf(item)){
-                stringBuilder.append("}}");
-            } else {
-                stringBuilder.append("},");
-            }
-            //String[] enlazar = new String[]{"Descripción: ", descripcion, "Fecha Limite: " + fechaLimite};
-
-            tareasListar[tareas.indexOf(item)][tareas.indexOf(item)] = stringBuilder.toString();
-
-          ArrayAdapter<String[]> adapter = new ArrayAdapter<String[]>(getApplicationContext(),android.R.layout.simple_list_item_checked,tareasListar);
-        lv.setAdapter(adapter);
-
-        }*/
-
-
-
-
 
 
         lv = findViewById(R.id.lvTareas);
