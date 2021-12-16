@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/botones"
     tools:context=".viewclientes.DetalleClienteActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <androidx.fragment.app.FragmentContainerView
     android:id="@+id/frmClienteDetalle"
     android:layout_width="match_parent"
@@ -13,4 +17,5 @@
     tools:layout="@layout/fragment_cliente_detalle">
 
 </androidx.fragment.app.FragmentContainerView>
+    </ScrollView>
 </RelativeLayout>

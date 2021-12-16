@@ -75,7 +75,7 @@ public class CrearTareaActivity extends MenuActivity {
     private void verificarCampos(){
         String fecha , descripcion;
         fecha = etFecha.getText().toString();
-        descripcion = etDescripcion.getText().toString();
+        descripcion = etDescripcion.getText().toString().trim();
             if (fecha.isEmpty()) etFecha.setError("Debe ingresar una fecha.");
             if(descripcion.isEmpty()) etDescripcion.setError("Debe ingresar una descripción.");
 
@@ -87,7 +87,7 @@ public class CrearTareaActivity extends MenuActivity {
     }
     private void btnAgregarTareaOnClickListener(View v) throws ExcepcionPersonalizada {
         tarea = new DTTarea();
-        tarea.setDescipcion(etDescripcion.getText().toString());
+        tarea.setDescipcion(etDescripcion.getText().toString().trim());
         tarea.setFechaLimite(etFecha.getText().toString());
         tarea.setRealizada(false);
         tarea.setUnEvento(evento);

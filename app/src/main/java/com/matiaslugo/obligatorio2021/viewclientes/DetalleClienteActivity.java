@@ -23,7 +23,7 @@ public class DetalleClienteActivity extends MenuActivity {
 
     protected DetalleClienteFragment frgDetalleCliente;
     protected DTCliente cliente;
-    protected MenuItem mniModificar, mniEliminar, mniReunion, mniTareas, mniGastos;
+    protected MenuItem mniModificar, mniEliminar, mniReunion, mniTareas, mniGastos, mniOpciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,16 +94,11 @@ public class DetalleClienteActivity extends MenuActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         mniModificar = menu.findItem(R.id.mniModificar).setVisible(true);
         mniEliminar = menu.findItem(R.id.mniEliminar).setVisible(true);
-
-        DetalleClienteFragment frgDetalleCliente = (DetalleClienteFragment)
-                getSupportFragmentManager().findFragmentById(R.id.frmClienteDetalle);
-        if (frgDetalleCliente == null) {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
-            mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
-            mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
-            mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
-        }
-        return true;
+        mniReunion = menu.findItem(R.id.mniReuniones).setVisible(false);
+        mniGastos = menu.findItem(R.id.mniGastos).setVisible(false);
+        mniTareas = menu.findItem(R.id.mniTareas).setVisible(false);
+        mniOpciones = menu.findItem(R.id.mniOpciones).setVisible(false);
+         return true;
     }
 
 }

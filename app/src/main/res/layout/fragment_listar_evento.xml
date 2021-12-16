@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:columnWidth="@dimen/grid_view"
+        android:columnWidth="@dimen/ancho_avatar"
         android:numColumns="auto_fit"
         android:background="@color/botones"
-        android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:smoothScrollbar="true"
         style="@style/ListViewStyle.Light"
         android:stretchMode="spacingWidthUniform" />
 </RelativeLayout>

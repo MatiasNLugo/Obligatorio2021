@@ -51,13 +51,13 @@ public class ClienteModificarActivity extends MenuActivity {
         String cedula, rut;
         String nombre,razonSocial,direccion,telefono,correo;
 
-        cedula = etCedula.getText().toString();
-        rut = etRut.getText().toString();
-        nombre = etNombre.getText().toString();
-        razonSocial = etRazonSocial.getText().toString();
-        direccion = etDireccion.getText().toString();
-        telefono = etTelefono.getText().toString();
-        correo = etCorreo.getText().toString();
+        cedula = etCedula.getText().toString().trim();
+        rut = etRut.getText().toString().trim();
+        nombre = etNombre.getText().toString().trim();
+        razonSocial = etRazonSocial.getText().toString().trim();
+        direccion = etDireccion.getText().toString().trim();
+        telefono = etTelefono.getText().toString().trim();
+        correo = etCorreo.getText().toString().trim();
 
 
         boolean retorno = true;

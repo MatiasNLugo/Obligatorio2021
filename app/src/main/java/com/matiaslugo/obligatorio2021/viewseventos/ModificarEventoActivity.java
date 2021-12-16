@@ -144,7 +144,7 @@ public class ModificarEventoActivity extends MenuActivity {
     public void btnOnClickModificarEvento(View view) throws ExcepcionPersonalizada {
        try {
            if(veificarCampos()){
-           evento.setTitulo(etTitulo.getText().toString());
+           evento.setTitulo(etTitulo.getText().toString().trim());
            evento.setFecha(etFecha.getText().toString());
            evento.setHora(etHora.getText().toString());
            evento.setDuracion(spDuracion.getSelectedItem().toString());

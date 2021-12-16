@@ -61,8 +61,8 @@ public class CrearGastoActivity extends AppCompatActivity {
         gasto = new DTGasto();
         gasto.setUnEvento(evento);
         gasto.setMonto(Float.parseFloat(etMonto.getText().toString()));
-        gasto.setMotivo(etMotivo.getText().toString());
-        gasto.setProveedor(etProveedor.getText().toString());
+        gasto.setMotivo(etMotivo.getText().toString().trim());
+        gasto.setProveedor(etProveedor.getText().toString().trim());
 
 
 
@@ -83,8 +83,8 @@ public class CrearGastoActivity extends AppCompatActivity {
     private void verificarCampos(){
         String motivo, proveedor, monto;
         motivo = etMotivo.getText().toString();
-        proveedor = etProveedor.getText().toString();
-        monto = etMonto.getText().toString();
+        proveedor = etProveedor.getText().toString().trim();
+        monto = etMonto.getText().toString().trim();
 
         if(motivo.isEmpty()) etMotivo.setError("Debe ingresar un Motivo.");
         if(proveedor.isEmpty()) etProveedor.setError("Debe ingresar un Proveedor.");

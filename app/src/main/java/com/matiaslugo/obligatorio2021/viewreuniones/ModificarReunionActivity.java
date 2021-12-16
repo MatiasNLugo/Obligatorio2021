@@ -127,11 +127,11 @@ public class ModificarReunionActivity extends MenuActivity {
     public void btnOnClickModificarReunion(View view) throws ExcepcionPersonalizada {
        try{
 
-           reunion.setDescripcion(etDescripcion.getText().toString());
-           reunion.setObjetivo(etObjetivo.getText().toString());
+           reunion.setDescripcion(etDescripcion.getText().toString().trim());
+           reunion.setObjetivo(etObjetivo.getText().toString().trim());
            reunion.setFecha(etFecha.getText().toString());
            reunion.setHora(etHora.getText().toString());
-           reunion.setLugar(etLugar.getText().toString());
+           reunion.setLugar(etLugar.getText().toString().trim());
            reunion.setNotificar(chkAvisar.isChecked());
 
            verificarCampos();
@@ -148,9 +148,9 @@ public class ModificarReunionActivity extends MenuActivity {
 
     private void verificarCampos() {
         String descripcion,objetivo,fecha, hora, lugar;
-        descripcion = etDescripcion.getText().toString();
-        objetivo = etObjetivo.getText().toString();
-        lugar = etLugar.getText().toString();
+        descripcion = etDescripcion.getText().toString().trim();
+        objetivo = etObjetivo.getText().toString().trim();
+        lugar = etLugar.getText().toString().trim();
 
         fecha = etFecha.getText().toString();
 

@@ -111,13 +111,13 @@ public class CrearEventoActivity extends MenuActivity {
     private boolean veificarCampos(){
         boolean verificado = false;
         String titulo,fecha,hora, asistentes, cliente,duracion,tipoEvento;
-        titulo = etTitulo.getText().toString();
-        fecha = etFecha.getText().toString();
-        hora = etHora.getText().toString();
-        asistentes = etAsistentes.getText().toString();
-        cliente = spClientes.getSelectedItem().toString();
-        duracion = spDuracion.getSelectedItem().toString();
-        tipoEvento = spTipoEvento.getSelectedItem().toString();
+        titulo = etTitulo.getText().toString().trim();
+        fecha = etFecha.getText().toString().trim();
+        hora = etHora.getText().toString().trim();
+        asistentes = etAsistentes.getText().toString().trim();
+        cliente = spClientes.getSelectedItem().toString().trim();
+        duracion = spDuracion.getSelectedItem().toString().trim();
+        tipoEvento = spTipoEvento.getSelectedItem().toString().trim();
 
         if(titulo.isEmpty()){
             etTitulo.setError("Debe ingresar un Titulo.");
@@ -254,7 +254,7 @@ public class CrearEventoActivity extends MenuActivity {
     public void btnOnClickAgregarEvento(View view) throws ExcepcionPersonalizada {
        try {
            if (veificarCampos()) {
-               evento.setTitulo(etTitulo.getText().toString());
+               evento.setTitulo(etTitulo.getText().toString().trim());
                evento.setFecha(etFecha.getText().toString());
                evento.setHora(etHora.getText().toString());
                evento.setDuracion(spDuracion.getSelectedItem().toString());

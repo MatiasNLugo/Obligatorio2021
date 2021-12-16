@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".viewseventos.DetalleEventoActivity"
     android:orientation="vertical"
+    android:background="@color/botones"
     android:layout_centerHorizontal="true"
     android:gravity="center_horizontal">
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frmEventoDetalle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment"
         tools:layout="@layout/fragment_detalle_evento"/>
-
+   </ScrollView>
 
 </RelativeLayout>

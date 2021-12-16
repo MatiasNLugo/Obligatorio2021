@@ -7,6 +7,9 @@
     android:background="@color/botones"
     tools:context=".viewseventos.ModificarEventoActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -130,24 +133,25 @@
                     android:fontFamily="@font/segoe_b"
                     android:layout_below="@+id/llTituloClientes" />
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rlFormulario"
+                android:padding="16dp"
+                android:gravity="bottom"
+                tools:ignore="NotSibling">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="btnOnClickModificarEvento"
+                    android:text="Agregar" />
             </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/rlFormulario"
-            android:padding="16dp"
-            android:gravity="bottom"
-            tools:ignore="NotSibling">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginBottom="8dp"
-                android:onClick="btnOnClickModificarEvento"
-                android:text="Agregar" />
-        </RelativeLayout>
+            </RelativeLayout>
+    </ScrollView>
 
 
 
