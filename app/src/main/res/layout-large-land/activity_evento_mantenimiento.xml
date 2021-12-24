@@ -15,12 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:name="com.matiaslugo.obligatorio2021.viewseventos.ListarEventosFragment"
+            android:name="com.matiaslugo.obligatorio2021.presentacion.viewseventos.ListarEventosFragment"
             tools:layout="@layout/fragment_listar_evento" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frmEventoDetalle"
-            android:name="com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment"
+            android:name="com.matiaslugo.obligatorio2021.presentacion.viewseventos.DetalleEventoFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="40"

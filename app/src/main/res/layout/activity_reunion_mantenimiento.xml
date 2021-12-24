@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewreuniones.ReunionMantenimiento">
+    tools:context=".presentacion.viewreuniones.ReunionMantenimiento">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -23,7 +23,7 @@
         android:id="@+id/frmListadoReuniones"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.matiaslugo.obligatorio2021.viewreuniones.ListadoReunionFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewreuniones.ListadoReunionFragment"
         tools:layout="@layout/list_item_reunion" />
 
 </RelativeLayout>

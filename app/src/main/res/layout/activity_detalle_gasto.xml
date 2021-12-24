@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/botones"
-    tools:context=".viewGastos.DetalleGastoActivity">
+    tools:context=".presentacion.viewGastos.DetalleGastoActivity">
 
     <fragment
         android:layout_margin="@dimen/activity_vertical_margin"
         android:id="@+id/frmDetalleGastos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.matiaslugo.obligatorio2021.viewGastos.DetalleGastoFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewGastos.DetalleGastoFragment"
         tools:layout="@layout/fragment_detalle_gasto"/>
 </RelativeLayout>

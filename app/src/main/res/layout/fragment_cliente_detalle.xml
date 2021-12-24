@@ -5,7 +5,7 @@
     android:padding="26dp"
     android:background="@color/botones"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".viewclientes.DetalleClienteFragment"
+    tools:context=".presentacion.viewclientes.DetalleClienteFragment"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewGastos.GastoMantenimientoActivity">
+    tools:context=".presentacion.viewGastos.GastoMantenimientoActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -23,6 +23,6 @@
         android:id="@+id/frmListadoGastos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.matiaslugo.obligatorio2021.viewGastos.ListadoGastoFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewGastos.ListadoGastoFragment"
         tools:layout="@layout/list_item_gastos"/>
 </RelativeLayout>

@@ -28,14 +28,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="60"
-        android:name="com.matiaslugo.obligatorio2021.viewGastos.ListadoGastoFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewGastos.ListadoGastoFragment"
         tools:layout="@layout/list_item_gastos"/>
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frmDetalleGastos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="40"
-            android:name="com.matiaslugo.obligatorio2021.viewGastos.DetalleGastoFragment"
+            android:name="com.matiaslugo.obligatorio2021.presentacion.viewGastos.DetalleGastoFragment"
             tools:layout="@layout/fragment_detalle_gasto"/>
 
     </LinearLayout>

@@ -26,14 +26,14 @@
         android:orientation="horizontal">
         <fragment
             android:id="@+id/frmListadoReuniones"
-            android:name="com.matiaslugo.obligatorio2021.viewreuniones.ListadoReunionFragment"
+            android:name="com.matiaslugo.obligatorio2021.presentacion.viewreuniones.ListadoReunionFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="50"
             tools:layout="@layout/list_item_reunion" />
         <fragment
             android:id="@+id/frmDetallereunion"
-            android:name="com.matiaslugo.obligatorio2021.viewreuniones.DetalleReunionFragment"
+            android:name="com.matiaslugo.obligatorio2021.presentacion.viewreuniones.DetalleReunionFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="30"

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@color/botones"
-    tools:context=".viewclientes.ClienteCrearActivity"
+    tools:context=".presentacion.viewclientes.ClienteCrearActivity"
     android:overScrollMode="ifContentScrolls"
     android:scrollbarStyle="insideOverlay"
     android:scrollbars="vertical">

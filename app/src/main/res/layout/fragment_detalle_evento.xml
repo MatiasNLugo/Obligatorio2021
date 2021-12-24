@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/botones"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".viewseventos.EventoMantenimiento">
+    tools:context=".presentacion.viewseventos.EventoMantenimiento">
 
     <LinearLayout
         android:layout_width="match_parent"

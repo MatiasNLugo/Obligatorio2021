@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewclientes.ClienteMantenimiento">
+    tools:context=".presentacion.viewclientes.ClienteMantenimiento">
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:id="@+id/frgListadoClientes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.matiaslugo.obligatorio2021.viewclientes.ListadoClienteFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewclientes.ListadoClienteFragment"
         tools:layout="@layout/list_item_cliente">
 
     </androidx.fragment.app.FragmentContainerView>

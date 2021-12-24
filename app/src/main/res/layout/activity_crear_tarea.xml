@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_vertical_margin"
     android:background="@color/botones"
-    tools:context=".viewTareas.CrearTareaActivity">
+    tools:context=".presentacion.viewTareas.CrearTareaActivity">
     <LinearLayout
         android:id="@+id/llCampos"
         android:layout_width="match_parent"

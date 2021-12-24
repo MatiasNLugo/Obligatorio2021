@@ -10,49 +10,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obligatorio2021">
         <activity
-            android:name=".viewseventos.ModificarEventoActivity"
+            android:name=".presentacion.viewseventos.ModificarEventoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewTareas.ListarTareasActivity"
+            android:name=".presentacion.viewTareas.ListarTareasActivity"
             android:exported="false" />
         <activity
-            android:name=".viewGastos.DetalleGastoActivity"
+            android:name=".presentacion.viewGastos.DetalleGastoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewTareas.ModificarTareaActivity"
+            android:name=".presentacion.viewTareas.CrearTareaActivity"
             android:exported="false" />
         <activity
-            android:name=".viewGastos.ModificarGastoActivity"
+            android:name=".presentacion.viewGastos.CrearGastoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewTareas.CrearTareaActivity"
+            android:name=".presentacion.viewTareas.TareaMantenimientoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewGastos.CrearGastoActivity"
+            android:name=".presentacion.viewGastos.GastoMantenimientoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewTareas.TareaMantenimientoActivity"
+            android:name=".presentacion.viewreuniones.DetalleReunionActivity"
             android:exported="false" />
         <activity
-            android:name=".viewGastos.GastoMantenimientoActivity"
+            android:name=".presentacion.viewreuniones.ReunionMantenimiento"
             android:exported="false" />
         <activity
-            android:name=".viewreuniones.DetalleReunionActivity"
+            android:name=".presentacion.viewreuniones.CrearReunionActivity"
             android:exported="false" />
         <activity
-            android:name=".viewreuniones.ModificarReunionActivity"
+            android:name=".presentacion.viewclientes.ClienteModificarActivity"
             android:exported="false" />
         <activity
-            android:name=".viewreuniones.ReunionMantenimiento"
-            android:exported="false" />
-        <activity
-            android:name=".viewreuniones.CrearReunionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".viewclientes.ClienteModificarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".viewseventos.EventoMantenimiento"
+            android:name=".presentacion.viewseventos.EventoMantenimiento"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,22 +55,19 @@
             android:name=".presentacion.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".viewseventos.CrearEventoActivity"
+            android:name=".presentacion.viewseventos.CrearEventoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewseventos.DetalleEventoActivity"
+            android:name=".presentacion.viewseventos.DetalleEventoActivity"
             android:exported="false" />
         <activity
-            android:name=".viewclientes.ClienteCrearActivity"
+            android:name=".presentacion.viewclientes.ClienteCrearActivity"
             android:exported="false" />
         <activity
-            android:name=".viewclientes.DetalleClienteActivity"
+            android:name=".presentacion.viewclientes.DetalleClienteActivity"
             android:exported="false" />
         <activity
-            android:name=".viewclientes.ClienteMantenimiento"
-            android:exported="false" />
-        <activity
-            android:name=".presentacion.MainActivity"
+            android:name=".presentacion.viewclientes.ClienteMantenimiento"
             android:exported="false" />
     </application>
 

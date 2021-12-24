@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewseventos.DetalleEventoActivity"
+    tools:context=".presentacion.viewseventos.DetalleEventoActivity"
     android:orientation="vertical"
     android:background="@color/botones"
     android:layout_centerHorizontal="true"
@@ -16,7 +16,7 @@
         android:id="@+id/frmEventoDetalle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.matiaslugo.obligatorio2021.viewseventos.DetalleEventoFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewseventos.DetalleEventoFragment"
         tools:layout="@layout/fragment_detalle_evento"/>
    </ScrollView>
 

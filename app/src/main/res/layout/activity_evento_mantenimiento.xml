@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewseventos.EventoMantenimiento">
+    tools:context=".presentacion.viewseventos.EventoMantenimiento">
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:id="@+id/frgListadoEventos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.matiaslugo.obligatorio2021.viewseventos.ListarEventosFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewseventos.ListarEventosFragment"
         tools:layout="@layout/fragment_listar_evento">
     </androidx.fragment.app.FragmentContainerView>
 

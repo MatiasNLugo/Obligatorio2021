@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/botones"
-    tools:context=".viewclientes.DetalleClienteActivity">
+    tools:context=".presentacion.viewclientes.DetalleClienteActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,9 +13,8 @@
     android:id="@+id/frmClienteDetalle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.matiaslugo.obligatorio2021.viewclientes.DetalleClienteFragment"
+    android:name="com.matiaslugo.obligatorio2021.presentacion.viewclientes.DetalleClienteFragment"
     tools:layout="@layout/fragment_cliente_detalle">
-
 </androidx.fragment.app.FragmentContainerView>
     </ScrollView>
 </RelativeLayout>

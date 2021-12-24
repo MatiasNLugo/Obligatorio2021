@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/botones"
-    tools:context=".viewseventos.ModificarEventoActivity">
+    tools:context=".presentacion.viewseventos.ModificarEventoActivity">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -9,12 +9,11 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuCompat;
 
 import com.matiaslugo.obligatorio2021.R;
-import com.matiaslugo.obligatorio2021.viewclientes.ClienteMantenimiento;
-import com.matiaslugo.obligatorio2021.viewreuniones.ReunionMantenimiento;
-import com.matiaslugo.obligatorio2021.viewseventos.EventoMantenimiento;
+import com.matiaslugo.obligatorio2021.presentacion.viewclientes.ClienteMantenimiento;
+import com.matiaslugo.obligatorio2021.presentacion.viewreuniones.ReunionMantenimiento;
+import com.matiaslugo.obligatorio2021.presentacion.viewseventos.EventoMantenimiento;
 
 public class MenuActivity extends AppCompatActivity {
 

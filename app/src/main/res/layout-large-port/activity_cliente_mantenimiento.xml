@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="60"
-        android:name="com.matiaslugo.obligatorio2021.viewclientes.ListadoClienteFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewclientes.ListadoClienteFragment"
         tools:layout="@layout/list_item_cliente"/>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frmClienteDetalle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="40"
-        android:name="com.matiaslugo.obligatorio2021.viewclientes.DetalleClienteFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewclientes.DetalleClienteFragment"
         tools:layout="@layout/fragment_cliente_detalle" />
 </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton

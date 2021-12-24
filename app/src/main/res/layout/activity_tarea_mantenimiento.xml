@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/botones"
-    tools:context=".viewTareas.TareaMantenimientoActivity">
+    tools:context=".presentacion.viewTareas.TareaMantenimientoActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAgregarTarea"
@@ -24,7 +24,7 @@
         android:id="@+id/frmListadoTareas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.matiaslugo.obligatorio2021.viewTareas.ListadoTareaFragment"
+        android:name="com.matiaslugo.obligatorio2021.presentacion.viewTareas.ListadoTareaFragment"
         tools:layout="@layout/list_item_tarea"/>
 
 </RelativeLayout>
